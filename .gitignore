@@ -1,0 +1,65 @@
+# Unreal Engine 5.x Git Ignore File
+
+# Binary files
+Binaries/
+*.msi
+*.app
+*.exe
+*.dll
+*.pdb
+*.ilk
+*.lib
+*.exp
+
+# Intermediate build files
+Intermediate/
+DerivedDataCache/
+
+# Configuration files with local settings
+Saved/
+
+# VSCode workspace settings (optional, uncomment if you want to ignore)
+# .vscode/
+
+# Visual Studio project files
+.vs/
+
+# Rider/ReSharper files
+.idea/
+
+# Xcode files
+*.xcodeproj
+*.xcworkspace
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+
+# macOS files
+.DS_Store
+Thumbs.db
+
+# Build system files
+*.sln.cache
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Content cooking
+Content/Cooked/
+
+# Pak files
+*.pak
+*.upk
+
+# Crash report files
+*.mdmp
+*.txt
+
+# Autosave files
+*.autosave
+
+# Localization files with local changes (optional, uncomment if you want to ignore)
+# Content/Localization/
