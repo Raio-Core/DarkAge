@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "AbilitySystemComponent.h"
-#include "MyAbilitySystemComponent.generated.h"
+#include "DAAbilitySystemComponent.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class DA_API UMyAbilitySystemComponent : public UAbilitySystemComponent
+class DA_API UDAAbilitySystemComponent : public UAbilitySystemComponent
 {
 	GENERATED_BODY()
 	

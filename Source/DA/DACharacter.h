@@ -7,6 +7,8 @@
 #include "Logging/LogMacros.h"
 #include "DACharacter.generated.h"
 
+class UDAAttributeSet;
+class UDAAbilitySystemComponent;
 class USpringArmComponent;
 class UCameraComponent;
 class UInputAction;
@@ -24,11 +26,21 @@ class ADACharacter : public ACharacter
 {
 	GENERATED_BODY()
 	
+private:
+	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
 	USpringArmComponent* CameraBoom;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* FollowCamera;
+	
+	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	TObjectPtr<UDAAbilitySystemComponent> DAAbilitySystemComp;
+	
+	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	TObjectPtr<UDAAttributeSet> DAAttributes;
+	
+	void InitAbilityActorInfo();
 	
 protected:
 
@@ -44,23 +56,22 @@ protected:
 	
 	UPROPERTY(EditAnywhere, Category="Input")
 	UInputAction* MouseLookAction;
-
-public:
 	
-	ADACharacter();	
-
-protected:
 	
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
-protected:
+	virtual void BeginPlay();
 
 	void Move(const FInputActionValue& Value);
 
 	void Look(const FInputActionValue& Value);
 
 public:
-
+	
+	ADACharacter();	
+	
+	virtual void PossessedBy(AController* NewController) override;
+	virtual void OnRep_PlayerState() override;
+	
 	UFUNCTION(BlueprintCallable, Category="Input")
 	virtual void DoMove(float Right, float Forward);
 	
@@ -72,8 +83,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="Input")
 	virtual void DoJumpEnd();
-
-public:
+	
 
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 

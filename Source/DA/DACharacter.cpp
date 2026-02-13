@@ -11,6 +11,8 @@
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
 #include "DA.h"
+#include "Game/PlayerState/DAPlayerState.h"
+#include "Systems/AbilitySystem/DAAbilitySystemComponent.h"
 
 ADACharacter::ADACharacter()
 {
@@ -40,6 +42,42 @@ ADACharacter::ADACharacter()
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 	FollowCamera->bUsePawnControlRotation = false;
 
+}
+
+void ADACharacter::InitAbilityActorInfo()
+{
+	if (ADAPlayerState* DAPlayerState = GetPlayerState<ADAPlayerState>())
+	{
+		DAAbilitySystemComp = DAPlayerState->GetDAbilitySystemComponent();
+		DAAttributes = DAPlayerState->GetDAAttributes();
+		
+		if (IsValid(DAAbilitySystemComp))
+		{
+			DAAbilitySystemComp->InitAbilityActorInfo(DAPlayerState, this);
+		}
+	}
+}
+
+void ADACharacter::BeginPlay()
+{
+	Super::BeginPlay();
+}
+
+void ADACharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+	
+	if (HasAuthority())
+	{
+		InitAbilityActorInfo();
+	}
+}
+
+void ADACharacter::OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
+	
+	InitAbilityActorInfo();
 }
 
 void ADACharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
