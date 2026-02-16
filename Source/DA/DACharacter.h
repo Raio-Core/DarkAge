@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GameplayTagContainer.h"
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
 #include "DACharacter.generated.h"
@@ -40,7 +41,11 @@ private:
 	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<UDAAttributeSet> DAAttributes;
 	
+	UPROPERTY(EditAnywhere, Category="Custom Values|Character Infop")
+	FGameplayTag CharacterTag;
+	
 	void InitAbilityActorInfo();
+	void InitClassDefaults();
 	
 protected:
 

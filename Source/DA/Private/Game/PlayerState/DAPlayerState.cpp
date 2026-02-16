@@ -8,8 +8,8 @@
 
 ADAPlayerState::ADAPlayerState()
 {
-	NetUpdateFrequency = 100.f;
-	MinNetUpdateFrequency = 66.f;
+	SetNetUpdateFrequency(100.f);
+	SetMinNetUpdateFrequency(66.f);
 
 	DAAbilitySystemComp = CreateDefaultSubobject<UDAAbilitySystemComponent>("AbilitySystemComp");
 	DAAbilitySystemComp->SetIsReplicated(true);

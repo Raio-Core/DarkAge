@@ -11,8 +11,10 @@
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
 #include "DA.h"
+#include "Data/CharacterClassInfo.h"
 #include "Game/PlayerState/DAPlayerState.h"
 #include "Systems/AbilitySystem/DAAbilitySystemComponent.h"
+#include "Systems/AbilitySystem/Libraries/DAAbilitySystemLibrary.h"
 
 ADACharacter::ADACharacter()
 {
@@ -54,6 +56,31 @@ void ADACharacter::InitAbilityActorInfo()
 		if (IsValid(DAAbilitySystemComp))
 		{
 			DAAbilitySystemComp->InitAbilityActorInfo(DAPlayerState, this);
+		
+			if (HasAuthority())
+			{
+				InitClassDefaults();
+			}
+		}
+	}
+}
+
+void ADACharacter::InitClassDefaults()
+{
+	if (!CharacterTag.IsValid())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("No Character Tag Selected In This Character %s"), *GetNameSafe(this))
+	}
+	else if (UCharacterClassInfo* ClassInfo = UDAAbilitySystemLibrary::GetCharacterClassDefaultInfo(this))
+	{
+		if (const FCharacterClassDefaultInfo* SelectedClassInfo = ClassInfo->ClassDefaultInfoMap.Find(CharacterTag))
+		{
+			if (IsValid(DAAbilitySystemComp))
+			{
+				DAAbilitySystemComp->AddCharacterAbilities(SelectedClassInfo->StartingAbilities);
+				DAAbilitySystemComp->AddCharacterPassiveAbilities(SelectedClassInfo->StartingPassives);
+				DAAbilitySystemComp->InitializeDefaultAttributes(SelectedClassInfo->DefaultAttributes);
+			}
 		}
 	}
 }
