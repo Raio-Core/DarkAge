@@ -5,7 +5,7 @@
 <!-- BADGES_START -->
 [![Unreal Engine](https://img.shields.io/badge/Unreal%20Engine-5.7-0EBEED?logo=unrealengine&logoColor=white)](https://www.unrealengine.com/)
 [![Version](https://img.shields.io/badge/Version-0.3.0-lightgrey)]()
-[![Stage](https://img.shields.io/badge/Stage-pre-alpha-lightgrey)]()
+[![Stage](https://img.shields.io/badge/Stage-pre--alpha-lightgrey)]()
 [![Build](https://img.shields.io/badge/Build-13-blue)]()
 [![C++](https://img.shields.io/badge/C++-17-00599C?logo=c%2B%2B&logoColor=white)](https://isocpp.org/)
 <!-- BADGES_END -->
