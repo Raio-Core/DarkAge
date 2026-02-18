@@ -1,12 +1,12 @@
 # DA
 
-> An Unreal Engine 5.7 Project | Version 0.3.0 embryo
+> An Unreal Engine 5.7 Project | Version 0.4.0 embryo
 
 <!-- BADGES_START -->
 [![Unreal Engine](https://img.shields.io/badge/Unreal%20Engine-5.7-0EBEED?logo=unrealengine&logoColor=white)](https://www.unrealengine.com/)
-[![Version](https://img.shields.io/badge/Version-0.3.0-lightgrey)]()
+[![Version](https://img.shields.io/badge/Version-0.4.0-lightgrey)]()
 [![Stage](https://img.shields.io/badge/Stage-pre-alpha-lightgrey)]()
-[![Build](https://img.shields.io/badge/Build-13-blue)]()
+[![Build](https://img.shields.io/badge/Build-20-blue)]()
 [![C++](https://img.shields.io/badge/C++-17-00599C?logo=c%2B%2B&logoColor=white)](https://isocpp.org/)
 <!-- BADGES_END -->
 
@@ -15,10 +15,10 @@
 
 | Property | Value |
 |----------|-------|
-| **Version** | `0.3.0` |
+| **Version** | `0.4.0` |
 | **Stage** | `pre-alpha` |
-| **Build** | `13` |
-| **Full Version** | `v0.3.0-pre-alpha+build.13` |
+| **Build** | `20` |
+| **Full Version** | `v0.4.0-pre-alpha+build.20` |
 
 ### Development Progress
 
@@ -29,7 +29,7 @@ Active development, features being implemented
 | Breaking Changes | 0 |
 | New Features | 4 |
 | Bug Fixes | 0 |
-| Other Changes | 2 |
+| Other Changes | 3 |
 
 <!-- VERSION_END -->
 
@@ -56,10 +56,10 @@ custom attributes (Health, Stamina, Mana), character mechanics, and modular arch
 | Header Files | 11 |
 | Source Files | 11 |
 | Total C++ Files | 22 |
-| Total Lines | 988 |
-| Code Lines | 916 |
-| Comment Lines | 72 |
-| Total Commits | 6 |
+| Total Lines | 1,032 |
+| Code Lines | 962 |
+| Comment Lines | 70 |
+| Total Commits | 7 |
 | Contributors | 2 |
 
 <!-- STATS_END -->
@@ -174,19 +174,20 @@ Source/
 <!-- COMMITS_START -->
 ## Recent Changes
 
-- [`8981e83`](https://github.com/Raio-Core/DarkAge.git/commit/8981e83b90d035a5356618af64fe9442882e9d2c) feat(ability-system): add stamina and mana attributes with c... (2026-02-17)
-- [`f97c653`](https://github.com/Raio-Core/DarkAge.git/commit/f97c653fab4a2e64c69b38c0e6aa86889d3a4eaa) feat(character): update third person character blueprint and... (2026-02-15)
-- [`cb04ca2`](https://github.com/Raio-Core/DarkAge.git/commit/cb04ca2fef517998be55c742e2985a014c4e10cf) refactor: update net frequency setter and extend ability sys... (2026-02-15)
-- [`74d4107`](https://github.com/Raio-Core/DarkAge.git/commit/74d41071369889d62031b9b16d722bcbfb1b5149) feat: enhance character class and ability system integration (2026-02-15)
-- [`9cd691e`](https://github.com/Raio-Core/DarkAge.git/commit/9cd691ed650e2bce596fc6a1989de17d9c6023c9) feat: integrate ability system and attributes with player st... (2026-02-13)
-- [`7997ca2`](https://github.com/Raio-Core/DarkAge.git/commit/7997ca2c6666b48ccdb1edb5d9a3e42185951a2c) Initial commit - Unreal Engine project setup (2026-02-13)
+- [`ec87485`](https://github.com/Raio-Core/DarkAge/commit/ec87485c0a0a795417f53d125b0f93b73ae2a20a) chore(branding): update copyright headers and add GAS interf... (2026-02-17)
+- [`8981e83`](https://github.com/Raio-Core/DarkAge/commit/8981e83b90d035a5356618af64fe9442882e9d2c) feat(ability-system): add stamina and mana attributes with c... (2026-02-17)
+- [`f97c653`](https://github.com/Raio-Core/DarkAge/commit/f97c653fab4a2e64c69b38c0e6aa86889d3a4eaa) feat(character): update third person character blueprint and... (2026-02-15)
+- [`cb04ca2`](https://github.com/Raio-Core/DarkAge/commit/cb04ca2fef517998be55c742e2985a014c4e10cf) refactor: update net frequency setter and extend ability sys... (2026-02-15)
+- [`74d4107`](https://github.com/Raio-Core/DarkAge/commit/74d41071369889d62031b9b16d722bcbfb1b5149) feat: enhance character class and ability system integration (2026-02-15)
+- [`9cd691e`](https://github.com/Raio-Core/DarkAge/commit/9cd691ed650e2bce596fc6a1989de17d9c6023c9) feat: integrate ability system and attributes with player st... (2026-02-13)
+- [`7997ca2`](https://github.com/Raio-Core/DarkAge/commit/7997ca2c6666b48ccdb1edb5d9a3e42185951a2c) Initial commit - Unreal Engine project setup (2026-02-13)
 
 <!-- COMMITS_END -->
 
 <!-- CONTRIBUTORS_START -->
 ## Contributors
 
-- **Raio-Core** (4 commits)
+- **Raio-Core** (5 commits)
 - **Raioix** (2 commits)
 
 <!-- CONTRIBUTORS_END -->
@@ -195,7 +196,7 @@ Source/
 
 <p align="center">
   <i>Copyright 2026 RaioCore and Raioix. All Rights Reserved.</i><br><br>
-  <i>Last updated: 2026-02-18 05:01:52 UTC</i><br>
+  <i>Last updated: 2026-02-18 05:48:44 UTC</i><br>
   <i>This README is automatically generated from project files and git history.</i><br>
   <i>Version follows semantic versioning based on conventional commits.</i>
 </p>
