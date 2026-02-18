@@ -799,6 +799,9 @@ class ReadmeGenerator:
         stage = version_info.get("stage", "pre-alpha")
         build = version_info.get("build", 1)
         
+        # Escape hyphens in stage for shields.io (use double hyphens)
+        stage_escaped = stage.replace("-", "--")
+        
         # Stage color
         stage_color = {
             "pre-alpha": "lightgrey",
@@ -811,7 +814,7 @@ class ReadmeGenerator:
         return f"""<!-- BADGES_START -->
 [![Unreal Engine](https://img.shields.io/badge/Unreal%20Engine-{engine}-0EBEED?logo=unrealengine&logoColor=white)](https://www.unrealengine.com/)
 [![Version](https://img.shields.io/badge/Version-{version}-{stage_color})]()
-[![Stage](https://img.shields.io/badge/Stage-{stage}-{stage_color})]()
+[![Stage](https://img.shields.io/badge/Stage-{stage_escaped}-{stage_color})]()
 [![Build](https://img.shields.io/badge/Build-{build}-blue)]()
 [![C++](https://img.shields.io/badge/C++-17-00599C?logo=c%2B%2B&logoColor=white)](https://isocpp.org/)
 <!-- BADGES_END -->
