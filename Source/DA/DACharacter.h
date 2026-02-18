@@ -45,10 +45,13 @@ private:
 	FGameplayTag CharacterTag;
 	
 	void InitAbilityActorInfo();
-	void InitClassDefaults();
+	void InitClassDefaults() const;
+	void BindCallbacksToDependencies();
+	
+	UFUNCTION(BlueprintCallable)
+	void BroadcastInitialValues();
 	
 protected:
-
 
 	UPROPERTY(EditAnywhere, Category="Input")
 	UInputAction* JumpAction;
@@ -76,6 +79,16 @@ public:
 	
 	virtual void PossessedBy(AController* NewController) override;
 	virtual void OnRep_PlayerState() override;
+	
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnHealthChanged(float CurrentHealth, float MaxHealth);
+	
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnStaminaChanged(float CurrentStamina, float MaxStamina);
+	
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnManaChanged(float CurrentMana, float MaxMana);
+	
 	
 	UFUNCTION(BlueprintCallable, Category="Input")
 	virtual void DoMove(float Right, float Forward);

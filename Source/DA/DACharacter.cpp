@@ -14,6 +14,7 @@
 #include "Data/CharacterClassInfo.h"
 #include "Game/PlayerState/DAPlayerState.h"
 #include "Systems/AbilitySystem/DAAbilitySystemComponent.h"
+#include "Systems/AbilitySystem/Attributes/DAAttributeSet.h"
 #include "Systems/AbilitySystem/Libraries/DAAbilitySystemLibrary.h"
 
 ADACharacter::ADACharacter()
@@ -56,6 +57,7 @@ void ADACharacter::InitAbilityActorInfo()
 		if (IsValid(DAAbilitySystemComp))
 		{
 			DAAbilitySystemComp->InitAbilityActorInfo(DAPlayerState, this);
+			BindCallbacksToDependencies();
 		
 			if (HasAuthority())
 			{
@@ -65,7 +67,7 @@ void ADACharacter::InitAbilityActorInfo()
 	}
 }
 
-void ADACharacter::InitClassDefaults()
+void ADACharacter::InitClassDefaults() const
 {
 	if (!CharacterTag.IsValid())
 	{
@@ -82,6 +84,40 @@ void ADACharacter::InitClassDefaults()
 				DAAbilitySystemComp->InitializeDefaultAttributes(SelectedClassInfo->DefaultAttributes);
 			}
 		}
+	}
+}
+
+void ADACharacter::BindCallbacksToDependencies()
+{
+	if (IsValid(DAAbilitySystemComp) && IsValid(DAAttributes))
+	{
+		DAAbilitySystemComp->GetGameplayAttributeValueChangeDelegate(DAAttributes->GetHealthAttribute()).AddLambda(
+			[this] (const FOnAttributeChangeData& Data)
+			{
+				OnHealthChanged(Data.NewValue, DAAttributes->GetMaxHealth());
+			});
+		
+		DAAbilitySystemComp->GetGameplayAttributeValueChangeDelegate(DAAttributes->GetStaminaAttribute()).AddLambda(
+		[this] (const FOnAttributeChangeData& Data)
+			{
+				OnStaminaChanged(Data.NewValue, DAAttributes->GetMaxStamina());
+			});
+		
+		DAAbilitySystemComp->GetGameplayAttributeValueChangeDelegate(DAAttributes->GetManaAttribute()).AddLambda(
+		[this] (const FOnAttributeChangeData& Data)
+			{
+				OnManaChanged(Data.NewValue, DAAttributes->GetMaxMana());
+			});
+	}
+}
+
+void ADACharacter::BroadcastInitialValues()
+{
+	if (IsValid(DAAttributes))
+	{
+		OnHealthChanged(DAAttributes->GetHealth(), DAAttributes->GetMaxHealth());
+		OnStaminaChanged(DAAttributes->GetStamina(), DAAttributes->GetMaxStamina());
+		OnManaChanged(DAAttributes->GetMana(), DAAttributes->GetMaxMana());
 	}
 }
 
@@ -131,7 +167,6 @@ void ADACharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 void ADACharacter::Move(const FInputActionValue& Value)
 {
-
 	FVector2D MovementVector = Value.Get<FVector2D>();
 
 	DoMove(MovementVector.X, MovementVector.Y);
@@ -139,17 +174,15 @@ void ADACharacter::Move(const FInputActionValue& Value)
 
 void ADACharacter::Look(const FInputActionValue& Value)
 {
-
 	FVector2D LookAxisVector = Value.Get<FVector2D>();
 
 	DoLook(LookAxisVector.X, LookAxisVector.Y);
 }
 
-void ADACharacter::DoMove(float Right, float Forward)
+void ADACharacter::DoMove(const float Right, const float Forward)
 {
 	if (GetController() != nullptr)
 	{
-
 		const FRotator Rotation = GetController()->GetControlRotation();
 		const FRotator YawRotation(0, Rotation.Yaw, 0);
 
@@ -162,11 +195,10 @@ void ADACharacter::DoMove(float Right, float Forward)
 	}
 }
 
-void ADACharacter::DoLook(float Yaw, float Pitch)
+void ADACharacter::DoLook(const float Yaw, const float Pitch)
 {
 	if (GetController() != nullptr)
 	{
-		
 		AddControllerYawInput(Yaw);
 		AddControllerPitchInput(Pitch);
 	}
@@ -174,12 +206,10 @@ void ADACharacter::DoLook(float Yaw, float Pitch)
 
 void ADACharacter::DoJumpStart()
 {
-
 	Jump();
 }
 
 void ADACharacter::DoJumpEnd()
 {
-
 	StopJumping();
 }
