@@ -1,4 +1,4 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
+// Copyright 2026 RaioCore and Raioix. All Rights Reserved.
 
 #include "DACharacter.h"
 #include "Engine/LocalPlayer.h"
@@ -141,6 +141,11 @@ void ADACharacter::OnRep_PlayerState()
 	Super::OnRep_PlayerState();
 	
 	InitAbilityActorInfo();
+}
+
+UAbilitySystemComponent* ADACharacter::GetAbilitySystemComponent() const
+{
+	return DAAbilitySystemComp;
 }
 
 void ADACharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)

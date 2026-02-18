@@ -1,8 +1,9 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
+// Copyright 2026 RaioCore and Raioix. All Rights Reserved.
 
 #pragma once
 
 #include "CoreMinimal.h"
+#include "AbilitySystemInterface.h"
 #include "GameplayTagContainer.h"
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
@@ -23,7 +24,7 @@ DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
  */
  
 UCLASS(abstract)
-class ADACharacter : public ACharacter
+class ADACharacter : public ACharacter, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 	
@@ -79,6 +80,8 @@ public:
 	
 	virtual void PossessedBy(AController* NewController) override;
 	virtual void OnRep_PlayerState() override;
+	
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnHealthChanged(float CurrentHealth, float MaxHealth);

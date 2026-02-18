@@ -1,4 +1,4 @@
-﻿// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright 2026 RaioCore and Raioix. All Rights Reserved.
 
 
 #include "Systems/AbilitySystem/Attributes/DAAttributeSet.h"
