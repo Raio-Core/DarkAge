@@ -47,7 +47,7 @@ private:
 	FPackagedInventory CashedInventory;
 	
 	UFUNCTION(Server, Reliable)
-	void ServerAddItem(const FGameplayTag& InItemTag, int32 NumItems);
+	void ServerAddItem(const FGameplayTag& ItemTag, int32 NumItems);
 	
 	void PackageInventory(FPackagedInventory& OutInventory);
 	void ReconstructInventoryMap(const FPackagedInventory& Inventory);
@@ -66,7 +66,7 @@ public:
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 	
 	UFUNCTION(BlueprintCallable)
-	void AddItem(const FGameplayTag InItemTag, int32 NumItems = 1);
+	void AddItem(const FGameplayTag ItemTag, int32 NumItems = 1);
 	
 	
 };

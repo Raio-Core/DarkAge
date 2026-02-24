@@ -18,34 +18,35 @@ void UInventoryComponent::GetLifetimeReplicatedProps(TArray<class FLifetimePrope
 	
 }
 
-void UInventoryComponent::AddItem(const FGameplayTag InItemTag, int32 NumItems)
+void UInventoryComponent::AddItem(const FGameplayTag ItemTag, int32 NumItems)
 {
 	AActor* Owner = GetOwner();
 	if (!IsValid(Owner)) return;
 	
 	if (!Owner->HasAuthority())
 	{
-		ServerAddItem(InItemTag, NumItems);
+		ServerAddItem(ItemTag, NumItems);
 		return;
 	}
 	
-	if (InventoryTagMap.Contains(InItemTag))
+	if (InventoryTagMap.Contains(ItemTag))
 	{
-		InventoryTagMap[InItemTag] += NumItems;
+		InventoryTagMap[ItemTag] += NumItems;
 	}
 	else
 	{
-		InventoryTagMap.Emplace(InItemTag, NumItems);
+		InventoryTagMap.Emplace(ItemTag, NumItems);
 	}
 	
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red,
-		FString::Printf(TEXT("Server: Item Added To Inventory %s, qty: %d"), *InItemTag.ToString(), NumItems));
+		FString::Printf(TEXT("Server: Item Added To Inventory %s, qty: %d"), *ItemTag.ToString(), NumItems));
 	
+	PackageInventory(CashedInventory);
 }
 
-void UInventoryComponent::ServerAddItem_Implementation(const FGameplayTag& InItemTag, int32 NumItems)
+void UInventoryComponent::ServerAddItem_Implementation(const FGameplayTag& ItemTag, int32 NumItems)
 {
-	AddItem(InItemTag, NumItems);
+	AddItem(ItemTag, NumItems);
 }
 
 // Optimised to go over the network.
@@ -71,7 +72,6 @@ void UInventoryComponent::PackageInventory(FPackagedInventory& OutInventory)
 			OutInventory.ItemTags.Add(Pair.Key);
 			OutInventory.ItemQuantities.Add(Pair.Value);
 			
-			PackageInventory(CashedInventory);
 		}
 	}
 }
