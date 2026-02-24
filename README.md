@@ -6,7 +6,7 @@
 [![Unreal Engine](https://img.shields.io/badge/Unreal%20Engine-5.7-0EBEED?logo=unrealengine&logoColor=white)](https://www.unrealengine.com/)
 [![Version](https://img.shields.io/badge/Version-0.4.0-lightgrey)]()
 [![Stage](https://img.shields.io/badge/Stage-pre--alpha-lightgrey)]()
-[![Build](https://img.shields.io/badge/Build-25-blue)]()
+[![Build](https://img.shields.io/badge/Build-28-blue)]()
 [![C++](https://img.shields.io/badge/C++-17-00599C?logo=c%2B%2B&logoColor=white)](https://isocpp.org/)
 <!-- BADGES_END -->
 
@@ -17,8 +17,8 @@
 |----------|-------|
 | **Version** | `0.4.0` |
 | **Stage** | `pre-alpha` |
-| **Build** | `25` |
-| **Full Version** | `v0.4.0-pre-alpha+build.25` |
+| **Build** | `28` |
+| **Full Version** | `v0.4.0-pre-alpha+build.28` |
 
 ### Development Progress
 
@@ -27,9 +27,9 @@ Active development, features being implemented
 | Metric | Count |
 |--------|-------|
 | Breaking Changes | 0 |
-| New Features | 4 |
+| New Features | 5 |
 | Bug Fixes | 2 |
-| Other Changes | 6 |
+| Other Changes | 8 |
 
 <!-- VERSION_END -->
 
@@ -53,13 +53,13 @@ custom attributes (Health, Stamina, Mana), character mechanics, and modular arch
 
 | Metric | Count |
 |--------|-------|
-| Header Files | 11 |
-| Source Files | 11 |
-| Total C++ Files | 22 |
-| Total Lines | 1,032 |
-| Code Lines | 962 |
-| Comment Lines | 70 |
-| Total Commits | 12 |
+| Header Files | 13 |
+| Source Files | 13 |
+| Total C++ Files | 26 |
+| Total Lines | 1,354 |
+| Code Lines | 1,264 |
+| Comment Lines | 90 |
+| Total Commits | 15 |
 | Contributors | 3 |
 
 <!-- STATS_END -->
@@ -80,7 +80,7 @@ Copyright 2026 RaioCore and Raioix. All Rights Reserved.
 
 | Status | Count |
 |--------|-------|
-| Correct Copyright | 22 |
+| Correct Copyright | 26 |
 | Epic Games (Template) | 0 |
 | Placeholder | 0 |
 | Missing | 0 |
@@ -101,6 +101,8 @@ Source/
             Game/
                 GameMode/
                     DA_GameMode.cpp
+                PlayerController/
+                    DA_PlayerController.cpp
                 PlayerState/
                     DAPlayerState.cpp
             Systems/
@@ -110,6 +112,8 @@ Source/
                     Libraries/
                         DAAbilitySystemLibrary.cpp
                     DAAbilitySystemComponent.cpp
+                Inventory/
+                    InventoryComponent.cpp
         Public/
             Actors/
                 EffectActor.h
@@ -118,6 +122,8 @@ Source/
             Game/
                 GameMode/
                     DA_GameMode.h
+                PlayerController/
+                    DA_PlayerController.h
                 PlayerState/
                     DAPlayerState.h
             Systems/
@@ -127,6 +133,8 @@ Source/
                     Libraries/
                         DAAbilitySystemLibrary.h
                     DAAbilitySystemComponent.h
+                Inventory/
+                    InventoryComponent.h
         DA.Build.cs
         DA.cpp
         DA.h
@@ -154,8 +162,10 @@ Source/
 | `ADAPlayerController` | Class | `APlayerController` |  |
 | `ADAPlayerState` | Class | `APlayerState` |  |
 | `ADA_GameMode` | Class | `AGameMode` |  |
+| `ADA_PlayerController` | Class | `APlayerController` |  |
 | `AEffectActor` | Class | `AActor` |  |
 | `FCharacterClassDefaultInfo` | Struct | `-` |  |
+| `FPackagedInventory` | Struct | `-` |  |
 | `UCharacterClassInfo` | Class | `UDataAsset` |  |
 | `UDAAbilitySystemComponent` | Class | `UAbilitySystemComponent` |  |
 | `UDAAbilitySystemLibrary` | Class | `UBlueprintFunctionLibrary` |  |
@@ -169,11 +179,18 @@ Source/
 ### Character
 - `Character.Player.Default`
 
+### Item
+- `Item.Consumable.HealthPotion`
+- `Item.Consumable.ManaPortion`
+
 <!-- TAGS_END -->
 
 <!-- COMMITS_START -->
 ## Recent Changes
 
+- [`19db8d8`](https://github.com/Raio-Core/DarkAge/commit/19db8d8976fe467a04fdea5cf6fcc118516d144a) Merge remote-tracking branch 'origin/main' (2026-02-24)
+- [`b4d46d4`](https://github.com/Raio-Core/DarkAge/commit/b4d46d47b6a69ef00b08131e9113334962b11845) feat(game): add inventory system and mobile controls (2026-02-24)
+- [`41366c3`](https://github.com/Raio-Core/DarkAge/commit/41366c3311b3bebc382b7c728d4e90f9b50888f5) docs: auto-update README [skip ci] (2026-02-22)
 - [`411a70e`](https://github.com/Raio-Core/DarkAge/commit/411a70e34b2637512b01c63ac2fdf3e7bd86e75e) fix(readme): escape hyphen in stage badge for shields.io (2026-02-17)
 - [`6c79532`](https://github.com/Raio-Core/DarkAge/commit/6c7953219238923735832c7b6ed85704bcf1885c) fix(readme): escape hyphens in stage badge for shields.io (2026-02-17)
 - [`a53341e`](https://github.com/Raio-Core/DarkAge/commit/a53341e60e78d246940e9518ff36798b9529221e) Merge remote-tracking branch 'origin/main' (2026-02-17)
@@ -181,18 +198,15 @@ Source/
 - [`3de0221`](https://github.com/Raio-Core/DarkAge/commit/3de0221339e63e144d2391fb49fd9658e190edf9) docs: auto-update README [skip ci] (2026-02-18)
 - [`ec87485`](https://github.com/Raio-Core/DarkAge/commit/ec87485c0a0a795417f53d125b0f93b73ae2a20a) chore(branding): update copyright headers and add GAS interf... (2026-02-17)
 - [`8981e83`](https://github.com/Raio-Core/DarkAge/commit/8981e83b90d035a5356618af64fe9442882e9d2c) feat(ability-system): add stamina and mana attributes with c... (2026-02-17)
-- [`f97c653`](https://github.com/Raio-Core/DarkAge/commit/f97c653fab4a2e64c69b38c0e6aa86889d3a4eaa) feat(character): update third person character blueprint and... (2026-02-15)
-- [`cb04ca2`](https://github.com/Raio-Core/DarkAge/commit/cb04ca2fef517998be55c742e2985a014c4e10cf) refactor: update net frequency setter and extend ability sys... (2026-02-15)
-- [`74d4107`](https://github.com/Raio-Core/DarkAge/commit/74d41071369889d62031b9b16d722bcbfb1b5149) feat: enhance character class and ability system integration (2026-02-15)
 
 <!-- COMMITS_END -->
 
 <!-- CONTRIBUTORS_START -->
 ## Contributors
 
-- **Raio-Core** (9 commits)
+- **Raio-Core** (11 commits)
 - **Raioix** (2 commits)
-- **github-actions[bot]** (1 commits)
+- **github-actions[bot]** (2 commits)
 
 <!-- CONTRIBUTORS_END -->
 
@@ -200,7 +214,7 @@ Source/
 
 <p align="center">
   <i>Copyright 2026 RaioCore and Raioix. All Rights Reserved.</i><br><br>
-  <i>Last updated: 2026-02-22 05:10:15 UTC</i><br>
+  <i>Last updated: 2026-02-24 17:50:31 UTC</i><br>
   <i>This README is automatically generated from project files and git history.</i><br>
   <i>Version follows semantic versioning based on conventional commits.</i>
 </p>
