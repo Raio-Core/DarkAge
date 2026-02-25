@@ -2,6 +2,8 @@
 
 
 #include "Game/PlayerController/DA_PlayerController.h"
+
+#include "AbilitySystemBlueprintLibrary.h"
 #include "DA.h"
 #include "EnhancedInputSubsystems.h"
 #include "Blueprint/UserWidget.h"
@@ -73,6 +75,11 @@ ADA_PlayerController::ADA_PlayerController()
 	
 	InventoryComponent = CreateDefaultSubobject<UInventoryComponent>("InventoryComponent");
 	InventoryComponent->SetIsReplicated(true);
+}
+
+UAbilitySystemComponent* ADA_PlayerController::GetAbilitySystemComponent() const
+{
+	return UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(GetPawn());
 }
 
 void ADA_PlayerController::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const

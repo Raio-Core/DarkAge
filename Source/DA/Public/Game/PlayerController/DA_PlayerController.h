@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "AbilitySystemInterface.h"
 #include "GameFramework/PlayerController.h"
 #include "DA_PlayerController.generated.h"
 
@@ -14,7 +15,7 @@ class UInventoryComponent;
  * PlayerController with inventory and input mapping support
  */
 UCLASS()
-class DA_API ADA_PlayerController : public APlayerController
+class DA_API ADA_PlayerController : public APlayerController, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 	
@@ -59,6 +60,8 @@ protected:
 public:
 	
 	ADA_PlayerController();
+	
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 	

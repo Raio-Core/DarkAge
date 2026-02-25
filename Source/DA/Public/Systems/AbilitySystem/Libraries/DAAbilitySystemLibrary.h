@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GameplayTagContainer.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "DAAbilitySystemLibrary.generated.h"
 
@@ -18,9 +19,15 @@ class DA_API UDAAbilitySystemLibrary : public UBlueprintFunctionLibrary
 public:
 	
 	UFUNCTION(BlueprintPure)
-	static UCharacterClassInfo* GetCharacterClassInfo(const UObject* WorldContextObject);
-
-	UFUNCTION(BlueprintPure)
 	static UCharacterClassInfo* GetCharacterClassDefaultInfo(const UObject* WorldContextObject);
+	
+	template<typename T>
+	static T* GetDataTableRowByTag(UDataTable* DataTable, FGameplayTag Tag);
 
 };
+
+template <typename T>
+T* UDAAbilitySystemLibrary::GetDataTableRowByTag(UDataTable* DataTable, FGameplayTag Tag)
+{
+	return DataTable->FindRow<T>(Tag.GetTagName(), FString(""));
+}
