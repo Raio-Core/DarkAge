@@ -5,8 +5,11 @@
 #include "CoreMinimal.h"
 #include "AbilitySystemInterface.h"
 #include "GameFramework/PlayerController.h"
+#include "Interfaces/InventoryInterface.h"
 #include "DA_PlayerController.generated.h"
 
+class UDASystemsWidget;
+class UInventoryWidgetController;
 class UInputMappingContext;
 class UUserWidget;
 class UInventoryComponent;
@@ -15,7 +18,7 @@ class UInventoryComponent;
  * PlayerController with inventory and input mapping support
  */
 UCLASS()
-class DA_API ADA_PlayerController : public APlayerController, public IAbilitySystemInterface
+class DA_API ADA_PlayerController : public APlayerController, public IAbilitySystemInterface, public IInventoryInterface
 {
 	GENERATED_BODY()
 	
@@ -23,6 +26,18 @@ private:
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta=(AllowPrivateAccess=true), Replicated)
 	TObjectPtr<UInventoryComponent> InventoryComponent;
+	
+	UPROPERTY()
+	TObjectPtr<UInventoryWidgetController> InventoryWidgetController;
+	
+	UPROPERTY(EditDefaultsOnly, Category="Custom Values|Widgets")
+	TSubclassOf<UInventoryWidgetController> InventoryWidgetControllerClass;
+	
+	UPROPERTY(BlueprintReadOnly, meta=(AllowPrivateAccess=true))
+	TObjectPtr<UDASystemsWidget> InventoryWidget;
+	
+	UPROPERTY(EditDefaultsOnly, Category="Custom Values|Widgets")
+	TSubclassOf<UDASystemsWidget> InventoryWidgetClass;
 	
 	
 protected:
@@ -56,12 +71,21 @@ protected:
 
 	/** Returns true if the player should use UMG touch controls */
 	bool ShouldUseTouchControls() const;
+
 	
 public:
 	
 	ADA_PlayerController();
 	
+	// Implement Inventory Interface
+	virtual UInventoryComponent*                                                                                     GetInventoryComponent_Implementation() const;
+	
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+	
+	UInventoryWidgetController* GetInventoryWidgetController();
+	
+	UFUNCTION(BlueprintCallable)
+	void CreateInventoryWidget();
 	
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 	

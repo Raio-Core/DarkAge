@@ -9,7 +9,9 @@
 #include "Blueprint/UserWidget.h"
 #include "Net/UnrealNetwork.h"
 #include "Systems/Inventory/InventoryComponent.h"
+#include "UI/WidgetControllers/InventoryWidgetController.h"
 #include "Widgets/Input/SVirtualJoystick.h"
+#include "UI/DASystemsWidget.h"
 
 
 void ADA_PlayerController::BeginPlay()
@@ -77,6 +79,11 @@ ADA_PlayerController::ADA_PlayerController()
 	InventoryComponent->SetIsReplicated(true);
 }
 
+UInventoryComponent* ADA_PlayerController::GetInventoryComponent_Implementation() const
+{
+	return InventoryComponent;
+}
+
 UAbilitySystemComponent* ADA_PlayerController::GetAbilitySystemComponent() const
 {
 	return UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(GetPawn());
@@ -87,4 +94,27 @@ void ADA_PlayerController::GetLifetimeReplicatedProps(TArray<class FLifetimeProp
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(ADA_PlayerController, InventoryComponent);
+}
+
+UInventoryWidgetController* ADA_PlayerController::GetInventoryWidgetController()
+{
+	if (!IsValid (InventoryWidgetController))
+	{
+		InventoryWidgetController = NewObject<UInventoryWidgetController>(this, InventoryWidgetControllerClass);
+		InventoryWidgetController->SetOwningActor(this);
+		InventoryWidgetController->BindCallbacksToDependencies();
+	}
+	
+	return InventoryWidgetController;
+}
+
+void ADA_PlayerController::CreateInventoryWidget()
+{
+	if (UUserWidget* Widget = CreateWidget<UDASystemsWidget>(this, InventoryWidgetClass))
+	{
+		InventoryWidget = Cast<UDASystemsWidget>(Widget);
+		InventoryWidget->SetWidgetController(GetInventoryWidgetController());
+		InventoryWidgetController->BroadcastInitialValues();
+		InventoryWidget->AddToViewport();
+	}
 }
