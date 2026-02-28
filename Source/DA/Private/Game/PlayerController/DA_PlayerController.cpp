@@ -7,16 +7,52 @@
 #include "DA.h"
 #include "EnhancedInputSubsystems.h"
 #include "Blueprint/UserWidget.h"
+#include "Game/PlayerState/DAPlayerState.h"
+#include "Input/DASystemsInputComponent.h"
 #include "Net/UnrealNetwork.h"
+#include "Systems/AbilitySystem/DAAbilitySystemComponent.h"
 #include "Systems/Inventory/InventoryComponent.h"
 #include "UI/WidgetControllers/InventoryWidgetController.h"
 #include "Widgets/Input/SVirtualJoystick.h"
 #include "UI/DASystemsWidget.h"
 
 
+UDAAbilitySystemComponent* ADA_PlayerController::GetDAAbilitySystemComponent()
+{
+	if (!IsValid(DAAbilitySystemComp))
+	{
+		if (const ADAPlayerState* DAPlayerState = GetPlayerState<ADAPlayerState>())
+		{
+			DAAbilitySystemComp = DAPlayerState->GetDAAbilitySystemComponent();
+		}
+	}
+	return DAAbilitySystemComp;
+}
+
+void ADA_PlayerController::AbilityInputPressed(FGameplayTag InputTag)
+{
+	if (IsValid(GetDAAbilitySystemComponent()))
+	{
+		DAAbilitySystemComp->AbilityInputPressed(InputTag);
+	}
+}
+
+void ADA_PlayerController::AbilityInputReleased(FGameplayTag InputTag)
+{
+	if (IsValid(GetDAAbilitySystemComponent()))
+	{
+		DAAbilitySystemComp->AbilityInputReleased(InputTag);
+	}
+}
+
 void ADA_PlayerController::BeginPlay()
 {
 	Super::BeginPlay();
+	
+	if (const ADAPlayerState* DAPlayerState = GetPlayerState<ADAPlayerState>())
+	{
+		DAAbilitySystemComp = DAPlayerState->GetDAAbilitySystemComponent();
+	}
 	
 	// only spawn touch controls on local player controllers
 	if (ShouldUseTouchControls() && IsLocalPlayerController())
@@ -42,6 +78,11 @@ void ADA_PlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
 	
+	if (UDASystemsInputComponent* DAInputComp = Cast<UDASystemsInputComponent>(InputComponent))
+	{
+		DAInputComp->BindAbilityAction(DAInputConfig, this, &ThisClass::AbilityInputPressed, &ThisClass::AbilityInputReleased);
+	}
+		
 	// only add IMCs for local player controllers
 	if (IsLocalPlayerController())
 	{
@@ -86,7 +127,7 @@ UInventoryComponent* ADA_PlayerController::GetInventoryComponent_Implementation(
 
 UAbilitySystemComponent* ADA_PlayerController::GetAbilitySystemComponent() const
 {
-	return UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(GetPawn());
+	return DAAbilitySystemComp;
 }
 
 void ADA_PlayerController::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const

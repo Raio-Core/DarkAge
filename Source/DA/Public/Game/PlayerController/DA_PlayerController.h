@@ -4,10 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "AbilitySystemInterface.h"
+#include "GameplayTagContainer.h"
 #include "GameFramework/PlayerController.h"
 #include "Interfaces/InventoryInterface.h"
 #include "DA_PlayerController.generated.h"
 
+class UDAAbilitySystemComponent;
+class UDAInputConfig;
 class UDASystemsWidget;
 class UInventoryWidgetController;
 class UInputMappingContext;
@@ -17,12 +20,19 @@ class UInventoryComponent;
 /**
  * PlayerController with inventory and input mapping support
  */
+
 UCLASS()
 class DA_API ADA_PlayerController : public APlayerController, public IAbilitySystemInterface, public IInventoryInterface
 {
 	GENERATED_BODY()
 	
 private:
+	
+	UPROPERTY()
+	TObjectPtr<UDAAbilitySystemComponent> DAAbilitySystemComp;
+	
+	UPROPERTY(EditDefaultsOnly, Category="Custom Values|Input")
+	TObjectPtr<UDAInputConfig> DAInputConfig; 
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta=(AllowPrivateAccess=true), Replicated)
 	TObjectPtr<UInventoryComponent> InventoryComponent;
@@ -39,43 +49,39 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category="Custom Values|Widgets")
 	TSubclassOf<UDASystemsWidget> InventoryWidgetClass;
 	
+	UDAAbilitySystemComponent* GetDAAbilitySystemComponent();
+	
 	
 protected:
-
 	
-	/** Input Mapping Contexts */
+	void AbilityInputPressed(FGameplayTag InputTag);
+	void AbilityInputReleased(FGameplayTag InputTag);
+	
 	UPROPERTY(EditAnywhere, Category ="Input|Input Mappings")
 	TArray<UInputMappingContext*> DefaultMappingContexts;
-
-	/** Input Mapping Contexts */
+	
 	UPROPERTY(EditAnywhere, Category="Input|Input Mappings")
 	TArray<UInputMappingContext*> MobileExcludedMappingContexts;
-
-	/** Mobile controls widget to spawn */
+	
 	UPROPERTY(EditAnywhere, Category="Input|Touch Controls")
 	TSubclassOf<UUserWidget> MobileControlsWidgetClass;
-
-	/** Pointer to the mobile controls widget */
+	
 	UPROPERTY()
 	TObjectPtr<UUserWidget> MobileControlsWidget;
-
-	/** If true, the player will use UMG touch controls even if not playing on mobile platforms */
+	
 	UPROPERTY(EditAnywhere, Config, Category = "Input|Touch Controls")
 	bool bForceTouchControls = false;
-
-	/** Gameplay initialization */
+	
 	virtual void BeginPlay() override;
-
-	/** Input mapping context setup */
-	virtual void SetupInputComponent() override;
-
-	/** Returns true if the player should use UMG touch controls */
+	
 	bool ShouldUseTouchControls() const;
 
 	
 public:
 	
 	ADA_PlayerController();
+	
+	virtual void SetupInputComponent() override;
 	
 	// Implement Inventory Interface
 	virtual UInventoryComponent*                                                                                     GetInventoryComponent_Implementation() const;

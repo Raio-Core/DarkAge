@@ -48,7 +48,7 @@ private:
 	TMap<FGameplayTag, int32> InventoryTagMap;
 
 	UPROPERTY(ReplicatedUsing=OnRep_CachedInventory)
-	FPackagedInventory CashedInventory;
+	FPackagedInventory CachedInventory;
 	
 	UPROPERTY(EditDefaultsOnly)
 	TObjectPtr<UItemTypesToTables> InventoryDefinitions;

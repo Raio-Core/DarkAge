@@ -51,7 +51,7 @@ void ADACharacter::InitAbilityActorInfo()
 {
 	if (ADAPlayerState* DAPlayerState = GetPlayerState<ADAPlayerState>())
 	{
-		DAAbilitySystemComp = DAPlayerState->GetDAbilitySystemComponent();
+		DAAbilitySystemComp = DAPlayerState->GetDAAbilitySystemComponent();
 		DAAttributes = DAPlayerState->GetDAAttributes();
 		
 		if (IsValid(DAAbilitySystemComp))

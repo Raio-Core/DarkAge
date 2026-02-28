@@ -23,7 +23,7 @@ UAbilitySystemComponent* ADAPlayerState::GetAbilitySystemComponent() const
 	return DAAbilitySystemComp;
 }
 
-UDAAbilitySystemComponent* ADAPlayerState::GetDAbilitySystemComponent() const
+UDAAbilitySystemComponent* ADAPlayerState::GetDAAbilitySystemComponent() const
 {
 	return DAAbilitySystemComp;
 }

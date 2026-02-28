@@ -32,7 +32,7 @@ public:
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 
 	UFUNCTION(BlueprintPure)
-	UDAAbilitySystemComponent* GetDAbilitySystemComponent() const;
+	UDAAbilitySystemComponent* GetDAAbilitySystemComponent() const;
 	
 	UFUNCTION(BlueprintPure)
 	UDAAttributeSet* GetDAAttributes() const;
