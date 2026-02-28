@@ -6,7 +6,7 @@
 [![Unreal Engine](https://img.shields.io/badge/Unreal%20Engine-5.7-0EBEED?logo=unrealengine&logoColor=white)](https://www.unrealengine.com/)
 [![Version](https://img.shields.io/badge/Version-0.4.0-lightgrey)]()
 [![Stage](https://img.shields.io/badge/Stage-pre--alpha-lightgrey)]()
-[![Build](https://img.shields.io/badge/Build-44-blue)]()
+[![Build](https://img.shields.io/badge/Build-47-blue)]()
 [![C++](https://img.shields.io/badge/C++-17-00599C?logo=c%2B%2B&logoColor=white)](https://isocpp.org/)
 <!-- BADGES_END -->
 
@@ -17,8 +17,8 @@
 |----------|-------|
 | **Version** | `0.4.0` |
 | **Stage** | `pre-alpha` |
-| **Build** | `44` |
-| **Full Version** | `v0.4.0-pre-alpha+build.44` |
+| **Build** | `47` |
+| **Full Version** | `v0.4.0-pre-alpha+build.47` |
 
 ### Development Progress
 
@@ -27,9 +27,9 @@ Active development, features being implemented
 | Metric | Count |
 |--------|-------|
 | Breaking Changes | 0 |
-| New Features | 7 |
+| New Features | 8 |
 | Bug Fixes | 2 |
-| Other Changes | 22 |
+| Other Changes | 24 |
 
 <!-- VERSION_END -->
 
@@ -59,7 +59,7 @@ custom attributes (Health, Stamina, Mana), character mechanics, and modular arch
 | Total Lines | 2,306 |
 | Code Lines | 2,155 |
 | Comment Lines | 151 |
-| Total Commits | 31 |
+| Total Commits | 34 |
 | Contributors | 3 |
 
 <!-- STATS_END -->
@@ -222,6 +222,7 @@ Source/
 ## Gameplay Tags
 
 ### Character
+- `Character.Enemy.Primary`
 - `Character.Player.Default`
 
 ### Input
@@ -238,6 +239,9 @@ Source/
 <!-- COMMITS_START -->
 ## Recent Changes
 
+- [`a2366f5`](https://github.com/Raio-Core/DarkAge/commit/a2366f5c79123cb12abf973addf3a681cbb90fd4) Merge remote-tracking branch 'origin/main' (2026-02-27)
+- [`a49e3a0`](https://github.com/Raio-Core/DarkAge/commit/a49e3a0e3f371d95b3cdeff10976fdad44b4efa6) feat: add gameplay tags for character types and ability inpu... (2026-02-27)
+- [`fdd11e1`](https://github.com/Raio-Core/DarkAge/commit/fdd11e1646f9a7b73d72c4e01a94b7ddf6818d6c) docs: auto-update README [skip ci] (2026-02-28)
 - [`8df741f`](https://github.com/Raio-Core/DarkAge/commit/8df741fe52d2970321ca42043340283393d8f473) refactor(character): extract base character class and add in... (2026-02-27)
 - [`184fc70`](https://github.com/Raio-Core/DarkAge/commit/184fc7013050cbee0f8ec6ab081e340fdbc21505) # Changelog (2026-02-27)
 - [`3fab266`](https://github.com/Raio-Core/DarkAge/commit/3fab2669b2c244920755d880a722c11a2b59933c) Merge remote-tracking branch 'origin/main' (2026-02-27)
@@ -245,17 +249,14 @@ Source/
 - [`ed1c7f8`](https://github.com/Raio-Core/DarkAge/commit/ed1c7f874986a68a88f8f00cb3f40ca4a840f691) Creating the first draft of the storry and GDD for DarkAge. (2026-02-27)
 - [`eaa9c74`](https://github.com/Raio-Core/DarkAge/commit/eaa9c7407f8299e93cfe30507cdbfc215ce6cc7c) Merge remote-tracking branch 'origin/main' (2026-02-27)
 - [`4c289ac`](https://github.com/Raio-Core/DarkAge/commit/4c289ac96a909464da9217d16c5e248dd53681fb) docs: add game design document and system overview (2026-02-27)
-- [`886369b`](https://github.com/Raio-Core/DarkAge/commit/886369b853bb510bccc24fe5b6d9c59285908e72) docs: auto-update README [skip ci] (2026-02-28)
-- [`eb95418`](https://github.com/Raio-Core/DarkAge/commit/eb95418bed29a2200de5db58ed25130007e57ac9) Merge remote-tracking branch 'origin/main' (2026-02-27)
-- [`ce3bc04`](https://github.com/Raio-Core/DarkAge/commit/ce3bc0467fe58e11ed1c3661516651c03f577b4a) Add E ability input binding and fix ability system naming (2026-02-27)
 
 <!-- COMMITS_END -->
 
 <!-- CONTRIBUTORS_START -->
 ## Contributors
 
-- **Raio-Core** (24 commits)
-- **github-actions[bot]** (5 commits)
+- **Raio-Core** (26 commits)
+- **github-actions[bot]** (6 commits)
 - **Raioix** (2 commits)
 
 <!-- CONTRIBUTORS_END -->
@@ -264,7 +265,7 @@ Source/
 
 <p align="center">
   <i>Copyright 2026 RaioCore and Raioix. All Rights Reserved.</i><br><br>
-  <i>Last updated: 2026-02-28 06:13:02 UTC</i><br>
+  <i>Last updated: 2026-02-28 06:14:02 UTC</i><br>
   <i>This README is automatically generated from project files and git history.</i><br>
   <i>Version follows semantic versioning based on conventional commits.</i>
 </p>
