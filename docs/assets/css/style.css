@@ -1,0 +1,347 @@
+lik/* Dark Age GDD - Dark Fantasy Theme */
+
+:root {
+  --color-bg: #0a0a0f;
+  --color-bg-secondary: #12121a;
+  --color-bg-tertiary: #1a1a25;
+  --color-text: #e0e0e0;
+  --color-text-muted: #888888;
+  --color-primary: #8b0000;
+  --color-primary-light: #a52a2a;
+  --color-secondary: #4a4a6a;
+  --color-accent: #d4af37;
+  --color-accent-secondary: #c9b037;
+  --color-border: #2a2a3a;
+  --color-border-light: #3a3a4a;
+  --font-heading: 'Cinzel', 'Times New Roman', serif;
+  --font-body: 'Source Sans Pro', 'Segoe UI', sans-serif;
+  --font-mono: 'Fira Code', 'Consolas', monospace;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-accent);
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+h1 {
+  font-size: 2.5em;
+  border-bottom: 3px double var(--color-primary);
+  padding-bottom: 0.3em;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+h1::before,
+h1::after {
+  content: "⚜";
+  margin: 0 0.5em;
+  color: var(--color-primary);
+}
+
+h2 {
+  font-size: 1.8em;
+  border-bottom: 2px solid var(--color-border-light);
+  padding-bottom: 0.2em;
+}
+
+h3 {
+  font-size: 1.4em;
+  color: var(--color-primary-light);
+}
+
+h4 {
+  font-size: 1.2em;
+  color: var(--color-text);
+  border-left: 4px solid var(--color-primary);
+  padding-left: 0.5em;
+}
+
+/* Links */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-bottom: 1px dotted var(--color-accent);
+}
+
+a:hover {
+  color: var(--color-accent-secondary);
+  border-bottom: 1px solid var(--color-accent-secondary);
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: 1.2em;
+  text-align: justify;
+}
+
+/* Blockquotes */
+blockquote {
+  background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
+  border-left: 4px solid var(--color-primary);
+  margin: 1.5em 0;
+  padding: 1em 1.5em;
+  font-style: italic;
+  color: var(--color-text-muted);
+  position: relative;
+}
+
+blockquote::before {
+  content: """;
+  font-family: Georgia, serif;
+  font-size: 4em;
+  color: var(--color-primary);
+  opacity: 0.3;
+  position: absolute;
+  top: -0.2em;
+  left: 0.1em;
+  line-height: 1;
+}
+
+blockquote p {
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+blockquote cite {
+  display: block;
+  margin-top: 0.5em;
+  font-style: normal;
+  color: var(--color-accent);
+  text-align: right;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  background-color: var(--color-bg-secondary);
+  border: 2px solid var(--color-border);
+}
+
+th {
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  padding: 0.8em 1em;
+  text-align: left;
+  border-bottom: 2px solid var(--color-primary);
+  text-transform: uppercase;
+  font-size: 0.9em;
+  letter-spacing: 0.05em;
+}
+
+td {
+  padding: 0.7em 1em;
+  border-bottom: 1px solid var(--color-border);
+}
+
+tr:hover {
+  background-color: var(--color-bg-tertiary);
+}
+
+/* Lists */
+ul, ol {
+  margin: 1em 0;
+  padding-left: 2em;
+}
+
+li {
+  margin-bottom: 0.5em;
+}
+
+ul li::marker {
+  color: var(--color-primary);
+}
+
+/* Code */
+code {
+  font-family: var(--font-mono);
+  background-color: var(--color-bg-tertiary);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+  color: var(--color-accent-secondary);
+  border: 1px solid var(--color-border);
+}
+
+pre {
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 1em;
+  overflow-x: auto;
+  margin: 1.5em 0;
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* Horizontal Rule */
+hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  margin: 2em 0;
+}
+
+hr::before {
+  content: "✦ ✦ ✦";
+  display: block;
+  text-align: center;
+  color: var(--color-accent);
+  font-size: 1.2em;
+  letter-spacing: 1em;
+  margin-bottom: 0.5em;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid var(--color-border);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+/* Custom Classes for GDD */
+.warning {
+  background: linear-gradient(135deg, #3a1a1a 0%, #2a1515 100%);
+  border: 2px solid var(--color-primary);
+  border-radius: 4px;
+  padding: 1em;
+  margin: 1.5em 0;
+}
+
+.warning::before {
+  content: "⚠ ";
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+.note {
+  background: linear-gradient(135deg, #1a2a3a 0%, #151a2a 100%);
+  border-left: 4px solid var(--color-accent);
+  padding: 1em 1.5em;
+  margin: 1.5em 0;
+}
+
+.note::before {
+  content: "🎭 ";
+}
+
+.lore {
+  background: linear-gradient(135deg, #2a2515 0%, #1a1810 100%);
+  border: 1px solid var(--color-accent);
+  border-radius: 4px;
+  padding: 1.5em;
+  margin: 2em 0;
+  font-style: italic;
+}
+
+.lore::before {
+  content: "📜 LORE";
+  display: block;
+  font-family: var(--font-heading);
+  color: var(--color-accent);
+  font-size: 0.8em;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.5em;
+  font-style: normal;
+}
+
+/* Navigation Cards */
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5em;
+  margin: 2em 0;
+}
+
+.nav-card {
+  background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1.5em;
+  transition: all 0.3s ease;
+}
+
+.nav-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+  transform: translateY(-2px);
+}
+
+.nav-card h3 {
+  margin-top: 0;
+  color: var(--color-accent);
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  h1, h2, h3, h4 {
+    color: #333;
+  }
+  
+  blockquote {
+    border-left: 3px solid #666;
+    background: #f5f5f5;
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-light);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+}

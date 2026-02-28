@@ -1,0 +1,114 @@
+dde# Dark Age GDD - Jekyll Configuration
+
+title: "Dark Age"
+description: "Game Design Document - An Epic Multiplayer RPG of Choices and Consequences"
+author: "RaioCore Studios"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
+
+# Theme settings
+theme: minima
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-mentions
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .sass-cache
+  - .jekyll-cache
+  - .jekyll-metadata
+  - README.md
+  - LICENSE
+
+# Include specific files
+include:
+  - assets
+  - GDD
+  - Systems
+  - API
+
+# Collections
+collections:
+  gdd:
+    output: true
+    permalink: /:collection/:name/
+  systems:
+    output: true
+    permalink: /:collection/:name/
+
+# Default layouts
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  - scope:
+      path: "GDD"
+    values:
+      layout: "gdd"
+      sidebar: true
+
+# GitHub Pages settings
+github:
+  repository_url: https://github.com/RaioCore/DarkAge
+  owner_name: RaioCore Studios
+  owner_url: https://github.com/RaioCore
+
+# SEO settings
+twitter:
+  username: DarkAgeGame
+  card: summary_large_image
+
+social:
+  name: Dark Age
+  links:
+    - https://twitter.com/DarkAgeGame
+    - https://discord.gg/darkage
+    - https://www.reddit.com/r/DarkAge
+
+# Google Analytics
+google_analytics: UA-XXXXXXXX-X
+
+# Custom variables
+game_version: "0.1.0-alpha"
+engine: "Unreal Engine 5"
+platforms:
+  - PC
+  - PlayStation 5
+  - Xbox Series X|S
+
+factions:
+  - The Covenant
+  - The Unbound
+  - The Unweaver's Cult
+
+magic_schools:
+  - Additive
+  - Subtractive
