@@ -19,22 +19,30 @@ class DA_API AEnemyBasse : public ACharacterBasse, public IAbilitySystemInterfac
 	
 private:
 	
+	UPROPERTY(ReplicatedUsing=OnRep_InitAttributes)
+	bool bInitAttributes = false;
+	
 	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess = true))
 	TObjectPtr<UDAAbilitySystemComponent> DAAbilitySystemComp;
 	
 	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess = true))
 	TObjectPtr<UDAAttributeSet> DAAttributes;
 
+	UFUNCTION()
+	void OnRep_InitAttributes();
+	
 protected:
 	virtual void BeginPlay() override;
 	virtual void InitAbilityActorInfo() override;
 	virtual void BindCallbacksToDependencies() override;
 	virtual void InitClassDefaults() override;
+	virtual void BroadcastInitialValues() override;
 
 public:
 	
 	AEnemyBasse();
 	
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 	
 };

@@ -31,3 +31,8 @@ void ACharacterBasse::InitClassDefaults()
 	// Intentionally left blank
 }
 
+void ACharacterBasse::BroadcastInitialValues()
+{
+	// Intentionally left blank
+}
+

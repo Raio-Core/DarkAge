@@ -4,6 +4,7 @@
 #include "Character/EnemyBasse.h"
 
 #include "Data/CharacterClassInfo.h"
+#include "Net/UnrealNetwork.h"
 #include "Systems/AbilitySystem/DAAbilitySystemComponent.h"
 #include "Systems/AbilitySystem/Attributes/DAAttributeSet.h"
 #include "Systems/AbilitySystem/Libraries/DAAbilitySystemLibrary.h"
@@ -24,8 +25,21 @@ void AEnemyBasse::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	BindCallbacksToDependencies();
 	InitAbilityActorInfo();
 	
+}
+
+void AEnemyBasse::OnRep_InitAttributes()
+{
+	BroadcastInitialValues();
+}
+
+void AEnemyBasse::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	
+	DOREPLIFETIME(AEnemyBasse, bInitAttributes);
 }
 
 UAbilitySystemComponent* AEnemyBasse::GetAbilitySystemComponent() const
@@ -42,6 +56,7 @@ void AEnemyBasse::InitAbilityActorInfo()
 		if (HasAuthority())
 		{
 			InitClassDefaults();
+			BroadcastInitialValues();
 		}
 	}
 }
@@ -55,6 +70,15 @@ void AEnemyBasse::BindCallbacksToDependencies()
 			{
 				OnHealthChanged(Data.NewValue, DAAttributes->GetMaxHealth());
 			});
+		
+		if (HasAuthority())
+		{
+			DAAbilitySystemComp->OnAttributesGiven.AddLambda(
+				[this]
+			{
+				bInitAttributes = true;
+			});
+		}
 	}
 }
 
@@ -75,5 +99,13 @@ void AEnemyBasse::InitClassDefaults()
 				DAAbilitySystemComp->InitializeDefaultAttributes(SelectedClass->DefaultAttributes);
 			}
 		}
+	}
+}
+
+void AEnemyBasse::BroadcastInitialValues()
+{
+	if (IsValid(DAAttributes))
+	{
+		OnHealthChanged(DAAttributes->GetHealth(), DAAttributes->GetMaxHealth());
 	}
 }

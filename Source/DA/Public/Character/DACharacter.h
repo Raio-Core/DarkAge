@@ -41,9 +41,7 @@ private:
 	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<UDAAttributeSet> DAAttributes;
 	
-	
-	UFUNCTION(BlueprintCallable)
-	void BroadcastInitialValues();
+
 	
 protected:
 
@@ -64,6 +62,8 @@ protected:
 	virtual void InitAbilityActorInfo() override;
 	virtual	void BindCallbacksToDependencies() override;
 	virtual	void InitClassDefaults() override;
+	virtual void BroadcastInitialValues() override;
+	
 
 	void Move(const FInputActionValue& Value);
 

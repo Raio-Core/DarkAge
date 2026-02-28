@@ -6,7 +6,7 @@
 #include "AbilitySystemComponent.h"
 #include "DAAbilitySystemComponent.generated.h"
 
-class UCharacterClassInfo;
+DECLARE_MULTICAST_DELEGATE(FOnAttributesGiven);
 /**
  * 
  */
@@ -17,6 +17,8 @@ class DA_API UDAAbilitySystemComponent : public UAbilitySystemComponent
 	
 	
 public:
+	
+	FOnAttributesGiven OnAttributesGiven;
 
 	void AddCharacterAbilities(const TArray<TSubclassOf<UGameplayAbility>>& AbilitiesToGrant);
 	void AddCharacterPassiveAbilities(const TArray<TSubclassOf<UGameplayAbility>>& PassivesToGrant);

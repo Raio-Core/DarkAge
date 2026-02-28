@@ -22,6 +22,9 @@ protected:
 	virtual void BindCallbacksToDependencies();
 	virtual void InitClassDefaults();
 	
+	UFUNCTION(BlueprintCallable)
+	virtual void BroadcastInitialValues();
+	
 	UPROPERTY(EditAnywhere, Category="Custom Values|Character Infop")
 	FGameplayTag CharacterTag;
 

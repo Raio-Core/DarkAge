@@ -37,6 +37,7 @@ void UDAAbilitySystemComponent::InitializeDefaultAttributes(const TSubclassOf<UG
 	const FGameplayEffectContextHandle ContextHandle = MakeEffectContext();
 	const FGameplayEffectSpecHandle SpecHandle = MakeOutgoingSpec(AttributeEffect, 1.f, ContextHandle);
 	ApplyGameplayEffectSpecToSelf(*SpecHandle.Data.Get());
+	OnAttributesGiven.Broadcast();
 }
 
 void UDAAbilitySystemComponent::AbilityInputPressed(const FGameplayTag& InputTag)
