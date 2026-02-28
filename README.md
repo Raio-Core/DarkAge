@@ -6,7 +6,7 @@
 [![Unreal Engine](https://img.shields.io/badge/Unreal%20Engine-5.7-0EBEED?logo=unrealengine&logoColor=white)](https://www.unrealengine.com/)
 [![Version](https://img.shields.io/badge/Version-0.4.0-lightgrey)]()
 [![Stage](https://img.shields.io/badge/Stage-pre--alpha-lightgrey)]()
-[![Build](https://img.shields.io/badge/Build-36-blue)]()
+[![Build](https://img.shields.io/badge/Build-44-blue)]()
 [![C++](https://img.shields.io/badge/C++-17-00599C?logo=c%2B%2B&logoColor=white)](https://isocpp.org/)
 <!-- BADGES_END -->
 
@@ -17,8 +17,8 @@
 |----------|-------|
 | **Version** | `0.4.0` |
 | **Stage** | `pre-alpha` |
-| **Build** | `36` |
-| **Full Version** | `v0.4.0-pre-alpha+build.36` |
+| **Build** | `44` |
+| **Full Version** | `v0.4.0-pre-alpha+build.44` |
 
 ### Development Progress
 
@@ -29,7 +29,7 @@ Active development, features being implemented
 | Breaking Changes | 0 |
 | New Features | 7 |
 | Bug Fixes | 2 |
-| Other Changes | 14 |
+| Other Changes | 22 |
 
 <!-- VERSION_END -->
 
@@ -53,13 +53,13 @@ custom attributes (Health, Stamina, Mana), character mechanics, and modular arch
 
 | Metric | Count |
 |--------|-------|
-| Header Files | 22 |
-| Source Files | 22 |
-| Total C++ Files | 44 |
-| Total Lines | 2,110 |
-| Code Lines | 1,969 |
-| Comment Lines | 141 |
-| Total Commits | 23 |
+| Header Files | 24 |
+| Source Files | 24 |
+| Total C++ Files | 48 |
+| Total Lines | 2,306 |
+| Code Lines | 2,155 |
+| Comment Lines | 151 |
+| Total Commits | 31 |
 | Contributors | 3 |
 
 <!-- STATS_END -->
@@ -80,7 +80,7 @@ Copyright 2026 RaioCore and Raioix. All Rights Reserved.
 
 | Status | Count |
 |--------|-------|
-| Correct Copyright | 44 |
+| Correct Copyright | 48 |
 | Epic Games (Template) | 0 |
 | Placeholder | 0 |
 | Missing | 0 |
@@ -96,12 +96,18 @@ Source/
         Private/
             Actors/
                 EffectActor.cpp
+            Character/
+                CharacterBasse.cpp
+                DACharacter.cpp
+                EnemyBasse.cpp
             Data/
                 CharacterClassInfo.cpp
             Game/
                 GameMode/
+                    DAGameMode.cpp
                     DA_GameMode.cpp
                 PlayerController/
+                    DAPlayerController.cpp
                     DA_PlayerController.cpp
                 PlayerState/
                     DAPlayerState.cpp
@@ -131,12 +137,18 @@ Source/
         Public/
             Actors/
                 EffectActor.h
+            Character/
+                CharacterBasse.h
+                DACharacter.h
+                EnemyBasse.h
             Data/
                 CharacterClassInfo.h
             Game/
                 GameMode/
+                    DAGameMode.h
                     DA_GameMode.h
                 PlayerController/
+                    DAPlayerController.h
                     DA_PlayerController.h
                 PlayerState/
                     DAPlayerState.h
@@ -166,12 +178,6 @@ Source/
         DA.Build.cs
         DA.cpp
         DA.h
-        DACharacter.cpp
-        DACharacter.h
-        DAGameMode.cpp
-        DAGameMode.h
-        DAPlayerController.cpp
-        DAPlayerController.h
     DA.Target.cs
     DAEditor.Target.cs
 ```
@@ -185,13 +191,15 @@ Source/
 
 | Class | Type | Base | Description |
 |-------|------|------|-------------|
-| `ADACharacter` | Class | `ACharacter` |  |
+| `ACharacterBasse` | Class | `ACharacter` |  |
+| `ADACharacter` | Class | `ACharacterBasse` |  |
 | `ADAGameMode` | Class | `AGameModeBase` |  |
 | `ADAPlayerController` | Class | `APlayerController` |  |
 | `ADAPlayerState` | Class | `APlayerState` |  |
 | `ADA_GameMode` | Class | `AGameMode` |  |
 | `ADA_PlayerController` | Class | `APlayerController` |  |
 | `AEffectActor` | Class | `AActor` |  |
+| `AEnemyBasse` | Class | `ACharacterBasse` |  |
 | `FCharacterClassDefaultInfo` | Struct | `-` |  |
 | `FConsumableProps` | Struct | `-` |  |
 | `FDAInputAction` | Struct | `-` |  |
@@ -230,81 +238,24 @@ Source/
 <!-- COMMITS_START -->
 ## Recent Changes
 
+- [`8df741f`](https://github.com/Raio-Core/DarkAge/commit/8df741fe52d2970321ca42043340283393d8f473) refactor(character): extract base character class and add in... (2026-02-27)
+- [`184fc70`](https://github.com/Raio-Core/DarkAge/commit/184fc7013050cbee0f8ec6ab081e340fdbc21505) # Changelog (2026-02-27)
+- [`3fab266`](https://github.com/Raio-Core/DarkAge/commit/3fab2669b2c244920755d880a722c11a2b59933c) Merge remote-tracking branch 'origin/main' (2026-02-27)
+- [`ce49f98`](https://github.com/Raio-Core/DarkAge/commit/ce49f98bb0d0b7495ac38bdc63348593870c0314) docs(gdd): redesign for Dark Age multiplayer focus and emerg... (2026-02-27)
+- [`ed1c7f8`](https://github.com/Raio-Core/DarkAge/commit/ed1c7f874986a68a88f8f00cb3f40ca4a840f691) Creating the first draft of the storry and GDD for DarkAge. (2026-02-27)
+- [`eaa9c74`](https://github.com/Raio-Core/DarkAge/commit/eaa9c7407f8299e93cfe30507cdbfc215ce6cc7c) Merge remote-tracking branch 'origin/main' (2026-02-27)
+- [`4c289ac`](https://github.com/Raio-Core/DarkAge/commit/4c289ac96a909464da9217d16c5e248dd53681fb) docs: add game design document and system overview (2026-02-27)
+- [`886369b`](https://github.com/Raio-Core/DarkAge/commit/886369b853bb510bccc24fe5b6d9c59285908e72) docs: auto-update README [skip ci] (2026-02-28)
 - [`eb95418`](https://github.com/Raio-Core/DarkAge/commit/eb95418bed29a2200de5db58ed25130007e57ac9) Merge remote-tracking branch 'origin/main' (2026-02-27)
 - [`ce3bc04`](https://github.com/Raio-Core/DarkAge/commit/ce3bc0467fe58e11ed1c3661516651c03f577b4a) Add E ability input binding and fix ability system naming (2026-02-27)
-- [`8e5a306`](https://github.com/Raio-Core/DarkAge/commit/8e5a3060a190d4b4e0431955d0c50c50d9962084) docs: auto-update README [skip ci] (2026-02-27)
-- [`0f76ddd`](https://github.com/Raio-Core/DarkAge/commit/0f76ddd70a54c3df3f11f0c5542215a2a2f1c6f6) Merge remote-tracking branch 'origin/main' (2026-02-26)
-- [`977339c`](https://github.com/Raio-Core/DarkAge/commit/977339ccc9af76474d370881eaf6e801898e8ebb) feat: implement inventory system with widget controller (2026-02-26)
-- [`8235eb6`](https://github.com/Raio-Core/DarkAge/commit/8235eb6aca88308dca74ea8f3511e649cc152462) feat(inventory): add item usage with GAS integration (2026-02-25)
-- [`f122cd9`](https://github.com/Raio-Core/DarkAge/commit/f122cd9a41f93b4ba5d42ab4ef56195abb867caf) refactor(inventory): rename parameter from InItemTag to Item... (2026-02-24)
-- [`7ebbace`](https://github.com/Raio-Core/DarkAge/commit/7ebbace8febe50176954dcbc2c2ce3e3934850d7) docs: auto-update README [skip ci] (2026-02-24)
-- [`19db8d8`](https://github.com/Raio-Core/DarkAge/commit/19db8d8976fe467a04fdea5cf6fcc118516d144a) Merge remote-tracking branch 'origin/main' (2026-02-24)
-- [`b4d46d4`](https://github.com/Raio-Core/DarkAge/commit/b4d46d47b6a69ef00b08131e9113334962b11845) feat(game): add inventory system and mobile controls (2026-02-24)
 
 <!-- COMMITS_END -->
-
-<!-- AUTO-UPDATE-START: Documentation -->
-## 📚 Documentation
-
-Comprehensive documentation is available in the [docs/](docs/) folder:
-
-| Document | Description |
-|----------|-------------|
-| [📖 Game Design Document](docs/GDD/README.md) | Game design, mechanics, and systems |
-| [🏗️ Architecture](docs/Architecture.md) | Technical architecture and diagrams |
-| [🔧 Systems](docs/Systems/README.md) | Detailed system documentation |
-| [👥 Contributing](docs/CONTRIBUTING.md) | Contribution guidelines |
-| [📋 API Reference](docs/API/README.md) | Auto-generated API documentation |
-
-*Last updated: 2026-02-28*
-<!-- AUTO-UPDATE-END: Documentation -->
-
-<!-- AUTO-UPDATE-START: SystemOverview -->
-## 🎮 System Overview
-
-```mermaid
-flowchart TB
-    subgraph Player["Player Systems"]
-        PC[PlayerController]
-        PS[PlayerState]
-        Char[Character]
-    end
-    
-    subgraph Core["Core Systems"]
-        GAS[Gameplay Ability System]
-        INV[Inventory System]
-        INP[Input System]
-    end
-    
-    subgraph UI["UI Layer"]
-        HUD[HUD]
-        InvUI[Inventory UI]
-    end
-    
-    PC --> GAS
-    PC --> INV
-    PS --> GAS
-    Char --> GAS
-    INV --> InvUI
-    GAS --> HUD
-```
-
-### Key Technologies
-
-| System | Technology | Status |
-|--------|------------|--------|
-| **Gameplay Abilities** | Unreal GAS | ✅ Implemented |
-| **Inventory** | Tag-Based System | ✅ Implemented |
-| **Input** | Enhanced Input | ✅ Implemented |
-| **UI** | Widget Controller Pattern | ✅ Implemented |
-| **Multiplayer** | Network Replication | 🔄 In Progress |
-<!-- AUTO-UPDATE-END: SystemOverview -->
 
 <!-- CONTRIBUTORS_START -->
 ## Contributors
 
-- **Raio-Core** (17 commits)
-- **github-actions[bot]** (4 commits)
+- **Raio-Core** (24 commits)
+- **github-actions[bot]** (5 commits)
 - **Raioix** (2 commits)
 
 <!-- CONTRIBUTORS_END -->
@@ -313,7 +264,7 @@ flowchart TB
 
 <p align="center">
   <i>Copyright 2026 RaioCore and Raioix. All Rights Reserved.</i><br><br>
-  <i>Last updated: 2026-02-28 01:05:37 UTC</i><br>
+  <i>Last updated: 2026-02-28 06:13:02 UTC</i><br>
   <i>This README is automatically generated from project files and git history.</i><br>
   <i>Version follows semantic versioning based on conventional commits.</i>
 </p>
