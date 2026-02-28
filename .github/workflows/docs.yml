@@ -1,0 +1,112 @@
+name: Generate Documentation
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'Source/**/*.h'
+      - 'Source/**/*.cpp'
+      - 'scripts/generate_docs.py'
+      - '.github/workflows/docs.yml'
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:  # Allow manual triggering
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Run Documentation Generator
+        id: generate
+        run: |
+          python scripts/generate_docs.py
+          echo "exit_code=$?" >> $GITHUB_OUTPUT
+      
+      - name: Check for Changes
+        id: verify-changed-files
+        run: |
+          git add -A
+          if git diff --staged --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No changes to commit"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "Changes detected"
+          fi
+      
+      - name: Commit and Push Changes
+        if: steps.verify-changed-files.outputs.changed == 'true' && github.event_name == 'push'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: '📚 Auto-update documentation [skip ci]'
+          commit_options: '--no-verify'
+          file_pattern: |
+            README.md
+            docs/**
+          branch: ${{ github.ref }}
+      
+      - name: Create PR Comment
+        if: steps.verify-changed-files.outputs.changed == 'true' && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '📚 **Documentation Updated**\n\nThe documentation has been automatically regenerated based on your changes. Please review the updated files before merging.'
+            })
+
+  validate-docs:
+    runs-on: ubuntu-latest
+    needs: generate-docs
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Check Documentation Structure
+        run: |
+          # Verify docs directory structure exists
+          test -d docs || (echo "❌ docs directory missing" && exit 1)
+          test -d docs/API || (echo "❌ docs/API directory missing" && exit 1)
+          test -f docs/API/README.md || (echo "❌ docs/API/README.md missing" && exit 1)
+          test -f docs/Architecture.md || (echo "❌ docs/Architecture.md missing" && exit 1)
+          echo "✅ Documentation structure validated"
+      
+      - name: Check Markdown Links
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: |
+            --no-progress
+            --exclude-path node_modules/
+            docs/
+            README.md
+          fail: false
+      
+      - name: Validate Mermaid Diagrams
+        uses: neenjaw/compile-mermaid-markdown-action@0.3.1
+        with:
+          files: |
+            docs/**/*.md
+          output: 'mermaid-rendered'
+        env:
+          HIDE_CODEBLOCKS: true

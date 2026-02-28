@@ -225,6 +225,63 @@ Source/
 
 <!-- COMMITS_END -->
 
+<!-- AUTO-UPDATE-START: Documentation -->
+## 📚 Documentation
+
+Comprehensive documentation is available in the [docs/](docs/) folder:
+
+| Document | Description |
+|----------|-------------|
+| [📖 Game Design Document](docs/GDD/README.md) | Game design, mechanics, and systems |
+| [🏗️ Architecture](docs/Architecture.md) | Technical architecture and diagrams |
+| [🔧 Systems](docs/Systems/README.md) | Detailed system documentation |
+| [👥 Contributing](docs/CONTRIBUTING.md) | Contribution guidelines |
+| [📋 API Reference](docs/API/README.md) | Auto-generated API documentation |
+
+*Last updated: 2026-02-28*
+<!-- AUTO-UPDATE-END: Documentation -->
+
+<!-- AUTO-UPDATE-START: SystemOverview -->
+## 🎮 System Overview
+
+```mermaid
+flowchart TB
+    subgraph Player["Player Systems"]
+        PC[PlayerController]
+        PS[PlayerState]
+        Char[Character]
+    end
+    
+    subgraph Core["Core Systems"]
+        GAS[Gameplay Ability System]
+        INV[Inventory System]
+        INP[Input System]
+    end
+    
+    subgraph UI["UI Layer"]
+        HUD[HUD]
+        InvUI[Inventory UI]
+    end
+    
+    PC --> GAS
+    PC --> INV
+    PS --> GAS
+    Char --> GAS
+    INV --> InvUI
+    GAS --> HUD
+```
+
+### Key Technologies
+
+| System | Technology | Status |
+|--------|------------|--------|
+| **Gameplay Abilities** | Unreal GAS | ✅ Implemented |
+| **Inventory** | Tag-Based System | ✅ Implemented |
+| **Input** | Enhanced Input | ✅ Implemented |
+| **UI** | Widget Controller Pattern | ✅ Implemented |
+| **Multiplayer** | Network Replication | 🔄 In Progress |
+<!-- AUTO-UPDATE-END: SystemOverview -->
+
 <!-- CONTRIBUTORS_START -->
 ## Contributors
 
