@@ -1,17 +1,120 @@
-# DA
+# 🎮 DA — Dark Age
 
 > An Unreal Engine 5.7 Project | Version 0.4.0 embryo
 
-<!-- BADGES_START -->
-[![Unreal Engine](https://img.shields.io/badge/Unreal%20Engine-5.7-0EBEED?logo=unrealengine&logoColor=white)](https://www.unrealengine.com/)
-[![Version](https://img.shields.io/badge/Version-0.4.0-lightgrey)]()
-[![Stage](https://img.shields.io/badge/Stage-pre--alpha-lightgrey)]()
-[![Build](https://img.shields.io/badge/Build-44-blue)]()
-[![C++](https://img.shields.io/badge/C++-17-00599C?logo=c%2B%2B&logoColor=white)](https://isocpp.org/)
-<!-- BADGES_END -->
+<p align="center">
+  <img src="https://img.shields.io/badge/Unreal%20Engine-5.7-0EBEED?logo=unrealengine&logoColor=white&style=for-the-badge" alt="Unreal Engine">
+  <img src="https://img.shields.io/badge/Version-0.4.0-FFD700?style=for-the-badge" alt="Version">
+  <img src="https://img.shields.io/badge/Stage-pre--alpha-FF6B6B?style=for-the-badge" alt="Stage">
+  <img src="https://img.shields.io/badge/Build-44-4ECDC4?style=for-the-badge" alt="Build">
+  <img src="https://img.shields.io/badge/C++-17-00599C?logo=c%2B%2B&logoColor=white&style=for-the-badge" alt="C++">
+</p>
+
+---
+
+## 📚 Table of Contents
+
+- [Overview](#overview)
+- [Documentation](#documentation)
+- [Version Information](#version-information)
+- [Project Statistics](#project-statistics)
+- [Project Structure](#project-structure)
+- [C++ Classes](#c-classes)
+- [Gameplay Tags](#gameplay-tags)
+- [Recent Changes](#recent-changes)
+- [Contributors](#contributors)
+- [Copyright](#copyright)
+
+---
+
+## 🌟 Overview
+
+> *In a world fractured by the Veil, where multiple realities coexist and players shape the story, your choices don't just matter—they define you.*
+
+**Dark Age (DA)** is a multiplayer action RPG set in the **Divided Realm**—a world split between the controlled **Ordered Realm** and the chaotic **Wild Echoes**. Built in Unreal Engine 5.7, Dark Age features a unique blend of deep character progression, player-driven governance, and emergent storytelling.
+
+### 🌍 The World
+
+The world is divided by the **Veil**—a construct designed to separate those who accept control from those who seek freedom:
+
+| Realm | Description |
+|-------|-------------|
+| **🏛️ Ordered Realm** | Where the Covenants maintain strict control over magic, knowledge, and truth |
+| **🌌 Wild Echoes** | Parallel realities where millions of players carve their own destinies |
+| **💀 The Void** | The space between Echoes, home to creatures that hunger for life |
+
+### ✨ Core Gameplay
+
+- **No Chosen Hero** — There is no destined savior; your choices define your character
+- **Appearance Evolution** — Your character's look changes based on your actions (cruelty hardens you, mercy softens you)
+- **Soul Shard Magic** — Master **Additive Magic** (creation) or **Subtractive Magic** (destruction)
+- **Player Governance** — Form guilds, build kingdoms, establish laws, levy taxes
+- **Persistent Consequences** — The world remembers your deeds; reputation must be earned
+
+### 🎮 Multiplayer Reality
+
+- **Single Mode** (Offline) — Level cap 30, limited to 2 Echoes, no permadeath
+- **Multi Mode** (Online) — Full level 100, all 10+ Echoes, permadeath with exclusive benefits
+- **Player Kingdoms** — Rule territories, command armies, shape the world
+- **Cross-Echo Travel** — Explore parallel realities and project power across dimensional borders
+
+<!-- DESCRIPTION_START -->
+### Technical Features
+
+- **Gameplay Ability System** — Full GAS integration with custom ability system component
+- **Attribute System** — Replicated attributes for Health, Stamina, and Mana
+- **Character Classes** — Flexible character class system with data-driven configuration
+- **State Tree** — AI and gameplay logic using Unreal's StateTree plugin
+- **Modular Architecture** — Clean separation of systems for maintainability
+<!-- DESCRIPTION_END -->
+
+---
+
+## 📖 Documentation
+
+Explore our comprehensive documentation to learn more about the project:
+
+<div align="center">
+
+| 📚 Resource | 📝 Description | 🔗 Link |
+|-------------|----------------|---------|
+| **Game Design Document** | Complete game design including lore, mechanics, and world-building | [📖 Read GDD](docs/GDD/README.md) |
+| **Systems Documentation** | Technical documentation for all game systems | [⚙️ Systems](docs/Systems/README.md) |
+| **API Reference** | Auto-generated C++ class documentation | [🔧 API Docs](docs/API/README.md) |
+| **Contributing Guide** | Guidelines for contributing to the project | [🤝 Contributing](docs/CONTRIBUTING.md) |
+| **Architecture Overview** | High-level technical architecture and design | [🏗️ Architecture](docs/Architecture.md) |
+
+</div>
+
+### 🎮 Game Design Document (GDD)
+
+The GDD contains detailed information about the game world, mechanics, and design philosophy:
+
+| Section | Description |
+|---------|-------------|
+| [🌍 World](docs/GDD/World.md) | The Divided Realm — Ordered Realm vs Wild Echoes |
+| [📖 Story](docs/GDD/Story.md) | Player-driven narrative and emergent storytelling |
+| [👥 Characters](docs/GDD/Characters.md) | Key NPCs and character design |
+| [✨ Magic](docs/GDD/Magic.md) | Soul Shard magic system (Additive/Subtractive) |
+| [🗺️ Locations](docs/GDD/Locations.md) | World locations and environments |
+| [🌐 Multiplayer](docs/GDD/Multiplayer.md) | Multiplayer architecture and player governance |
+| [💀 Death & Resurrection](docs/GDD/DeathAndResurrection.md) | Soul Anchor system and permadeath mechanics |
+
+### ⚙️ Systems Documentation
+
+Learn about the technical implementation of major game systems:
+
+- [🔮 Gameplay Ability System](docs/Systems/README.md#gameplay-ability-system)
+- [📦 Inventory System](docs/Systems/README.md#inventory-system)
+- [🎮 Input System](docs/Systems/README.md#input-system)
+- [🎨 UI System](docs/Systems/README.md#ui-system)
+- [🔗 Interfaces](docs/Systems/README.md#interfaces)
+- [🧩 Data Assets](docs/Systems/README.md#data-assets)
+
+---
 
 <!-- VERSION_START -->
-## Version Information
+## 🏷️ Version Information
 
 | Property | Value |
 |----------|-------|
@@ -33,23 +136,10 @@ Active development, features being implemented
 
 <!-- VERSION_END -->
 
-## Overview
-
-<!-- DESCRIPTION_START -->
-DA is an Unreal Engine project featuring a comprehensive Gameplay Ability System (GAS) with 
-custom attributes (Health, Stamina, Mana), character mechanics, and modular architecture designed for extensibility.
-
-### Key Features
-
-- Gameplay Ability System - Full GAS integration with custom ability system component
-- Attribute System - Replicated attributes for Health, Stamina, and Mana
-- Character Classes - Flexible character class system with data-driven configuration
-- State Tree - AI and gameplay logic using Unreal's StateTree plugin
-- Modular Architecture - Clean separation of systems for maintainability
-<!-- DESCRIPTION_END -->
+---
 
 <!-- STATS_START -->
-## Project Statistics
+## 📊 Project Statistics
 
 | Metric | Count |
 |--------|-------|
@@ -64,31 +154,10 @@ custom attributes (Health, Stamina, Mana), character mechanics, and modular arch
 
 <!-- STATS_END -->
 
-<!-- COPYRIGHT_START -->
-## Copyright
-
-Copyright 2026 RaioCore and Raioix. All Rights Reserved.
-
-### Copyright Holders
-
-| Holder | Role |
-|--------|------|
-| RaioCore | Project Owner |
-| Raioix | Project Owner |
-
-### File Copyright Status
-
-| Status | Count |
-|--------|-------|
-| Correct Copyright | 48 |
-| Epic Games (Template) | 0 |
-| Placeholder | 0 |
-| Missing | 0 |
-
-<!-- COPYRIGHT_END -->
+---
 
 <!-- DIRECTORY_START -->
-## Project Structure
+## 🗂️ Project Structure
 
 ```
 Source/
@@ -184,8 +253,10 @@ Source/
 
 <!-- DIRECTORY_END -->
 
+---
+
 <!-- CLASSES_START -->
-## C++ Classes
+## 🧬 C++ Classes
 
 ### DA
 
@@ -218,8 +289,10 @@ Source/
 
 <!-- CLASSES_END -->
 
+---
+
 <!-- TAGS_START -->
-## Gameplay Tags
+## 🏷️ Gameplay Tags
 
 ### Character
 - `Character.Player.Default`
@@ -235,8 +308,10 @@ Source/
 
 <!-- TAGS_END -->
 
+---
+
 <!-- COMMITS_START -->
-## Recent Changes
+## 📝 Recent Changes
 
 - [`8df741f`](https://github.com/Raio-Core/DarkAge/commit/8df741fe52d2970321ca42043340283393d8f473) refactor(character): extract base character class and add in... (2026-02-27)
 - [`184fc70`](https://github.com/Raio-Core/DarkAge/commit/184fc7013050cbee0f8ec6ab081e340fdbc21505) # Changelog (2026-02-27)
@@ -251,8 +326,10 @@ Source/
 
 <!-- COMMITS_END -->
 
+---
+
 <!-- CONTRIBUTORS_START -->
-## Contributors
+## 👥 Contributors
 
 - **Raio-Core** (24 commits)
 - **github-actions[bot]** (5 commits)
@@ -261,6 +338,38 @@ Source/
 <!-- CONTRIBUTORS_END -->
 
 ---
+
+<!-- COPYRIGHT_START -->
+## 📜 Copyright
+
+Copyright 2026 RaioCore and Raioix. All Rights Reserved.
+
+### Copyright Holders
+
+| Holder | Role |
+|--------|------|
+| RaioCore | Project Owner |
+| Raioix | Project Owner |
+
+### File Copyright Status
+
+| Status | Count |
+|--------|-------|
+| Correct Copyright | 48 |
+| Epic Games (Template) | 0 |
+| Placeholder | 0 |
+| Missing | 0 |
+
+<!-- COPYRIGHT_END -->
+
+---
+
+<p align="center">
+  <a href="docs/GDD/README.md">📖 GDD</a> •
+  <a href="docs/Systems/README.md">⚙️ Systems</a> •
+  <a href="docs/API/README.md">🔧 API</a> •
+  <a href="docs/CONTRIBUTING.md">🤝 Contribute</a>
+</p>
 
 <p align="center">
   <i>Copyright 2026 RaioCore and Raioix. All Rights Reserved.</i><br><br>
