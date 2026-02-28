@@ -4,15 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "AbilitySystemInterface.h"
-#include "GameplayTagContainer.h"
-#include "GameFramework/Character.h"
-#include "Logging/LogMacros.h"
+#include "CharacterBasse.h"
 #include "DACharacter.generated.h"
 
 class UDAAttributeSet;
 class UDAAbilitySystemComponent;
 class USpringArmComponent;
 class UCameraComponent;
+class UInputMappingContext;
 class UInputAction;
 struct FInputActionValue;
 
@@ -24,7 +23,7 @@ DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
  */
  
 UCLASS(abstract)
-class ADACharacter : public ACharacter, public IAbilitySystemInterface
+class ADACharacter : public ACharacterBasse , public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 	
@@ -42,12 +41,6 @@ private:
 	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<UDAAttributeSet> DAAttributes;
 	
-	UPROPERTY(EditAnywhere, Category="Custom Values|Character Infop")
-	FGameplayTag CharacterTag;
-	
-	void InitAbilityActorInfo();
-	void InitClassDefaults() const;
-	void BindCallbacksToDependencies();
 	
 	UFUNCTION(BlueprintCallable)
 	void BroadcastInitialValues();
@@ -65,10 +58,12 @@ protected:
 	
 	UPROPERTY(EditAnywhere, Category="Input")
 	UInputAction* MouseLookAction;
-	
-	
+
+	virtual void BeginPlay() override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-	virtual void BeginPlay();
+	virtual void InitAbilityActorInfo() override;
+	virtual	void BindCallbacksToDependencies() override;
+	virtual	void InitClassDefaults() override;
 
 	void Move(const FInputActionValue& Value);
 
@@ -82,15 +77,6 @@ public:
 	virtual void OnRep_PlayerState() override;
 	
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
-	
-	UFUNCTION(BlueprintImplementableEvent)
-	void OnHealthChanged(float CurrentHealth, float MaxHealth);
-	
-	UFUNCTION(BlueprintImplementableEvent)
-	void OnStaminaChanged(float CurrentStamina, float MaxStamina);
-	
-	UFUNCTION(BlueprintImplementableEvent)
-	void OnManaChanged(float CurrentMana, float MaxMana);
 	
 	
 	UFUNCTION(BlueprintCallable, Category="Input")

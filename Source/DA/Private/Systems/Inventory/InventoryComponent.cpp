@@ -120,8 +120,11 @@ void UInventoryComponent::ReconstructInventoryMap(const FPackagedInventory& Inve
 
 void UInventoryComponent::OnRep_CachedInventory()
 {
-	ReconstructInventoryMap(CachedInventory);
-	InventoryPackageDelegate.Broadcast(CachedInventory);
+	if (BOwnerLocallyControlled)
+	{
+		ReconstructInventoryMap(CachedInventory);
+		InventoryPackageDelegate.Broadcast(CachedInventory);
+	}
 }
 
 void UInventoryComponent::UseItem(const FGameplayTag& ItemTag, int32 NumItems)
@@ -210,5 +213,8 @@ TMap<FGameplayTag, int32> UInventoryComponent::GetInventoryTagMap()
 
 void UInventoryComponent::ServerUseItem_Implementation(const FGameplayTag& ItemTag, int32 NumItems)
 {
-	UseItem(ItemTag, NumItems);
+	if (InventoryTagMap.Contains(ItemTag))
+	{
+		UseItem(ItemTag, NumItems);
+	}
 }

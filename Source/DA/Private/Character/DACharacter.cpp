@@ -1,6 +1,6 @@
 // Copyright 2026 RaioCore and Raioix. All Rights Reserved.
 
-#include "DACharacter.h"
+#include "Character/DACharacter.h"
 #include "Engine/LocalPlayer.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -67,7 +67,7 @@ void ADACharacter::InitAbilityActorInfo()
 	}
 }
 
-void ADACharacter::InitClassDefaults() const
+void ADACharacter::InitClassDefaults()
 {
 	if (!CharacterTag.IsValid())
 	{

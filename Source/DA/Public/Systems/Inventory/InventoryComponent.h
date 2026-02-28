@@ -89,4 +89,6 @@ public:
 	
 	void ReconstructInventoryMap(const FPackagedInventory& Inventory);
 	
+	bool BOwnerLocallyControlled = false;
+	
 };

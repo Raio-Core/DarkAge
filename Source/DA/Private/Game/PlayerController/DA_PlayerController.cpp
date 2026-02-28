@@ -49,6 +49,11 @@ void ADA_PlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	if (IsValid(InventoryComponent))
+	{
+		InventoryComponent->BOwnerLocallyControlled = IsLocalController();
+	}
+	
 	if (const ADAPlayerState* DAPlayerState = GetPlayerState<ADAPlayerState>())
 	{
 		DAAbilitySystemComp = DAPlayerState->GetDAAbilitySystemComponent();

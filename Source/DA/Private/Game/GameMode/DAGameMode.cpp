@@ -1,6 +1,6 @@
 // Copyright 2026 RaioCore and Raioix. All Rights Reserved.
 
-#include "DAGameMode.h"
+#include "Game/GameMode/DAGameMode.h"
 
 ADAGameMode::ADAGameMode()
 {
