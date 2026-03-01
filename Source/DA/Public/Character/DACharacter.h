@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "AbilitySystemInterface.h"
 #include "CharacterBasse.h"
+#include "Interfaces/DAAbilitySystemInterface.h"
 #include "DACharacter.generated.h"
 
 class UDAAttributeSet;
@@ -23,7 +24,7 @@ DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
  */
  
 UCLASS(abstract)
-class ADACharacter : public ACharacterBasse , public IAbilitySystemInterface
+class ADACharacter : public ACharacterBasse , public IAbilitySystemInterface, public IDAAbilitySystemInterface
 {
 	GENERATED_BODY()
 	
@@ -40,6 +41,9 @@ private:
 	
 	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<UDAAttributeSet> DAAttributes;
+	
+	UPROPERTY(VisibleAnywhere, meta=(AllowPrivateAccess="true"))
+	TObjectPtr<USceneComponent> DynamicProjectileSpawnPoint;
 	
 
 	
@@ -72,6 +76,9 @@ protected:
 public:
 	
 	ADACharacter();	
+	
+	// Implement DAAbilitySystemInterface
+	virtual USceneComponent* SetDynamicSpawnPoint_Implementation() override;
 	
 	virtual void PossessedBy(AController* NewController) override;
 	virtual void OnRep_PlayerState() override;

@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameplayTagContainer.h"
+#include "Data/ProjectileInfo.h"
 #include "GameFramework/GameMode.h"
 #include "DA_GameMode.generated.h"
 
@@ -23,9 +24,13 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Custom Values|Class Defaults")
 	TObjectPtr<UCharacterClassInfo> ClassDefaults;
 	
+	UPROPERTY(EditDefaultsOnly, Category = "Custom Values|Projectiles")
+	TObjectPtr<UProjectileInfo> ProjectileInfo;
+	
 public:
 	
 	UCharacterClassInfo* GetCharacterClassDefaultInfo() const;
+	UProjectileInfo* GetProjectileInfo() const;
 	
 
 	

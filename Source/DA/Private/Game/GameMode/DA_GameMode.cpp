@@ -7,3 +7,8 @@ UCharacterClassInfo* ADA_GameMode::GetCharacterClassDefaultInfo() const
 {
 	return  ClassDefaults;
 }
+
+UProjectileInfo* ADA_GameMode::GetProjectileInfo() const
+{
+	return  ProjectileInfo;
+}

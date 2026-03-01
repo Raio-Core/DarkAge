@@ -44,7 +44,15 @@ ADACharacter::ADACharacter()
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 	FollowCamera->bUsePawnControlRotation = false;
+	
+	DynamicProjectileSpawnPoint = CreateDefaultSubobject<USceneComponent>("ProjectileSpawnPoint");
+	DynamicProjectileSpawnPoint->SetupAttachment(RootComponent);
 
+}
+
+USceneComponent* ADACharacter::SetDynamicSpawnPoint_Implementation()
+{
+	return DynamicProjectileSpawnPoint;
 }
 
 void ADACharacter::InitAbilityActorInfo()

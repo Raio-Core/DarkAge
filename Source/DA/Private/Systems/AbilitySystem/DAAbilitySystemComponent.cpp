@@ -13,8 +13,8 @@ void UDAAbilitySystemComponent::AddCharacterAbilities(const TArray<TSubclassOf<U
 		
 		if (UDAGameplayAbility* DAAbility = Cast<UDAGameplayAbility>(AbilitySpec.Ability))
 		{
-			AbilitySpec.DynamicAbilityTags.AddTag(DAAbility->InputTag);
-			GiveAbility(AbilitySpec);	
+			AbilitySpec.GetDynamicSpecSourceTags().AddTag(DAAbility->InputTag);
+			GiveAbility(AbilitySpec);
 		}
 		
 	}
@@ -46,18 +46,18 @@ void UDAAbilitySystemComponent::AbilityInputPressed(const FGameplayTag& InputTag
 	
 	ABILITYLIST_SCOPE_LOCK();
 
-	for (const FGameplayAbilitySpec& Spec : GetActivatableAbilities())
+	for (FGameplayAbilitySpec& Spec : GetActivatableAbilities())
 	{
-		if (Spec.DynamicAbilityTags.HasTagExact(InputTag))
+		if (Spec.GetDynamicSpecSourceTags().HasTagExact(InputTag))
 		{
 			if (!Spec.IsActive())
 			{
 				TryActivateAbility(Spec.Handle);
 			}
-			else
+			else if (UGameplayAbility* Instance = Spec.GetPrimaryInstance())
 			{
 				InvokeReplicatedEvent(EAbilityGenericReplicatedEvent::InputPressed, Spec.Handle,
-					Spec.ActivationInfo.GetActivationPredictionKey());
+					Instance->GetCurrentActivationInfo().GetActivationPredictionKey());
 			}
 		}
 	}
@@ -69,12 +69,15 @@ void UDAAbilitySystemComponent::AbilityInputReleased(const FGameplayTag& InputTa
 	
 	ABILITYLIST_SCOPE_LOCK();
 	
-	for (const FGameplayAbilitySpec& Spec : GetActivatableAbilities())
+	for (FGameplayAbilitySpec& Spec : GetActivatableAbilities())
 	{
-		if (Spec.DynamicAbilityTags.HasTagExact(InputTag))
+		if (Spec.GetDynamicSpecSourceTags().HasTagExact(InputTag))
 		{
-			InvokeReplicatedEvent(EAbilityGenericReplicatedEvent::InputReleased, Spec.Handle,
-				Spec.ActivationInfo.GetActivationPredictionKey());
+			if (UGameplayAbility* Instance = Spec.GetPrimaryInstance())
+			{
+				InvokeReplicatedEvent(EAbilityGenericReplicatedEvent::InputReleased, Spec.Handle,
+					Instance->GetCurrentActivationInfo().GetActivationPredictionKey());
+			}
 		}
 	}
 }
