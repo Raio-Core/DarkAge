@@ -42,7 +42,7 @@ void AProjectileBase::SetProjectileParams(const FProjectileParams& Params, const
 		ReplicatedMesh = Params.ProjectileMesh;
 	}
 	
-	if (IsValid(ProjectileMesh))
+	if (IsValid(ProjectileMesh) && IsValid(Params.ProjectileMesh))
 	{
 		ProjectileMesh->SetStaticMesh(Params.ProjectileMesh);
 	}
@@ -81,9 +81,9 @@ void AProjectileBase::OnRep_ProjectileTag()
 
 void AProjectileBase::OnRep_ProjectileMesh()
 {
-	if (IsValid(ReplicatedMesh) && IsValid(ProjectileMesh))
-	{
-		ProjectileMesh->SetStaticMesh(Cast<UStaticMesh>(ReplicatedMesh));
-	}
+	// Note: We don't set the mesh here because it's handled via SetProjectileParams
+	// which is called from OnRep_ProjectileTag. Setting it here causes the ensure
+	// failure because KnownStaticMesh hasn't been initialized yet.
+	// The ReplicatedMesh is kept in sync with the actual mesh via SetProjectileParams.
 }
 
