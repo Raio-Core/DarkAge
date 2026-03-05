@@ -18,6 +18,7 @@ AProjectileBase::AProjectileBase()
 	bReplicates = true;
 	
 	ProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>("ProjectileMesh");
+	ProjectileMesh->SetIsReplicated(true);
 	SetRootComponent(ProjectileMesh);
 	ProjectileMesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	ProjectileMesh->SetCollisionObjectType(ECC_WorldDynamic);
@@ -33,6 +34,12 @@ void AProjectileBase::SetProjectileParams(const FProjectileParams& Params, const
 	if (InProjectileTag.IsValid())
 	{
 		ProjectileTag = InProjectileTag;
+	}
+	
+	// Replicate the mesh so clients can see it
+	if (IsValid(Params.ProjectileMesh))
+	{
+		ReplicatedMesh = Params.ProjectileMesh;
 	}
 	
 	if (IsValid(ProjectileMesh))
@@ -54,6 +61,7 @@ void AProjectileBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(AProjectileBase, ProjectileTag);
+	DOREPLIFETIME(AProjectileBase, ReplicatedMesh);
 }
 
 void AProjectileBase::OnRep_ProjectileTag()
@@ -68,6 +76,14 @@ void AProjectileBase::OnRep_ProjectileTag()
 				SetProjectileParams(*Params);
 			}
 		}
+	}
+}
+
+void AProjectileBase::OnRep_ProjectileMesh()
+{
+	if (IsValid(ReplicatedMesh) && IsValid(ProjectileMesh))
+	{
+		ProjectileMesh->SetStaticMesh(Cast<UStaticMesh>(ReplicatedMesh));
 	}
 }
 
