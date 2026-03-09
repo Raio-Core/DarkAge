@@ -18,6 +18,7 @@ AProjectileBase::AProjectileBase()
 	bReplicates = true;
 	
 	ProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>("ProjectileMesh");
+	ProjectileMesh->SetIsReplicated(true);
 	SetRootComponent(ProjectileMesh);
 	ProjectileMesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	ProjectileMesh->SetCollisionObjectType(ECC_WorldDynamic);
@@ -35,7 +36,13 @@ void AProjectileBase::SetProjectileParams(const FProjectileParams& Params, const
 		ProjectileTag = InProjectileTag;
 	}
 	
-	if (IsValid(ProjectileMesh))
+	// Replicate the mesh so clients can see it
+	if (IsValid(Params.ProjectileMesh))
+	{
+		ReplicatedMesh = Params.ProjectileMesh;
+	}
+	
+	if (IsValid(ProjectileMesh) && IsValid(Params.ProjectileMesh))
 	{
 		ProjectileMesh->SetStaticMesh(Params.ProjectileMesh);
 	}
@@ -54,6 +61,7 @@ void AProjectileBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(AProjectileBase, ProjectileTag);
+	DOREPLIFETIME(AProjectileBase, ReplicatedMesh);
 }
 
 void AProjectileBase::OnRep_ProjectileTag()
@@ -69,5 +77,13 @@ void AProjectileBase::OnRep_ProjectileTag()
 			}
 		}
 	}
+}
+
+void AProjectileBase::OnRep_ProjectileMesh()
+{
+	// Note: We don't set the mesh here because it's handled via SetProjectileParams
+	// which is called from OnRep_ProjectileTag. Setting it here causes the ensure
+	// failure because KnownStaticMesh hasn't been initialized yet.
+	// The ReplicatedMesh is kept in sync with the actual mesh via SetProjectileParams.
 }
 
