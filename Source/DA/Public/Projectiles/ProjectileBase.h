@@ -17,7 +17,7 @@ class DA_API AProjectileBase : public AActor
 
 private:
 	
-	UPROPERTY()
+	UPROPERTY(Replicated)
 	TObjectPtr<UStaticMeshComponent> ProjectileMesh;
 	
 	UPROPERTY()
@@ -26,8 +26,14 @@ private:
 	UPROPERTY(ReplicatedUsing = OnRep_ProjectileTag)
 	FGameplayTag ProjectileTag;
 	
+	UPROPERTY(ReplicatedUsing = OnRep_ProjectileMesh)
+	TObjectPtr<UObject> ReplicatedMesh;
+	
 	UFUNCTION()
 	void OnRep_ProjectileTag();
+	
+	UFUNCTION()
+	void OnRep_ProjectileMesh();
 	
 public:
 	
