@@ -6,6 +6,7 @@
 #include "AbilitySystemInterface.h"
 #include "GameplayTagContainer.h"
 #include "GameFramework/PlayerController.h"
+#include "Interfaces/DAAbilitySystemInterface.h"
 #include "Interfaces/InventoryInterface.h"
 #include "DA_PlayerController.generated.h"
 
@@ -22,7 +23,7 @@ class UInventoryComponent;
  */
 
 UCLASS()
-class DA_API ADA_PlayerController : public APlayerController, public IAbilitySystemInterface, public IInventoryInterface
+class DA_API ADA_PlayerController : public APlayerController, public IAbilitySystemInterface, public IInventoryInterface, public  IDAAbilitySystemInterface
 {
 	GENERATED_BODY()
 	
@@ -84,7 +85,10 @@ public:
 	virtual void SetupInputComponent() override;
 	
 	// Implement Inventory Interface
-	virtual UInventoryComponent*                                                                                     GetInventoryComponent_Implementation() const;
+	virtual UInventoryComponent* GetInventoryComponent_Implementation() const;
+	
+	// Implement DAAbilitySystemInterface
+	virtual void SetDynamicProjectile_Implementation(const FGameplayTag& ProjectileTag) override;
 	
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	

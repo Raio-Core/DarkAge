@@ -19,7 +19,7 @@ class DA_API ADAPlayerState : public APlayerState, public IAbilitySystemInterfac
 	
 private:
 	
-	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess = true))
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = true))
 	TObjectPtr<UDAAbilitySystemComponent> DAAbilitySystemComp;
 	
 	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess = true))

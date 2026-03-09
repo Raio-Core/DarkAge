@@ -4,6 +4,41 @@
 #include "Systems/AbilitySystem/DAAbilitySystemComponent.h"
 
 #include "Systems/AbilitySystem/Abilities/DAGameplayAbility.h"
+#include "Systems/AbilitySystem/Abilities/ProjectileAbility.h"
+
+void UDAAbilitySystemComponent::SetDynamicProjectile(const FGameplayTag& ProjectileTag)
+{
+	if (!ProjectileTag.IsValid()) return;
+	
+	if (!GetAvatarActor()->HasAuthority())
+	{
+		ServerSetDynamicProjectile(ProjectileTag);
+		return;
+	}
+	
+	if (ActiveProjectileAbility.IsValid())
+	{
+		ClearAbility(ActiveProjectileAbility);
+	}
+	
+	if (IsValid(DynamicProjectileAbility))
+	{
+		FGameplayAbilitySpec Spec = FGameplayAbilitySpec(DynamicProjectileAbility, 1.f);
+		if (UProjectileAbility* ProjectileAbility = Cast<UProjectileAbility>(Spec.Ability))
+		{
+			ProjectileAbility->ProjectileToSpawnTag = ProjectileTag;
+			Spec.DynamicAbilityTags.AddTag(ProjectileAbility->InputTag);
+			
+			ActiveProjectileAbility = GiveAbility(Spec);
+		}
+	}
+	
+}
+
+void UDAAbilitySystemComponent::ServerSetDynamicProjectile_Implementation(const FGameplayTag& ProjectileTag)
+{
+	SetDynamicProjectile(ProjectileTag);
+}
 
 void UDAAbilitySystemComponent::AddCharacterAbilities(const TArray<TSubclassOf<UGameplayAbility>>& AbilitiesToGrant)
 {
