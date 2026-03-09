@@ -1,12 +1,12 @@
 # DA
 
-> An Unreal Engine 5.7 Project | Version 0.4.0 embryo
+> An Unreal Engine 5.7 Project | Version 0.4.0 alpha
 
 <!-- BADGES_START -->
 [![Unreal Engine](https://img.shields.io/badge/Unreal%20Engine-5.7-0EBEED?logo=unrealengine&logoColor=white)](https://www.unrealengine.com/)
-[![Version](https://img.shields.io/badge/Version-0.4.0-lightgrey)]()
-[![Stage](https://img.shields.io/badge/Stage-pre--alpha-lightgrey)]()
-[![Build](https://img.shields.io/badge/Build-51-blue)]()
+[![Version](https://img.shields.io/badge/Version-0.4.0-orange)]()
+[![Stage](https://img.shields.io/badge/Stage-alpha-orange)]()
+[![Build](https://img.shields.io/badge/Build-56-blue)]()
 [![C++](https://img.shields.io/badge/C++-17-00599C?logo=c%2B%2B&logoColor=white)](https://isocpp.org/)
 <!-- BADGES_END -->
 
@@ -16,20 +16,20 @@
 | Property | Value |
 |----------|-------|
 | **Version** | `0.4.0` |
-| **Stage** | `pre-alpha` |
-| **Build** | `51` |
-| **Full Version** | `v0.4.0-pre-alpha+build.51` |
+| **Stage** | `alpha` |
+| **Build** | `56` |
+| **Full Version** | `v0.4.0-alpha+build.56` |
 
 ### Development Progress
 
-Active development, features being implemented
+Core features complete, testing in progress
 
 | Metric | Count |
 |--------|-------|
 | Breaking Changes | 0 |
-| New Features | 9 |
+| New Features | 10 |
 | Bug Fixes | 2 |
-| Other Changes | 27 |
+| Other Changes | 31 |
 
 <!-- VERSION_END -->
 
@@ -53,13 +53,13 @@ custom attributes (Health, Stamina, Mana), character mechanics, and modular arch
 
 | Metric | Count |
 |--------|-------|
-| Header Files | 24 |
-| Source Files | 24 |
-| Total C++ Files | 48 |
-| Total Lines | 2,357 |
-| Code Lines | 2,205 |
-| Comment Lines | 152 |
-| Total Commits | 38 |
+| Header Files | 29 |
+| Source Files | 29 |
+| Total C++ Files | 58 |
+| Total Lines | 2,715 |
+| Code Lines | 2,539 |
+| Comment Lines | 176 |
+| Total Commits | 43 |
 | Contributors | 3 |
 
 <!-- STATS_END -->
@@ -80,7 +80,7 @@ Copyright 2026 RaioCore and Raioix. All Rights Reserved.
 
 | Status | Count |
 |--------|-------|
-| Correct Copyright | 48 |
+| Correct Copyright | 58 |
 | Epic Games (Template) | 0 |
 | Placeholder | 0 |
 | Missing | 0 |
@@ -102,6 +102,7 @@ Source/
                 EnemyBasse.cpp
             Data/
                 CharacterClassInfo.cpp
+                ProjectileInfo.cpp
             Game/
                 GameMode/
                     DAGameMode.cpp
@@ -115,11 +116,15 @@ Source/
                 DAInputConfig.cpp
                 DASystemsInputComponent.cpp
             Interfaces/
+                DAAbilitySystemInterface.cpp
                 InventoryInterface.cpp
+            Projectiles/
+                ProjectileBase.cpp
             Systems/
                 AbilitySystem/
                     Abilities/
                         DAGameplayAbility.cpp
+                        ProjectileAbility.cpp
                     Attributes/
                         DAAttributeSet.cpp
                     Libraries/
@@ -129,6 +134,7 @@ Source/
                     InventoryComponent.cpp
                     ItemTypes.cpp
                     ItemTypesToTables.cpp
+                DAAbilityTypes.cpp
             UI/
                 WidgetControllers/
                     InventoryWidgetController.cpp
@@ -143,6 +149,7 @@ Source/
                 EnemyBasse.h
             Data/
                 CharacterClassInfo.h
+                ProjectileInfo.h
             Game/
                 GameMode/
                     DAGameMode.h
@@ -156,11 +163,15 @@ Source/
                 DAInputConfig.h
                 DASystemsInputComponent.h
             Interfaces/
+                DAAbilitySystemInterface.h
                 InventoryInterface.h
+            Projectiles/
+                ProjectileBase.h
             Systems/
                 AbilitySystem/
                     Abilities/
                         DAGameplayAbility.h
+                        ProjectileAbility.h
                     Attributes/
                         DAAttributeSet.h
                     Libraries/
@@ -170,6 +181,7 @@ Source/
                     InventoryComponent.h
                     ItemTypes.h
                     ItemTypesToTables.h
+                DAAbilityTypes.h
             UI/
                 WidgetControllers/
                     InventoryWidgetController.h
@@ -200,11 +212,13 @@ Source/
 | `ADA_PlayerController` | Class | `APlayerController` |  |
 | `AEffectActor` | Class | `AActor` |  |
 | `AEnemyBasse` | Class | `ACharacterBasse` |  |
+| `AProjectileBase` | Class | `AActor` |  |
 | `FCharacterClassDefaultInfo` | Struct | `-` |  |
 | `FConsumableProps` | Struct | `-` |  |
 | `FDAInputAction` | Struct | `-` |  |
 | `FMasterItemDefinition` | Struct | `-` |  |
 | `FPackagedInventory` | Struct | `-` |  |
+| `FProjectileParams` | Struct | `-` |  |
 | `UCharacterClassInfo` | Class | `UDataAsset` |  |
 | `UDAAbilitySystemComponent` | Class | `UAbilitySystemComponent` |  |
 | `UDAAbilitySystemLibrary` | Class | `UBlueprintFunctionLibrary` |  |
@@ -214,6 +228,8 @@ Source/
 | `UDASystemsWidget` | Class | `UUserWidget` |  |
 | `UInventoryWidgetController` | Class | `UWidgetController` |  |
 | `UItemTypesToTables` | Class | `UDataAsset` |  |
+| `UProjectileAbility` | Class | `UDAGameplayAbility` |  |
+| `UProjectileInfo` | Class | `UDataAsset` |  |
 | `UWidgetController` | Class | `UObject` |  |
 
 <!-- CLASSES_END -->
@@ -226,6 +242,7 @@ Source/
 - `Character.Player.Default`
 
 ### Input
+- `Input.DynamicProjectileAbility`
 - `Input.EAbility`
 - `Input.QAbility`
 - `Input.ShiftAbility`
@@ -234,29 +251,33 @@ Source/
 - `Item.Consumable.HealthPotion`
 - `Item.Consumable.ManaPotion`
 
+### Projectile
+- `Projectile.Basic.Type1`
+- `Projectile.Basic.Type2`
+
 <!-- TAGS_END -->
 
 <!-- COMMITS_START -->
 ## Recent Changes
 
+- [`321bdef`](https://github.com/Raio-Core/DarkAge/commit/321bdef80778c0658c080dec5d6d2eea7c91099f) docs: auto-update README [skip ci] (2026-03-01)
+- [`56dd96d`](https://github.com/Raio-Core/DarkAge/commit/56dd96dc27786c87e1768be458db3e8801e67a37) docs: auto-update README [skip ci] (2026-03-01)
+- [`19f48bf`](https://github.com/Raio-Core/DarkAge/commit/19f48bfb9b683dac58526f5629fc7bae848c797a) Merge remote-tracking branch 'origin/main' (2026-02-28)
+- [`556be2f`](https://github.com/Raio-Core/DarkAge/commit/556be2f36947d4ce2d35b3dfdc210658ed034acb) feat(projectile-system): Implement networked projectile abil... (2026-02-28)
+- [`32dd2f1`](https://github.com/Raio-Core/DarkAge/commit/32dd2f12668bd25cc2180c1a06d876794be1ff1a) docs: auto-update README [skip ci] (2026-02-28)
 - [`4bf1872`](https://github.com/Raio-Core/DarkAge/commit/4bf187232d3928e61545bf3985e68f812a33b38b) feat(character): add network replication for enemy attribute... (2026-02-28)
 - [`992f2ac`](https://github.com/Raio-Core/DarkAge/commit/992f2ac9c8f24c9afa7c7084bda3555cbd8d9703) Merge remote-tracking branch 'origin/main' (2026-02-27)
 - [`d66d2a6`](https://github.com/Raio-Core/DarkAge/commit/d66d2a6783301be53cbd69be27d178d30691e87e) docs(readme): overhaul readme with game overview and docs (2026-02-27)
 - [`ed70ff8`](https://github.com/Raio-Core/DarkAge/commit/ed70ff88a127cfc169d2df1b3945351046b5c0a3) docs: auto-update README [skip ci] (2026-02-28)
 - [`a2366f5`](https://github.com/Raio-Core/DarkAge/commit/a2366f5c79123cb12abf973addf3a681cbb90fd4) Merge remote-tracking branch 'origin/main' (2026-02-27)
-- [`a49e3a0`](https://github.com/Raio-Core/DarkAge/commit/a49e3a0e3f371d95b3cdeff10976fdad44b4efa6) feat: add gameplay tags for character types and ability inpu... (2026-02-27)
-- [`fdd11e1`](https://github.com/Raio-Core/DarkAge/commit/fdd11e1646f9a7b73d72c4e01a94b7ddf6818d6c) docs: auto-update README [skip ci] (2026-02-28)
-- [`8df741f`](https://github.com/Raio-Core/DarkAge/commit/8df741fe52d2970321ca42043340283393d8f473) refactor(character): extract base character class and add in... (2026-02-27)
-- [`184fc70`](https://github.com/Raio-Core/DarkAge/commit/184fc7013050cbee0f8ec6ab081e340fdbc21505) # Changelog (2026-02-27)
-- [`3fab266`](https://github.com/Raio-Core/DarkAge/commit/3fab2669b2c244920755d880a722c11a2b59933c) Merge remote-tracking branch 'origin/main' (2026-02-27)
 
 <!-- COMMITS_END -->
 
 <!-- CONTRIBUTORS_START -->
 ## Contributors
 
-- **Raio-Core** (29 commits)
-- **github-actions[bot]** (7 commits)
+- **Raio-Core** (31 commits)
+- **github-actions[bot]** (10 commits)
 - **Raioix** (2 commits)
 
 <!-- CONTRIBUTORS_END -->
@@ -265,7 +286,7 @@ Source/
 
 <p align="center">
   <i>Copyright 2026 RaioCore and Raioix. All Rights Reserved.</i><br><br>
-  <i>Last updated: 2026-02-28 17:41:29 UTC</i><br>
+  <i>Last updated: 2026-03-08 05:00:17 UTC</i><br>
   <i>This README is automatically generated from project files and git history.</i><br>
   <i>Version follows semantic versioning based on conventional commits.</i>
 </p>
