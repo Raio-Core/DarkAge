@@ -25,4 +25,7 @@ public:
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	USceneComponent* SetDynamicSpawnPoint();
 	
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	void SetDynamicProjectile(const FGameplayTag& ProjectileTag);
+	
 };
