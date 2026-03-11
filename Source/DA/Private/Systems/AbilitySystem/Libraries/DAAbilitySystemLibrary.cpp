@@ -3,6 +3,9 @@
 
 #include "Systems/AbilitySystem/Libraries/DAAbilitySystemLibrary.h"
 
+#include "GameplayEffect.h"
+#include "AbilitySystemComponent.h"
+#include "Systems/DAAbilityTypes.h"
 #include "Game/GameMode/DA_GameMode.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -24,5 +27,19 @@ UProjectileInfo* UDAAbilitySystemLibrary::GetProjectileInfo(const UObject* World
 	}
 	
 	return nullptr;
+}
+
+void UDAAbilitySystemLibrary::ApplyDamageEffect(const FDamageEffectInfo& DamageEffectInfo)
+{
+	FGameplayEffectContextHandle ContextHandle = DamageEffectInfo.SourceASC->MakeEffectContext();
+	ContextHandle.AddSourceObject(DamageEffectInfo.AvatarActor);
+	
+	FGameplayEffectSpecHandle SpecHandle = DamageEffectInfo.SourceASC->MakeOutgoingSpec(DamageEffectInfo.DamageEffect, DamageEffectInfo.AbilityLevel, ContextHandle);
+	
+	if (IsValid(DamageEffectInfo.TargetASC))
+	{
+		DamageEffectInfo.TargetASC->ApplyGameplayEffectSpecToSelf(*SpecHandle.Data.Get());
+	}
+	
 }
 

@@ -3,9 +3,11 @@
 
 #include "Projectiles/ProjectileBase.h"
 
+#include "Components/SphereComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
-#include "Net/UnrealNetwork.h"
-#include "Systems/DAAbilityTypes.h"
+          #include "Net/UnrealNetwork.h"
+//#include "Systems/DAAbilityTypes.h"
+#include "AbilitySystemGlobals.h"
 #include "Data/ProjectileInfo.h"
 #include "Systems/AbilitySystem/Libraries/DAAbilitySystemLibrary.h"
 
@@ -22,10 +24,17 @@ AProjectileBase::AProjectileBase()
 	SetRootComponent(ProjectileMesh);
 	ProjectileMesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	ProjectileMesh->SetCollisionObjectType(ECC_WorldDynamic);
-	ProjectileMesh->SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap);
-	ProjectileMesh->SetCollisionResponseToChannel(ECC_Camera, ECR_Ignore);
+	ProjectileMesh->SetCollisionResponseToAllChannels(ECR_Ignore);
+	ProjectileMesh->SetIsReplicated(true);
 	
 	ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>("MovementComponent");
+
+	OverlapSphere = CreateDefaultSubobject<USphereComponent>("OverlapSphere");
+	OverlapSphere->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	OverlapSphere->SetCollisionResponseToAllChannels(ECR_Ignore);
+	OverlapSphere->SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap);
+	OverlapSphere->SetupAttachment(GetRootComponent());
+	
 }
 
 void AProjectileBase::SetProjectileParams(const FProjectileParams& Params, const FGameplayTag& InProjectileTag)
@@ -81,9 +90,29 @@ void AProjectileBase::OnRep_ProjectileTag()
 
 void AProjectileBase::OnRep_ProjectileMesh()
 {
-	// Note: We don't set the mesh here because it's handled via SetProjectileParams
-	// which is called from OnRep_ProjectileTag. Setting it here causes the ensure
-	// failure because KnownStaticMesh hasn't been initialized yet.
-	// The ReplicatedMesh is kept in sync with the actual mesh via SetProjectileParams.
+
+}
+
+void AProjectileBase::BeginPlay()
+{
+	Super::BeginPlay();
+	
+	if (HasAuthority())
+	{
+		OverlapSphere->OnComponentBeginOverlap.AddDynamic(this, &ThisClass::OnSphereBeginOverlap);
+	}
+}
+
+void AProjectileBase::OnSphereBeginOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	if (OtherActor == GetOwner()) return;
+	
+	if (UAbilitySystemComponent* TargetASC = UAbilitySystemGlobals::GetAbilitySystemComponentFromActor(OtherActor))
+	{
+		DamageEffectInfo.TargetASC = TargetASC;
+		UDAAbilitySystemLibrary::ApplyDamageEffect(DamageEffectInfo);
+		
+		Destroy();
+	}
 }
 

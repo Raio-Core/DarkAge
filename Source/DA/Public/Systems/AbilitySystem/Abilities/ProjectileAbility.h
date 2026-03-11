@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "DADamageAbility.h"
 #include "Systems/DAAbilityTypes.h"
 #include "Systems/AbilitySystem/Abilities/DAGameplayAbility.h"
 #include "ProjectileAbility.generated.h"
@@ -11,7 +12,7 @@
  * 
  */
 UCLASS()
-class DA_API UProjectileAbility : public UDAGameplayAbility
+class DA_API UProjectileAbility : public UDADamageAbility
 {
 	GENERATED_BODY()
 	

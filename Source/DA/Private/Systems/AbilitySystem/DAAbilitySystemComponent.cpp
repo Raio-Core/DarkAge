@@ -27,7 +27,7 @@ void UDAAbilitySystemComponent::SetDynamicProjectile(const FGameplayTag& Project
 		if (UProjectileAbility* ProjectileAbility = Cast<UProjectileAbility>(Spec.Ability))
 		{
 			ProjectileAbility->ProjectileToSpawnTag = ProjectileTag;
-			Spec.DynamicAbilityTags.AddTag(ProjectileAbility->InputTag);
+			Spec.GetDynamicSpecSourceTags().AddTag(ProjectileAbility->InputTag);
 			
 			ActiveProjectileAbility = GiveAbility(Spec);
 		}
