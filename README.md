@@ -6,7 +6,7 @@
 [![Unreal Engine](https://img.shields.io/badge/Unreal%20Engine-5.7-0EBEED?logo=unrealengine&logoColor=white)](https://www.unrealengine.com/)
 [![Version](https://img.shields.io/badge/Version-0.4.0-orange)]()
 [![Stage](https://img.shields.io/badge/Stage-alpha-orange)]()
-[![Build](https://img.shields.io/badge/Build-71-blue)]()
+[![Build](https://img.shields.io/badge/Build-74-blue)]()
 [![C++](https://img.shields.io/badge/C++-17-00599C?logo=c%2B%2B&logoColor=white)](https://isocpp.org/)
 <!-- BADGES_END -->
 
@@ -17,8 +17,8 @@
 |----------|-------|
 | **Version** | `0.4.0` |
 | **Stage** | `alpha` |
-| **Build** | `71` |
-| **Full Version** | `v0.4.0-alpha+build.71` |
+| **Build** | `74` |
+| **Full Version** | `v0.4.0-alpha+build.74` |
 
 ### Development Progress
 
@@ -27,9 +27,9 @@ Core features complete, testing in progress
 | Metric | Count |
 |--------|-------|
 | Breaking Changes | 0 |
-| New Features | 13 |
+| New Features | 14 |
 | Bug Fixes | 3 |
-| Other Changes | 42 |
+| Other Changes | 44 |
 
 <!-- VERSION_END -->
 
@@ -56,10 +56,10 @@ custom attributes (Health, Stamina, Mana), character mechanics, and modular arch
 | Header Files | 31 |
 | Source Files | 31 |
 | Total C++ Files | 62 |
-| Total Lines | 2,977 |
-| Code Lines | 2,791 |
+| Total Lines | 2,983 |
+| Code Lines | 2,797 |
 | Comment Lines | 186 |
-| Total Commits | 58 |
+| Total Commits | 61 |
 | Contributors | 3 |
 
 <!-- STATS_END -->
@@ -266,6 +266,9 @@ Source/
 <!-- COMMITS_START -->
 ## Recent Changes
 
+- [`0de3635`](https://github.com/Raio-Core/DarkAge/commit/0de3635bd4301ce065f7940042376c193097b6a4) Merge branch 'Feature/Projectile_Damage' (2026-03-12)
+- [`177aa67`](https://github.com/Raio-Core/DarkAge/commit/177aa67b8cb46a0853b0ba2e54b721342b7d9e56) feat(abilities): add ability level parameter to dynamic proj... (2026-03-12)
+- [`6f1320f`](https://github.com/Raio-Core/DarkAge/commit/6f1320f33fd117ee4d33b111dbbf428014e25e83) docs: auto-update README [skip ci] (2026-03-12)
 - [`b0fcead`](https://github.com/Raio-Core/DarkAge/commit/b0fcead83579b9a4e353ea28a129dfe739fc3444) Merge remote-tracking branch 'origin/main' (2026-03-11)
 - [`7f85a31`](https://github.com/Raio-Core/DarkAge/commit/7f85a31aa580f3169d13d2269b18b377fce854a7) feat(abilities): add ability level parameter to projectile s... (2026-03-11)
 - [`2b08983`](https://github.com/Raio-Core/DarkAge/commit/2b08983f681ed8fd1b835979d3d18cee1dbcd5a8) docs: auto-update README [skip ci] (2026-03-11)
@@ -273,17 +276,14 @@ Source/
 - [`8ff5868`](https://github.com/Raio-Core/DarkAge/commit/8ff5868464c5bc4fea31338000073ab5a86b61c4) feat(abilities): implement projectile damage application sys... (2026-03-11)
 - [`92540fa`](https://github.com/Raio-Core/DarkAge/commit/92540fab5b7417dc48b5de763dc3d2d5fdd5aa01) docs: auto-update README [skip ci] (2026-03-09)
 - [`1e9637e`](https://github.com/Raio-Core/DarkAge/commit/1e9637e51dcac3c655fede51810cd23743bec73b) Merge remote-tracking branch 'origin/main' (2026-03-09)
-- [`04a15e3`](https://github.com/Raio-Core/DarkAge/commit/04a15e39a0c9cd3da59af4d7923cf3f7f16a93e3) Merge branch 'PRJ2' (2026-03-09)
-- [`94b7d0d`](https://github.com/Raio-Core/DarkAge/commit/94b7d0dc6986571ef2d9f8fe7b087b8d74baee1f) o Created Dynamic Projectile o Created 2 versions (2026-03-09)
-- [`221a32a`](https://github.com/Raio-Core/DarkAge/commit/221a32a04f9bfcb65fe09c7f98f38b6503f8b753) Merge branch 'Feature/Projectile2' into PRJ2 (2026-03-09)
 
 <!-- COMMITS_END -->
 
 <!-- CONTRIBUTORS_START -->
 ## Contributors
 
-- **Raio-Core** (43 commits)
-- **github-actions[bot]** (13 commits)
+- **Raio-Core** (45 commits)
+- **github-actions[bot]** (14 commits)
 - **Raioix** (2 commits)
 
 <!-- CONTRIBUTORS_END -->
@@ -292,7 +292,7 @@ Source/
 
 <p align="center">
   <i>Copyright 2026 RaioCore and Raioix. All Rights Reserved.</i><br><br>
-  <i>Last updated: 2026-03-12 04:28:59 UTC</i><br>
+  <i>Last updated: 2026-03-12 17:08:21 UTC</i><br>
   <i>This README is automatically generated from project files and git history.</i><br>
   <i>Version follows semantic versioning based on conventional commits.</i>
 </p>
