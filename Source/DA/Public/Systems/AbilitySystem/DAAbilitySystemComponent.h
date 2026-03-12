@@ -24,7 +24,7 @@ private:
 	TSubclassOf<UGameplayAbility> DynamicProjectileAbility;
 
 	UFUNCTION(Server, Reliable)
-	void ServerSetDynamicProjectile(const FGameplayTag& ProjectileTag, int32 AbilityLevel);
+	void ServerSetDynamicProjectile(const FGameplayTag& ProjectileTag, int32 AbilityLevel = 1);
 	
 public:
 	
@@ -37,6 +37,6 @@ public:
 	void AbilityInputPressed(const FGameplayTag& InputTag);
 	void AbilityInputReleased(const FGameplayTag& InputTag);
 	
-	void SetDynamicProjectile(const FGameplayTag& ProjectileTag, int32 AbilityLevel = 1);
+	void SetDynamicProjectile(const FGameplayTag& ProjectileTag, int32 AbilityLevel);
 	
 };

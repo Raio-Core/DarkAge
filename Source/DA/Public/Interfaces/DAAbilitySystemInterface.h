@@ -16,6 +16,7 @@ class UDAAbilitySystemInterface : public UInterface
 /**
  * 
  */
+
 class DA_API IDAAbilitySystemInterface
 {
 	GENERATED_BODY()

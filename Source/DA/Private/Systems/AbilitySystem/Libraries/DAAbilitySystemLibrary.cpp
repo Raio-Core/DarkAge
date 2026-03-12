@@ -38,7 +38,7 @@ void UDAAbilitySystemLibrary::ApplyDamageEffect(const FDamageEffectInfo& DamageE
 	
 	FGameplayEffectSpecHandle SpecHandle = DamageEffectInfo.SourceASC->MakeOutgoingSpec(DamageEffectInfo.DamageEffect, DamageEffectInfo.AbilityLevel, ContextHandle);
 	
-	UAbilitySystemBlueprintLibrary::AssignTagSetByCallerMagnitude, DAGameplayTags::Combat::Data_Damage, DamageEffectInfo.BaseDameage;
+	UAbilitySystemBlueprintLibrary::AssignTagSetByCallerMagnitude(SpecHandle, DAGameplayTags::Combat::Data_Damage, DamageEffectInfo.BaseDameage);
 	if (IsValid(DamageEffectInfo.TargetASC))
 	{
 		DamageEffectInfo.TargetASC->ApplyGameplayEffectSpecToSelf(*SpecHandle.Data.Get());
