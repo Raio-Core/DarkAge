@@ -53,14 +53,11 @@ custom attributes (Health, Stamina, Mana), character mechanics, and modular arch
 
 | Metric | Count |
 |--------|-------|
-| Header Files | 29 |
-| Source Files | 29 |
-| Total C++ Files | 58 |
-| Total Lines | 2,799 |
-| Code Lines | 2,617 |
-| Comment Lines | 182 |
-| Total Commits | 52 |
-| Contributors | 3 |
+| **Header Files** | 31 |
+| **Source Files** | 31 |
+| **Total Classes** | 23 |
+| **Total Structs** | 7 |
+| **Lines of Code** | 2,918 |
 
 <!-- STATS_END -->
 
@@ -199,39 +196,30 @@ Source/
 <!-- CLASSES_START -->
 ## C++ Classes
 
-### DA
+| Class | Description | File |
+|-------|-------------|------|
+| **ACharacterBasse** | - | `CharacterBasse.h` |
+| **ADACharacter** | A simple player-controllable third person characte... | `DACharacter.h` |
+| **ADAGameMode** | Simple GameMode for a third person game | `DAGameMode.h` |
+| **ADAPlayerController** | Basic PlayerController class for a third person ga... | `DAPlayerController.h` |
+| **ADAPlayerState** | - | `DAPlayerState.h` |
+| **ADA_GameMode** | - | `DA_GameMode.h` |
+| **ADA_PlayerController** | PlayerController with inventory and input mapping ... | `DA_PlayerController.h` |
+| **AEffectActor** | - | `EffectActor.h` |
+| **AEnemyBasse** | - | `EnemyBasse.h` |
+| **AProjectileBase** | - | `ProjectileBase.h` |
+| **UCharacterClassInfo** | - | `CharacterClassInfo.h` |
+| **UDAAbilitySystemComponent** | - | `DAAbilitySystemComponent.h` |
+| **UDAAbilitySystemLibrary** | - | `DAAbilitySystemLibrary.h` |
+| **UDAAttributeSet** | - | `DAAttributeSet.h` |
+| **UDADamageAbility** | - | `DADamageAbility.h` |
+| **UDAGameplayAbility** | - | `DAGameplayAbility.h` |
+| **UDAInputConfig** | - | `DAInputConfig.h` |
+| **UDASystemsWidget** | - | `DASystemsWidget.h` |
+| **UInventoryWidgetController** | - | `InventoryWidgetController.h` |
+| **UItemTypesToTables** | - | `ItemTypesToTables.h` |
 
-| Class | Type | Base | Description |
-|-------|------|------|-------------|
-| `ACharacterBasse` | Class | `ACharacter` |  |
-| `ADACharacter` | Class | `ACharacterBasse` |  |
-| `ADAGameMode` | Class | `AGameModeBase` |  |
-| `ADAPlayerController` | Class | `APlayerController` |  |
-| `ADAPlayerState` | Class | `APlayerState` |  |
-| `ADA_GameMode` | Class | `AGameMode` |  |
-| `ADA_PlayerController` | Class | `APlayerController` |  |
-| `AEffectActor` | Class | `AActor` |  |
-| `AEnemyBasse` | Class | `ACharacterBasse` |  |
-| `AProjectileBase` | Class | `AActor` |  |
-| `FCharacterClassDefaultInfo` | Struct | `-` |  |
-| `FConsumableProps` | Struct | `-` |  |
-| `FDAInputAction` | Struct | `-` |  |
-| `FMasterItemDefinition` | Struct | `-` |  |
-| `FPackagedInventory` | Struct | `-` |  |
-| `FProjectileParams` | Struct | `-` |  |
-| `UCharacterClassInfo` | Class | `UDataAsset` |  |
-| `UDAAbilitySystemComponent` | Class | `UAbilitySystemComponent` |  |
-| `UDAAbilitySystemLibrary` | Class | `UBlueprintFunctionLibrary` |  |
-| `UDAAttributeSet` | Class | `UAttributeSet` |  |
-| `UDAGameplayAbility` | Class | `UGameplayAbility` |  |
-| `UDAInputConfig` | Class | `UDataAsset` |  |
-| `UDASystemsWidget` | Class | `UUserWidget` |  |
-| `UInventoryWidgetController` | Class | `UWidgetController` |  |
-| `UItemTypesToTables` | Class | `UDataAsset` |  |
-| `UProjectileAbility` | Class | `UDAGameplayAbility` |  |
-| `UProjectileInfo` | Class | `UDataAsset` |  |
-| `UWidgetController` | Class | `UObject` |  |
-
+*See [API Documentation](docs/API/README.md) for complete reference*
 <!-- CLASSES_END -->
 
 <!-- TAGS_START -->

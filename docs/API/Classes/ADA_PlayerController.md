@@ -7,7 +7,7 @@
 ## Inheritance
 
 ```
-APlayerController -> IAbilitySystemInterface -> IInventoryInterface -> ADA_PlayerController
+APlayerController -> IAbilitySystemInterface -> IInventoryInterface -> IDAAbilitySystemInterface -> ADA_PlayerController
 ```
 
 ## Properties

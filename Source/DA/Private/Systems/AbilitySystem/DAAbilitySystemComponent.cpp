@@ -6,13 +6,13 @@
 #include "Systems/AbilitySystem/Abilities/DAGameplayAbility.h"
 #include "Systems/AbilitySystem/Abilities/ProjectileAbility.h"
 
-void UDAAbilitySystemComponent::SetDynamicProjectile(const FGameplayTag& ProjectileTag)
+void UDAAbilitySystemComponent::SetDynamicProjectile(const FGameplayTag& ProjectileTag, int32 AbilityLevel)
 {
 	if (!ProjectileTag.IsValid()) return;
 	
 	if (!GetAvatarActor()->HasAuthority())
 	{
-		ServerSetDynamicProjectile(ProjectileTag);
+		ServerSetDynamicProjectile(ProjectileTag, AbilityLevel);
 		return;
 	}
 	
@@ -23,7 +23,7 @@ void UDAAbilitySystemComponent::SetDynamicProjectile(const FGameplayTag& Project
 	
 	if (IsValid(DynamicProjectileAbility))
 	{
-		FGameplayAbilitySpec Spec = FGameplayAbilitySpec(DynamicProjectileAbility, 1.f);
+		FGameplayAbilitySpec Spec = FGameplayAbilitySpec(DynamicProjectileAbility, AbilityLevel);
 		if (UProjectileAbility* ProjectileAbility = Cast<UProjectileAbility>(Spec.Ability))
 		{
 			ProjectileAbility->ProjectileToSpawnTag = ProjectileTag;
@@ -35,9 +35,9 @@ void UDAAbilitySystemComponent::SetDynamicProjectile(const FGameplayTag& Project
 	
 }
 
-void UDAAbilitySystemComponent::ServerSetDynamicProjectile_Implementation(const FGameplayTag& ProjectileTag)
+void UDAAbilitySystemComponent::ServerSetDynamicProjectile_Implementation(const FGameplayTag& ProjectileTag, int32 AbilityLevel)
 {
-	SetDynamicProjectile(ProjectileTag);
+	SetDynamicProjectile(ProjectileTag, AbilityLevel);
 }
 
 void UDAAbilitySystemComponent::AddCharacterAbilities(const TArray<TSubclassOf<UGameplayAbility>>& AbilitiesToGrant)

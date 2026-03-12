@@ -545,7 +545,7 @@ def update_readme(root_dir: Path, stats: Dict, parser: UnrealHeaderParser) -> No
     
     content = readme_path.read_text(encoding='utf-8')
     
-    stats_section = f"""<!-- AUTO-UPDATE-START: Statistics -->
+    stats_section = f"""<!-- STATS_START -->
 ## Project Statistics
 
 | Metric | Count |
@@ -556,24 +556,23 @@ def update_readme(root_dir: Path, stats: Dict, parser: UnrealHeaderParser) -> No
 | **Total Structs** | {stats['total_structs']} |
 | **Lines of Code** | {stats['total_lines']:,} |
 
-*Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}*
-<!-- AUTO-UPDATE-END: Statistics -->"""
+<!-- STATS_END -->"""
     
-    stats_pattern = r'<!-- AUTO-UPDATE-START: Statistics -->.*?<!-- AUTO-UPDATE-END: Statistics -->'
+    stats_pattern = r'<!-- STATS_START -->.*?<!-- STATS_END -->'
     if re.search(stats_pattern, content, re.DOTALL):
         content = re.sub(stats_pattern, stats_section, content, flags=re.DOTALL)
     
     if parser.classes:
-        class_list = "<!-- AUTO-UPDATE-START: ClassList -->\n## Core Classes\n\n"
+        class_list = "<!-- CLASSES_START -->\n## C++ Classes\n\n"
         class_list += "| Class | Description | File |\n|-------|-------------|------|\n"
         
         for uclass in sorted(parser.classes, key=lambda c: c.name)[:20]:
             desc = (uclass.comment[:50] + "...") if uclass.comment and len(uclass.comment) > 50 else (uclass.comment or "-")
             class_list += f"| **{uclass.name}** | {desc} | `{Path(uclass.file_path).name}` |\n"
         
-        class_list += "\n*See [API Documentation](docs/API/README.md) for complete reference*\n<!-- AUTO-UPDATE-END: ClassList -->"
+        class_list += "\n*See [API Documentation](docs/API/README.md) for complete reference*\n<!-- CLASSES_END -->"
         
-        class_pattern = r'<!-- AUTO-UPDATE-START: ClassList -->.*?<!-- AUTO-UPDATE-END: ClassList -->'
+        class_pattern = r'<!-- CLASSES_START -->.*?<!-- CLASSES_END -->'
         if re.search(class_pattern, content, re.DOTALL):
             content = re.sub(class_pattern, class_list, content, flags=re.DOTALL)
     

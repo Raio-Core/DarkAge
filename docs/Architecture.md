@@ -6,40 +6,94 @@ This document provides a high-level overview of the DA project's architecture.
 
 ```mermaid
 classDiagram
-    ACharacter <|-- ADACharacter
-    IAbilitySystemInterface <|-- ADACharacter
-    AGameModeBase <|-- ADAGameMode
-    APlayerController <|-- ADAPlayerController
     AActor <|-- AEffectActor
+    ACharacter <|-- ACharacterBasse
+    ACharacterBasse <|-- ADACharacter
+    IAbilitySystemInterface <|-- ADACharacter
+    IDAAbilitySystemInterface <|-- ADACharacter
+    ACharacterBasse <|-- AEnemyBasse
+    IAbilitySystemInterface <|-- AEnemyBasse
     UDataAsset <|-- UCharacterClassInfo
+    UDataAsset <|-- UProjectileInfo
     UDataAsset <|-- UDAInputConfig
+    AActor <|-- AProjectileBase
     UUserWidget <|-- UDASystemsWidget
+    AGameModeBase <|-- ADAGameMode
     AGameMode <|-- ADA_GameMode
+    APlayerController <|-- ADAPlayerController
     APlayerController <|-- ADA_PlayerController
     IAbilitySystemInterface <|-- ADA_PlayerController
     IInventoryInterface <|-- ADA_PlayerController
+    IDAAbilitySystemInterface <|-- ADA_PlayerController
     APlayerState <|-- ADAPlayerState
     IAbilitySystemInterface <|-- ADAPlayerState
     UAbilitySystemComponent <|-- UDAAbilitySystemComponent
     UDataAsset <|-- UItemTypesToTables
+    UDAGameplayAbility <|-- UDADamageAbility
     UGameplayAbility <|-- UDAGameplayAbility
+    UDADamageAbility <|-- UProjectileAbility
     UAttributeSet <|-- UDAAttributeSet
     UBlueprintFunctionLibrary <|-- UDAAbilitySystemLibrary
     UWidgetController <|-- UInventoryWidgetController
     UObject <|-- UWidgetController
-    class ADACharacter {
-        +USpringArmComponent*: )
-        +UCameraComponent*: )
-        +TObjectPtr<UDAAbilitySystemComponent>: )
-        +TObjectPtr<UDAAttributeSet>: )
+    class AEffectActor {
+        -TObjectPtr<UStaticMeshComponent>: )
+        -TObjectPtr<UBoxComponent>: )
+        -unknown: TSubclassOf<UGameplayEffect>
+        -OnBoxBeginOverlap(...)
+    }
+    class ACharacterBasse {
         -unknown: FGameplayTag
         +BroadcastInitialValues()
         -OnHealthChanged(...)
         -OnStaminaChanged(...)
         -OnManaChanged(...)
+    }
+    class ADACharacter {
+        +USpringArmComponent*: )
+        +UCameraComponent*: )
+        +TObjectPtr<UDAAbilitySystemComponent>: )
+        +TObjectPtr<UDAAttributeSet>: )
+        -TObjectPtr<USceneComponent>: )
         +DoMove(...)
+        +DoLook(...)
+        +DoJumpStart()
+        +DoJumpEnd()
+    }
+    class AEnemyBasse {
+        -=: bool bInitAttributes
+        +TObjectPtr<UDAAbilitySystemComponent>: )
+        +TObjectPtr<UDAAttributeSet>: )
+        -OnRep_InitAttributes()
+    }
+    class UCharacterClassInfo {
+        -FCharacterClassDefaultInfo>: TMap<FGameplayTag,
+    }
+    class UProjectileInfo {
+        -unknown: TMap<FGameplayTag,FProjectileParams>
+    }
+    class UDAInputConfig {
+        -unknown: TArray<FDAInputAction>
+    }
+    class AProjectileBase {
+        -TObjectPtr<UStaticMeshComponent>: )
+        -TObjectPtr<USphereComponent>: )
+        -unknown: TObjectPtr<UProjectileMovementComponent>
+        -unknown: FGameplayTag
+        -unknown: TObjectPtr<UObject>
+        -OnRep_ProjectileTag()
+        -OnRep_ProjectileMesh()
+        -OnSphereBeginOverlap(...)
+    }
+    class UDASystemsWidget {
+        +TObjectPtr<UWidgetController>: )
+        -OnWidgetControllerSet()
     }
     class ADAGameMode {
+    }
+    class ADA_GameMode {
+        -unknown: TObjectPtr<UCharacterClassInfo>
+        -unknown: TObjectPtr<UProjectileInfo>
     }
     class ADAPlayerController {
         -unknown: TArray<UInputMappingContext*>
@@ -47,25 +101,6 @@ classDiagram
         -unknown: TSubclassOf<UUserWidget>
         -unknown: TObjectPtr<UUserWidget>
         -=: bool bForceTouchControls
-    }
-    class AEffectActor {
-        -TObjectPtr<UStaticMeshComponent>: )
-        -TObjectPtr<UBoxComponent>: )
-        -unknown: TSubclassOf<UGameplayEffect>
-        -OnBoxBeginOverlap(...)
-    }
-    class UCharacterClassInfo {
-        -FCharacterClassDefaultInfo>: TMap<FGameplayTag,
-    }
-    class UDAInputConfig {
-        -unknown: TArray<FDAInputAction>
-    }
-    class UDASystemsWidget {
-        +TObjectPtr<UWidgetController>: )
-        -OnWidgetControllerSet()
-    }
-    class ADA_GameMode {
-        -unknown: TObjectPtr<UCharacterClassInfo>
     }
     class ADA_PlayerController {
         -unknown: TObjectPtr<UDAAbilitySystemComponent>
@@ -82,12 +117,23 @@ classDiagram
         +GetDAAttributes()
     }
     class UDAAbilitySystemComponent {
+        -unknown: TSubclassOf<UGameplayAbility>
+        -ServerSetDynamicProjectile(...)
     }
     class UItemTypesToTables {
         -TObjectPtr<UDataTable>>: TMap<FGameplayTag,
     }
+    class UDADamageAbility {
+        -unknown: TSubclassOf<UGameplayEffect>
+        -unknown: FScalableFloat
+    }
     class UDAGameplayAbility {
         -unknown: FGameplayTag
+    }
+    class UProjectileAbility {
+        -unknown: TObjectPtr<AActor>
+        -unknown: FGameplayTag
+        +SpawnProjectile()
     }
     class UDAAttributeSet {
         +unknown: FGameplayAttributeData
@@ -103,6 +149,8 @@ classDiagram
     }
     class UDAAbilitySystemLibrary {
         +GetCharacterClassDefaultInfo(...)
+        +GetProjectileInfo(...)
+        +ApplyDamageEffect(...)
     }
     class UInventoryWidgetController {
         -unknown: TObjectPtr<AActor>

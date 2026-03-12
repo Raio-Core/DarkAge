@@ -2,7 +2,7 @@
 
 *Basic PlayerController class for a third person game Manages input mappings*
 
-**File:** `Source\DA\DAPlayerController.h`
+**File:** `Source\DA\Public\Game\PlayerController\DAPlayerController.h`
 
 ## Inheritance
 

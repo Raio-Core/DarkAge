@@ -12,7 +12,7 @@ APlayerState -> IAbilitySystemInterface -> ADAPlayerState
 
 | Name | Type | Specifiers | Category |
 |------|------|------------|----------|
-| `TObjectPtr<UDAAbilitySystemComponent>` | `)` | BlueprintReadOnly | meta | - |
+| `TObjectPtr<UDAAbilitySystemComponent>` | `)` | VisibleAnywhere | BlueprintReadOnly | meta | - |
 | `TObjectPtr<UDAAttributeSet>` | `)` | BlueprintReadOnly | meta | - |
 
 ## Functions

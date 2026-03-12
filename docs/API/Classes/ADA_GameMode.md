@@ -13,3 +13,4 @@ AGameMode -> ADA_GameMode
 | Name | Type | Specifiers | Category |
 |------|------|------------|----------|
 | `unknown` | `TObjectPtr<UCharacterClassInfo>` | EditDefaultsOnly | `Custom Values|Class Defaults` |
+| `unknown` | `TObjectPtr<UProjectileInfo>` | EditDefaultsOnly | `Custom Values|Projectiles` |

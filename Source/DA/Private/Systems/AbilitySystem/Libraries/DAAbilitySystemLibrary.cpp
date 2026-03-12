@@ -3,11 +3,13 @@
 
 #include "Systems/AbilitySystem/Libraries/DAAbilitySystemLibrary.h"
 
+#include "AbilitySystemBlueprintLibrary.h"
 #include "GameplayEffect.h"
 #include "AbilitySystemComponent.h"
 #include "Systems/DAAbilityTypes.h"
 #include "Game/GameMode/DA_GameMode.h"
 #include "Kismet/GameplayStatics.h"
+#include "Systems/AbilitySystem/DAGameplayTags.h"
 
 UCharacterClassInfo* UDAAbilitySystemLibrary::GetCharacterClassDefaultInfo(const UObject* WorldContextObject)
 {
@@ -36,6 +38,7 @@ void UDAAbilitySystemLibrary::ApplyDamageEffect(const FDamageEffectInfo& DamageE
 	
 	FGameplayEffectSpecHandle SpecHandle = DamageEffectInfo.SourceASC->MakeOutgoingSpec(DamageEffectInfo.DamageEffect, DamageEffectInfo.AbilityLevel, ContextHandle);
 	
+	UAbilitySystemBlueprintLibrary::AssignTagSetByCallerMagnitude, DAGameplayTags::Combat::Data_Damage, DamageEffectInfo.BaseDameage;
 	if (IsValid(DamageEffectInfo.TargetASC))
 	{
 		DamageEffectInfo.TargetASC->ApplyGameplayEffectSpecToSelf(*SpecHandle.Data.Get());

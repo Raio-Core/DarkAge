@@ -2,7 +2,7 @@
 
 *Simple GameMode for a third person game*
 
-**File:** `Source\DA\DAGameMode.h`
+**File:** `Source\DA\Public\Game\GameMode\DAGameMode.h`
 
 ## Inheritance
 

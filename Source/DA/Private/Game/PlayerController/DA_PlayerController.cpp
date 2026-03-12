@@ -130,11 +130,11 @@ UInventoryComponent* ADA_PlayerController::GetInventoryComponent_Implementation(
 	return InventoryComponent;
 }
 
-void ADA_PlayerController::SetDynamicProjectile_Implementation(const FGameplayTag& ProjectileTag)
+void ADA_PlayerController::SetDynamicProjectile_Implementation(const FGameplayTag& ProjectileTag, int32 AbilityLevel)
 {
 	if (IsValid(DAAbilitySystemComp))
 	{
-		DAAbilitySystemComp->SetDynamicProjectile(ProjectileTag);
+		DAAbilitySystemComp->SetDynamicProjectile(ProjectileTag, AbilityLevel);
 	}
 }
 
