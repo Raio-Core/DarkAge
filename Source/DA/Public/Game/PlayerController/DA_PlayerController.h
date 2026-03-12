@@ -88,7 +88,7 @@ public:
 	virtual UInventoryComponent* GetInventoryComponent_Implementation() const;
 	
 	// Implement DAAbilitySystemInterface
-	virtual void SetDynamicProjectile_Implementation(const FGameplayTag& ProjectileTag) override;
+	virtual void SetDynamicProjectile_Implementation(const FGameplayTag& ProjectileTag, int32 AbilityLevel) override;
 	
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	

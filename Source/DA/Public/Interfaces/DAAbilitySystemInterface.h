@@ -16,6 +16,7 @@ class UDAAbilitySystemInterface : public UInterface
 /**
  * 
  */
+
 class DA_API IDAAbilitySystemInterface
 {
 	GENERATED_BODY()
@@ -26,6 +27,6 @@ public:
 	USceneComponent* SetDynamicSpawnPoint();
 	
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
-	void SetDynamicProjectile(const FGameplayTag& ProjectileTag);
+	void SetDynamicProjectile(const FGameplayTag& ProjectileTag, int32 AbilityLevel = 1);
 	
 };
