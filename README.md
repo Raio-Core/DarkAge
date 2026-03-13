@@ -41,31 +41,70 @@ This project includes comprehensive documentation covering all aspects of develo
 | **[GDD/Locations.md](docs/GDD/Locations.md)** | World locations - Westbrook, Fractured Citadel, Bone Orchard |
 | **[GDD/Multiplayer.md](docs/GDD/Multiplayer.md)** | Shared universe architecture |
 | **[GDD/DeathAndResurrection.md](docs/GDD/DeathAndResurrection.md)** | Death mechanics and consequences |
+| **[GDD/Combat.md](docs/GDD/Combat.md)** | Comprehensive combat system - stances, weapons, abilities |
+| **[GDD/CraftingAndEconomy.md](docs/GDD/CraftingAndEconomy.md)** | Crafting disciplines and player economy |
+| **[GDD/CompanionsAndMounts.md](docs/GDD/CompanionsAndMounts.md)** | Companion system and mounts |
+| **[GDD/QuestsAndMissions.md](docs/GDD/QuestsAndMissions.md)** | Quest types and mission design |
+| **[GDD/HistoryAndLore.md](docs/GDD/HistoryAndLore.md)** | World history and lore |
+| **[GDD/Bestiary.md](docs/GDD/Bestiary.md)** | Creatures and enemies |
+| **[GDD/MomentumSystem.md](docs/GDD/MomentumSystem.md)** | Revolutionary flow-based combat system |
+| **[GDD/LivingWorldSystem.md](docs/GDD/LivingWorldSystem.md)** | Dynamic world that evolves with player actions |
+| **[GDD/LegacySystem.md](docs/GDD/LegacySystem.md)** | Permadeath system with Soul Fragments inheritance |
+| **[GDD/SoulChainSystem.md](docs/GDD/SoulChainSystem.md)** | Permanent party bonds that persist through death |
+| **[GDD/MemorySystem.md](docs/GDD/MemorySystem.md)** | Past choices unlock abilities and shape present |
+| **[GDD/RiftWalkerSystem.md](docs/GDD/RiftWalkerSystem.md)** | Cross-realm gameplay visiting parallel Echoes |
+| **[GDD/WorldShiftSystem.md](docs/GDD/WorldShiftSystem.md)** | Dynamic server-wide events and cycles |
+| **[GDD/AddictiveGameLoops.md](docs/GDD/AddictiveGameLoops.md)** | Psychology of engagement systems |
+| **[GDD/FactionsExpanded.md](docs/GDD/FactionsExpanded.md)** | Expanded factions - Covenant, Unbound, Unweaver sub-factions |
+| **[GDD/MagicSystemsExpanded.md](docs/GDD/MagicSystemsExpanded.md)** | Complete magic systems - 9 major schools, 30+ specializations |
+| **[GDD/EnemiesExpanded.md](docs/GDD/EnemiesExpanded.md)** | Bestiary - 100+ creatures from vermin to world bosses |
+| **[GDD/LocationsExpanded.md](docs/GDD/LocationsExpanded.md)** | Complete atlas - 18 major regions and dungeons |
+| **[GDD/ClassesExpanded.md](docs/GDD/ClassesExpanded.md)** | Class guide - 8 base classes, 30+ specializations |
+| **[GDD/ItemsAndEquipmentExpanded.md](docs/GDD/ItemsAndEquipmentExpanded.md)** | Arsenal - Weapons, armor, legendary items, enchantments |
+| **[GDD/QuestLinesExpanded.md](docs/GDD/QuestLinesExpanded.md)** | Epic quests - Main campaign, faction, raid, legacy questlines |
+| **[GDD/LivingWorldSystem.md](docs/GDD/LivingWorldSystem.md)** | Living, breathing game world |
+| **[GDD/LegacySystem.md](docs/GDD/LegacySystem.md)** | Death is not the end - permadeath consequences |
+| **[GDD/SoulChainSystem.md](docs/GDD/SoulChainSystem.md)** | Deep party bonds beyond death |
+| **[GDD/MemorySystem.md](docs/GDD/MemorySystem.md)** | Your past choices shape your present |
+| **[GDD/RiftWalkerSystem.md](docs/GDD/RiftWalkerSystem.md)** | Master of realities - cross-realm gameplay |
+| **[GDD/WorldShiftSystem.md](docs/GDD/WorldShiftSystem.md)** | Reality itself evolves |
+| **[GDD/AddictiveGameLoops.md](docs/GDD/AddictiveGameLoops.md)** | Psychology of endless engagement |
 | **[Architecture.md](docs/Architecture.md)** | Technical architecture and class diagrams |
 | **[Systems/README.md](docs/Systems/README.md)** | Game systems documentation |
+| **[Systems/ServerArchitecture.md](docs/Systems/ServerArchitecture.md)** | Server infrastructure design |
+| **[Systems/NetworkAndNetcode.md](docs/Systems/NetworkAndNetcode.md)** | Network protocols and netcode |
 | **[CONTRIBUTING.md](docs/CONTRIBUTING.md)** | Development guidelines |
 | **[API/README.md](docs/API/README.md)** | API reference documentation |
 
 ---
 
-## 🎯 Core Pillars
+## 🎯 Core Pillars - What Makes Dark Age Different
 
-These design pillars define the Dark Age experience, as detailed in the [GDD](docs/GDD/README.md):
+These design pillars define the Dark Age experience, as detailed in the [GDD](docs/GDD/README.md). Dark Age is built on **8 revolutionary game systems** that work together to create an unprecedented gaming experience:
 
-### 1. Choice Defines Being
-Unlike traditional RPGs, your character's appearance, powers, and standing emerge from your actions—not a character creation screen. Cruelty hardens you. Mercy softens you. The Void marks you.
+### 1. The Momentum System - Flow-Based Combat
+**Master the art of combat flow.** Every attack, dodge, and parry builds your Momentum. At 80%+, enter FLOW STATE for devastating power. [Learn more...](docs/GDD/MomentumSystem.md)
 
-### 2. Persistent Consequence
-The world remembers. NPCs gossip about your deeds. Shops refuse service to villains. Kingdoms rise and fall based on collective player action.
+### 2. The Living World System - A World That Breathes
+**Your actions change everything.** Faction control shifts, territories transform, and the world evolves based on collective player behavior. [Learn more...](docs/GDD/LivingWorldSystem.md)
 
-### 3. Player Governance
-Form guilds, build coalitions, rule kingdoms. Establish laws, levy taxes, command armies. The world is shaped by those powerful enough to shape it.
+### 3. The Legacy System - Death Is Not The End
+**Permadeath with purpose.** When your character dies, they become part of your legacy. Soul Fragments grant power to future characters. [Learn more...](docs/GDD/LegacySystem.md)
 
-### 4. Multiplayer Reality
-Millions of players coexist in a shared universe of Echoes (parallel realities). Travel between worlds. Build settlements in multiple realities. Project power across dimensional borders.
+### 4. The Soul Chain System - Bonds Beyond Death
+**Connect with other players like never before.** Soul Chains create deep, permanent bonds with shared abilities and eternal connections. [Learn more...](docs/GDD/SoulChainSystem.md)
 
-### 5. No Mandatory Magic
-**Magic is optional.** Not every player needs to wield supernatural powers. The world of Dark Age accommodates warriors, rogues, strategists, and craftsmen who never touch the arcane. Your power comes from your choices, not your class.
+### 5. The Memory System - Your Past Shapes Your Present
+**Every choice echoes forever.** Memories from past actions unlock abilities, affect NPC interactions, and create your unique story. [Learn more...](docs/GDD/MemorySystem.md)
+
+### 6. The Rift Walker System - Master of Realities
+**Walk between parallel worlds.** Visit Echoes—parallel versions of the realm created by every choice. Collect unique materials. [Learn more...](docs/GDD/RiftWalkerSystem.md)
+
+### 7. The World Shift System - Reality Evolves
+**The server has a heartbeat.** Weekly cycles, monthly events, and catastrophic shifts keep the world forever dynamic. [Learn more...](docs/GDD/WorldShiftSystem.md)
+
+### 8. Addictive Game Loops - The Psychology of Engagement
+**Built for lasting addiction through satisfaction.** Scientifically-designed loops create genuine, ethical engagement. [Learn more...](docs/GDD/AddictiveGameLoops.md)
 
 ---
 

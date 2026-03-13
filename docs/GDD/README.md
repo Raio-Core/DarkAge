@@ -96,6 +96,245 @@ Play with millions:
 
 </div>
 
+<div class="nav-card">
+
+### ⚔️ [Combat.md](Combat.md)
+**Combat System**
+
+Master the art of war:
+- Physical combat stances and techniques
+- Weapon mastery trees
+- Gameplay Ability System integration
+- Soul combat mechanics
+- Enemy AI behaviors
+- PvP combat and honor system
+
+</div>
+
+<div class="nav-card">
+
+### 🔨 [CraftingAndEconomy.md](CraftingAndEconomy.md)
+**Crafting & Economy**
+
+Build your legacy:
+- Five crafting disciplines
+- Player-driven economy
+- Resource generation
+- Soul Anchor crafting
+- Dynamic market system
+
+</div>
+
+<div class="nav-card">
+
+### 🤝 [CompanionsAndMounts.md](CompanionsAndMounts.md)
+**Companions & Mounts**
+
+Build bonds:
+- NPC companion roster
+- Companion loyalty system
+- Mount types and acquisition
+- Bonding and synergies
+- Personal stables and housing
+
+</div>
+
+<div class="nav-card">
+
+### 📜 [QuestsAndMissions.md](QuestsAndMissions.md)
+**Quests & Missions**
+
+Your path forward:
+- Main story questline
+- Branching narratives
+- Quest rewards and scaling
+- World events
+- Player-created quests
+
+</div>
+
+<div class="nav-card">
+
+### 📖 [HistoryAndLore.md](HistoryAndLore.md)
+**History & Lore**
+
+Discover the world:
+- Age before the Veil
+- Covenant's rise
+- Faction histories
+- Important locations
+- Prophecies and legends
+
+</div>
+
+<div class="nav-card">
+
+### 📖 [Bestiary.md](Bestiary.md)
+**Bestiary**
+
+Know thy enemies:
+- Humanoid enemies
+- Void creatures
+- Wildlife
+- Boss enemies
+- Combat tips
+
+</div>
+
+<div class="nav-card">
+
+### 💀 [DeathAndResurrection.md](DeathAndResurrection.md)
+**Death & Resurrection**
+
+Face mortality:
+- Soul Anchor system
+- Permadeath mode
+- Life-preserving shards
+- True Death mechanics
+
+</div>
+
+</div>
+
+---
+
+## 🚀 REVOLUTIONARY SYSTEMS - What Makes Dark Age Unique
+
+Dark Age is built on 8 groundbreaking game systems that work together to create an unprecedented gaming experience. These systems are 100% original and differentiate Dark Age from any other game in the market.
+
+<div class="nav-grid">
+
+<div class="nav-card">
+
+### ⚡ [MomentumSystem.md](MomentumSystem.md)
+**Momentum System - Flow-Based Combat**
+
+Master the art of combat flow:
+- Build Momentum with every action (attack, dodge, parry)
+- Enter FLOW STATE at 80%+ for devastating 2-3x power
+- Combo chains requiring skill to execute
+- Visual spectacle when at peak power
+- Soul Shard resonance at high Momentum
+
+*No other game has this exact system.*
+
+</div>
+
+<div class="nav-card">
+
+### 🌍 [LivingWorldSystem.md](LivingWorldSystem.md)
+**Living World System - A World That Breathes**
+
+Your actions change everything:
+- Faction influence shifts territories in real-time
+- The World Tide cycles weekly
+- Player-driven economy responds to scarcity
+- Your actions become history in the Chronicle
+- Echo Events create parallel reality conflicts
+
+*Dynamic world evolution like no other.*
+
+</div>
+
+<div class="nav-card">
+
+### 💀 [LegacySystem.md](LegacySystem.md)
+**Legacy System - Death Is Not The End**
+
+Permadeath with profound meaning:
+- Soul Fragments pass power to future characters
+- The Ancestral Library tracks your history
+- Echo Resurrection offers second chances
+- Death Craters mark your final moments
+- "The Covenant's Challenge" hardcore mode
+
+*Death has never been this meaningful.*
+
+</div>
+
+<div class="nav-card">
+
+### 🔗 [SoulChainSystem.md](SoulChainSystem.md)
+**Soul Chain System - Bonds Beyond Death**
+
+Deep party connections unlike any other game:
+- Soul Chains create permanent player bonds
+- Shared abilities requiring coordination
+- Chain persists through character death
+- Unique combo attacks with your partner
+- Soul Chain guilds and ceremonies
+
+*Real connections that transcend individual characters.*
+
+</div>
+
+</div>
+
+<div class="nav-grid">
+
+<div class="nav-card">
+
+### 🧠 [MemorySystem.md](MemorySystem.md)
+**Memory System - Your Past Shapes Your Present**
+
+Every choice creates lasting memories:
+- Memory unlocks unique abilities
+- Karma axes (Compassion, Honor, Order, Sacrifice)
+- Cross-character memory inheritance
+- Echo encounters with alternate selves
+- Memory Corruption for going against your nature
+
+*Your story truly matters.*
+
+</div>
+
+<div class="nav-card">
+
+### 🌀 [RiftWalkerSystem.md](RiftWalkerSystem.md)
+**Rift Walker System - Master of Realities**
+
+Walk between parallel worlds:
+- Visit Echoes—parallel versions of reality
+- Unique materials per Echo (Void Crystal, Chronos Ore, etc.)
+- Fight your Shadow self
+- Rift Master class specialization
+- Echo stabilization and collapsing
+
+*True multiverse exploration.*
+
+</div>
+
+<div class="nav-card">
+
+### 🌊 [WorldShiftSystem.md](WorldShiftSystem.md)
+**World Shift System - Reality Evolves**
+
+Server-wide dynamic events:
+- Weekly Turning events
+- Cataclysmic world changes (The Breaking)
+- Seasonal content cycles
+- Server identity and Chronicle history
+- World Boss dynamic spawning
+
+*Your server has a living history.*
+
+</div>
+
+<div class="nav-card">
+
+### 🎯 [AddictiveGameLoops.md](AddictiveGameLoops.md)
+**Addictive Game Loops - Psychology of Engagement**
+
+Built for lasting addiction through satisfaction:
+- 7 scientifically-designed engagement loops
+- Mastery, Collection, Social, Narrative
+- Variable rewards, Loss aversion, Competition
+- Ethical, player-first design principles
+
+*Engagement through genuine satisfaction, not manipulation.*
+
+</div>
+
 </div>
 
 ---
