@@ -64,6 +64,9 @@ Form guilds, build coalitions, rule kingdoms. Establish laws, levy taxes, comman
 ### 4. Multiplayer Reality
 Millions of players coexist in a shared universe of Echoes (parallel realities). Travel between worlds. Build settlements in multiple realities. Project power across dimensional borders.
 
+### 5. No Mandatory Magic
+**Magic is optional.** Not every player needs to wield supernatural powers. The world of Dark Age accommodates warriors, rogues, strategists, and craftsmen who never touch the arcane. Your power comes from your choices, not your class.
+
 ---
 
 ## 🏛️ Factions Overview
@@ -79,17 +82,75 @@ Millions of players coexist in a shared universe of Echoes (parallel realities).
 
 ---
 
+## ⚔️ Combat & Abilities System
+
+Dark Age features a unified ability system where **all player capabilities** flow through the Gameplay Ability System (GAS). Whether you wield magic or rely on mundane skills, everything uses the same underlying framework.
+
+### Ability Categories
+
+#### Physical Combat (Non-Magical)
+- **Melee Mastery** - Sword, axe, mace, dagger techniques
+- **Ranged Combat** - Bow, crossbow, thrown weapons
+- **Defense** - Blocking, dodging, armor specialization
+- **Combat Maneuvers** - Parry, counter-attack, disarming strikes
+
+#### Skill-Based (Non-Magical)
+- **Stealth** - Sneaking, lockpicking, traps
+- **Survival** - Foraging, tracking, endurance
+- **Crafting** - Smithing, alchemy, enchanting (non-magical)
+- **Leadership** - Battle commands, morale boosting
+
+#### Magic (Optional)
+See the Magic System section below for details on how magic works for those who choose it.
+
+### Progression Through Action
+
+Your abilities grow based on **how you play**, not through level-ups or class selection:
+
+| Playstyle | Abilities Developed |
+|-----------|---------------------|
+| Frequently help others | Healing, protection, buff abilities |
+| Frequently harm others | Damage, fear, debuff abilities |
+| Frequently deceive | Illusion, stealth, manipulation |
+| Frequently explore | Detection, navigation, survival |
+| Frequently craft | Item creation, enhancement |
+
+*See [GDD/Gameplay.md](docs/GDD/Gameplay.md) for full combat mechanics*
+
+---
+
 ## ✨ Magic System
 
-As documented in our [GDD/Magic.md](docs/GDD/Magic.md), magic in Dark Age is based on **Soul Shard Manipulation**:
+As documented in our [GDD/Magic.md](docs/GDD/Magic.md), magic in Dark Age is based on **Soul Shard Manipulation**. Magic is entirely **optional**—many powerful warriors never touch the arcane.
 
-### Two Forms of Magic
+### The Foundation: Soul Shard Manipulation
 
-- **Additive Magic** - The art of creation, healing, and protection. Develops from helping behaviors and creates a gentle, soft appearance.
-- **Subtractive Magic** - The art of destruction, unmaking, and Void powers. Develops from lethal violence and creates shadowed, corrupted features.
+Every living being possesses a **Soul Shard**—the crystalline core that connects body to spirit. Those with the gift can perceive and manipulate these shards.
+
+### Two Forms of Magic (Optional)
+
+#### Additive Magic - The Art of Creation
+The magic of healing, protection, and creation. Develops from helping behaviors.
+
+| School | Function | Visual Manifestation |
+|--------|----------|---------------------|
+| **Healing** | Mending damaged Soul Shards | Gentle aura, soft light |
+| **Warding** | Protecting Soul Shards | Shielding glow |
+| **Binding** | Connecting shards for effects | Golden threads |
+| **Revealing** | Illuminating hidden truths | Piercing clarity |
+
+#### Subtractive Magic - The Art of Unmaking
+The magic of destruction and the Void. Develops from lethal violence.
+
+| School | Function | Visual Manifestation |
+|--------|----------|---------------------|
+| **Unraveling** | Destroying Soul Shards | Shadowed presence |
+| **Consuming** | Absorbing shard power | Dark veins, hunger |
+| **Void-Walking** | Moving through spaces between Echoes | Translucent patches |
+| **Silencing** | Creating areas where magic fails | Null zones |
 
 ### The Confessor's Touch
-Unique magic that bridges both forms - the ability to Add the caster's will while Subtracting the victim's identity, creating "Hollow" servants.
+Unique magic that bridges both forms—the ability to Add the caster's will while Subtracting the victim's identity, creating "Hollow" servants. Terrifying and forbidden.
 
 ### The Wizard's Rules
 Seven philosophical principles governing magic, taught by Soren the Wizard:
@@ -100,19 +161,52 @@ Seven philosophical principles governing magic, taught by Soren the Wizard:
 4. **There Is Magic in Sincere Forgiveness** - Even the Consumed can be redeemed
 5. **Mind What People Do, Not What They Say** - Deeds betray a lie
 6. **The Only Sovereign You Can Allow to Rule You Is Reason** - But reason without passion is empty
-7. **Life Is the Future, Not the Past** - The past can teach us, but it can only be a guide
+7. **Life Is the Future, Not The Past** - The past can teach us, but it can only be a guide
+
+### Magic Development
+
+Magic abilities emerge organically from playstyle. A player who never uses magic will never develop magical abilities—they'll become stronger, more skilled, more deadly through mundane means instead.
+
+*Full magic details available in [GDD/Magic.md](docs/GDD/Magic.md)*
+
+---
+
+## 🎭 Character Progression
+
+### Emergent Character Development
+
+In Dark Age, there are no classes. Your character becomes what you do:
+
+| Play Pattern | Physical Changes | Social Standing | Available Powers |
+|--------------|------------------|-----------------|------------------|
+| **Protector** | Softened features, gentle aura | Trusted by common folk | Healing, shields, buffs |
+| **Destroyer** | Hardened angles, shadowed presence | Feared by many | Subtractive magic, fear |
+| **Manipulator** | Shifting, unreadable features | Respected by criminals | Illusion, charm |
+| **Seeker** | Piercing gaze, alert posture | Sought for wisdom | Detection, knowledge |
+| **Void-Touched** | Translucent skin, void-marks | Shunned by normals | Subtractive mastery |
+| **Warrior** | Muscular, scarred | Respected in battle | Melee mastery, tactics |
+| **Rogue** | Lean, quick movements | Known in shadows | Stealth, precision |
+| **Craftsman** | Calloused hands, focused eyes | Valued by merchants | Enhancement, creation |
+
+### Attributes
+
+| Attribute | Description | Base Value |
+|-----------|-------------|------------|
+| Health | Hit points | 100 |
+| MaxHealth | Health cap | 100 |
+| Stamina | Action resource | 50 |
+| MaxStamina | Stamina cap | 50 |
+| Mana | Magic resource (optional) | 50 |
+| MaxMana | Magic cap | 50 |
+
+*See [GDD/Characters.md](docs/GDD/Characters.md) for character evolution details*
 
 ---
 
 ## 👥 Key Characters
 
 ### Player Character
-You are not chosen. You are not destined. You are simply **you**—an individual who discovers the ability to perceive Soul Shards and must decide what to do with that power.
-
-Your character evolves based entirely on your choices:
-- **No pre-defined class**: Your abilities emerge from how you play
-- **No fixed morality**: The game doesn't judge; the world reacts
-- **No required path**: Help the Covenants, join the Unbound, or walk alone
+You are not chosen. You are not destined. You are simply **you**—an individual who may discover the ability to perceive Soul Shards, and must decide what to do with that power (or ignore it entirely).
 
 ### Major NPCs
 
@@ -129,7 +223,7 @@ Your character evolves based entirely on your choices:
 
 ---
 
-## 🎮 Technical Overview
+## 🏗️ Technical Overview
 
 ### Engine & Build
 
@@ -150,16 +244,6 @@ The project implements a comprehensive game framework including:
 
 *See [Systems/README.md](docs/Systems/README.md) for detailed GAS documentation*
 
-#### Attribute System
-| Attribute | Description | Base Value |
-|-----------|-------------|------------|
-| Health | Hit points | 100 |
-| MaxHealth | Health cap | 100 |
-| Stamina | Action resource | 50 |
-| MaxStamina | Stamina cap | 50 |
-| Mana | Magic resource | 50 |
-| MaxMana | Mana cap | 50 |
-
 #### Inventory System
 - Tag-based item identification using GameplayTags
 - Network-replicated inventory with [`UInventoryComponent`](Source/DA/Public/Systems/Inventory/InventoryComponent.h)
@@ -178,7 +262,10 @@ The project implements a comprehensive game framework including:
 #### Projectile System
 - [`AProjectileBase`](Source/DA/Public/Projectiles/ProjectileBase.h) - Replicated projectiles
 - [`UProjectileAbility`](Source/DA/Public/Systems/AbilitySystem/Abilities/ProjectileAbility.h) - Ability that spawns projectiles
-- [`UProjectileInfo`](Source/DA/Public/Data/ProjectileInfo.h) - Data-driven projectile configuration
+
+### Architecture Documentation
+
+For detailed technical architecture including class diagrams and system interactions, see [Architecture.md](docs/Architecture.md).
 
 ---
 
@@ -243,55 +330,6 @@ Source/
         DA.h
     DA.Target.cs
     DAEditor.Target.cs
-```
-
----
-
-## 🏗️ Architecture
-
-### Class Hierarchy
-
-See [Architecture.md](docs/Architecture.md) for detailed class diagrams and system architecture.
-
-```mermaid
-classDiagram
-    AActor <|-- AEffectActor
-    ACharacter <|-- ACharacterBasse
-    ACharacterBasse <|-- ADACharacter
-    IAbilitySystemInterface <|-- ADACharacter
-    ACharacterBasse <|-- AEnemyBasse
-    IAbilitySystemInterface <|-- AEnemyBasse
-    AActor <|-- AProjectileBase
-    AGameModeBase <|-- ADAGameMode
-    AGameMode <|-- ADA_GameMode
-    APlayerController <|-- ADAPlayerController
-    APlayerController <|-- ADA_PlayerController
-    APlayerState <|-- ADAPlayerState
-    UAbilitySystemComponent <|-- UDAAbilitySystemComponent
-    UGameplayAbility <|-- UDAGameplayAbility
-    UDAGameplayAbility <|-- UDADamageAbility
-    UDADamageAbility <|-- UProjectileAbility
-    UAttributeSet <|-- UDAAttributeSet
-    UBlueprintFunctionLibrary <|-- UDAAbilitySystemLibrary
-```
-
-### Combat Flow
-
-```mermaid
-sequenceDiagram
-    participant P as Player
-    participant IC as InputComponent
-    participant PC as PlayerController
-    participant ASC as AbilitySystem
-    participant Attr as AttributeSet
-    
-    P->>IC: Press Ability Key
-    IC->>PC: Input Tag
-    PC->>ASC: Try Activate Ability
-    ASC->>ASC: Check Cooldown/Cost
-    ASC->>Attr: Consume Stamina/Mana
-    ASC->>ASC: Execute Ability
-    ASC->>Attr: Apply Effects
 ```
 
 ---
