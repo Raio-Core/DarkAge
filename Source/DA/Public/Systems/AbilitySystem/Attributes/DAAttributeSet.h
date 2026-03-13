@@ -24,6 +24,8 @@ class DA_API UDAAttributeSet : public UAttributeSet
 	
 private:
 	
+	void HandleIncomingHealthDamage(const FGameplayEffectModCallbackData& Data);
+	
 	UFUNCTION()
 	void OnRep_Health(const FGameplayAttributeData& OldHealth) const;
 	
@@ -70,6 +72,10 @@ public:
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing=OnRep_MaxMana)
 	FGameplayAttributeData MaxMana;
 	ATTRIBUTE_ACCESSORS(UDAAttributeSet, MaxMana)
+	
+	UPROPERTY()
+	FGameplayAttributeData IncomingHealthDamage;
+	ATTRIBUTE_ACCESSORS(UDAAttributeSet, IncomingHealthDamage)
 
 	
 };

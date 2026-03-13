@@ -42,6 +42,19 @@ void UDAAttributeSet::PostGameplayEffectExecute(const struct FGameplayEffectModC
 	{
 		SetMana(FMath::Clamp(GetMana(), 0.f, GetMaxMana()));
 	}
+	
+	if (Data.EvaluatedData.Attribute == GetIncomingHealthDamageAttribute())
+	{
+		HandleIncomingHealthDamage(Data);
+	}
+}
+
+void UDAAttributeSet::HandleIncomingHealthDamage(const FGameplayEffectModCallbackData& Data)
+{
+	const float LocalDamage = GetIncomingHealthDamage();
+	SetIncomingHealthDamage(0.f);
+	
+	SetHealth(FMath::Clamp(GetHealth() - LocalDamage, 0.f, GetMaxHealth()));
 }
 
 void UDAAttributeSet::OnRep_Health(const FGameplayAttributeData& OldHealth) const
