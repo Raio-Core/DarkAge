@@ -6,7 +6,7 @@
 [![Unreal Engine](https://img.shields.io/badge/Unreal%20Engine-5.7-0EBEED?logo=unrealengine&logoColor=white)](https://www.unrealengine.com/)
 [![Version](https://img.shields.io/badge/Version-0.4.0-orange)]()
 [![Stage](https://img.shields.io/badge/Stage-alpha-orange)]()
-[![Build](https://img.shields.io/badge/Build-83-blue)]()
+[![Build](https://img.shields.io/badge/Build-89-blue)]()
 [![C++](https://img.shields.io/badge/C++-17-00599C?logo=c%2B%2B&logoColor=white)](https://isocpp.org/)
 <!-- BADGES_END -->
 
@@ -17,8 +17,8 @@
 |----------|-------|
 | **Version** | `0.4.0` |
 | **Stage** | `alpha` |
-| **Build** | `83` |
-| **Full Version** | `v0.4.0-alpha+build.83` |
+| **Build** | `89` |
+| **Full Version** | `v0.4.0-alpha+build.89` |
 
 ### Development Progress
 
@@ -27,9 +27,9 @@ Core features complete, testing in progress
 | Metric | Count |
 |--------|-------|
 | Breaking Changes | 0 |
-| New Features | 15 |
-| Bug Fixes | 3 |
-| Other Changes | 52 |
+| New Features | 16 |
+| Bug Fixes | 4 |
+| Other Changes | 56 |
 
 <!-- VERSION_END -->
 
@@ -56,10 +56,10 @@ custom attributes (Health, Stamina, Mana), character mechanics, and modular arch
 | Header Files | 32 |
 | Source Files | 32 |
 | Total C++ Files | 64 |
-| Total Lines | 3,082 |
-| Code Lines | 2,882 |
-| Comment Lines | 200 |
-| Total Commits | 70 |
+| Total Lines | 3,181 |
+| Code Lines | 2,957 |
+| Comment Lines | 224 |
+| Total Commits | 76 |
 | Contributors | 3 |
 
 <!-- STATS_END -->
@@ -99,6 +99,7 @@ Source/
             Character/
                 CharacterBasse.cpp
                 DACharacter.cpp
+                DACharacter.cpp~
                 EnemyBasse.cpp
             Data/
                 CharacterClassInfo.cpp
@@ -271,24 +272,24 @@ Source/
 <!-- COMMITS_START -->
 ## Recent Changes
 
+- [`d64ced8`](https://github.com/Raio-Core/DarkAge/commit/d64ced8679ca37e0fec6cf08c7bb1604e0e3233d) Merge remote-tracking branch 'origin/main' (2026-03-15)
+- [`4f66efd`](https://github.com/Raio-Core/DarkAge/commit/4f66efdedd8c241cb1b8f7d4b182eb9f42c0bd89) Merge branch 'Feature/ProjectileDamage/3' (2026-03-15)
+- [`6167e80`](https://github.com/Raio-Core/DarkAge/commit/6167e801dafaca4bede7e3fabe08069935fdbc39) fix(abilitysystem): fix damage calculation and stamina attri... (2026-03-15)
+- [`20facc1`](https://github.com/Raio-Core/DarkAge/commit/20facc1478ace788f0cc211678ca246b46d6b3f2) docs: auto-update README [skip ci] (2026-03-15)
+- [`fcfe3a6`](https://github.com/Raio-Core/DarkAge/commit/fcfe3a6fd46854a0d6f5b6b84bdedfa4b566ffb3) feat(abilitysystem): add shield and damage reduction attribu... (2026-03-14)
+- [`7186040`](https://github.com/Raio-Core/DarkAge/commit/718604072ada9b33c4fcc5c72cc595477079afd1) docs: add comprehensive documentation for 8 revolutionary ga... (2026-03-13)
 - [`7dc437c`](https://github.com/Raio-Core/DarkAge/commit/7dc437cdd3eecb749364bdb7852f7000b0e45d7f) Merge remote-tracking branch 'origin/main' (2026-03-12)
 - [`5576864`](https://github.com/Raio-Core/DarkAge/commit/557686471ae0471af544e0256254566755b47de8) docs: expand game documentation with new GDD and systems doc... (2026-03-12)
 - [`54abcf4`](https://github.com/Raio-Core/DarkAge/commit/54abcf417d93d0a809b49e9f4aa794fdba383f2c) docs: auto-update README [skip ci] (2026-03-13)
 - [`5b97643`](https://github.com/Raio-Core/DarkAge/commit/5b97643b9b44208e02a6cbdaa25c96141f8b2a4f) feat(abilitysystem): add incoming health damage handling to ... (2026-03-12)
-- [`f2e386d`](https://github.com/Raio-Core/DarkAge/commit/f2e386d5ee6d60f823ca2c5b61a602941308d21c) docs: add combat and character progression documentation (2026-03-12)
-- [`4eb75da`](https://github.com/Raio-Core/DarkAge/commit/4eb75da9981f217f6f1840c19c1e4bd620dc35a8) docs: redesign README with comprehensive game documentation (2026-03-12)
-- [`8c43393`](https://github.com/Raio-Core/DarkAge/commit/8c433938fcf423ddd0124e906f7632f27fb410e8) Merge remote-tracking branch 'origin/main' (2026-03-12)
-- [`4cf38e2`](https://github.com/Raio-Core/DarkAge/commit/4cf38e27293eaa4e8b18b4f1525106d504b06eb0) docs: redesign README with improved game overview and docume... (2026-03-12)
-- [`b6c8739`](https://github.com/Raio-Core/DarkAge/commit/b6c8739e6dfe7f6319ef310cd0d8f1063bd5fb07) docs: auto-update README [skip ci] (2026-03-12)
-- [`0de3635`](https://github.com/Raio-Core/DarkAge/commit/0de3635bd4301ce065f7940042376c193097b6a4) Merge branch 'Feature/Projectile_Damage' (2026-03-12)
 
 <!-- COMMITS_END -->
 
 <!-- CONTRIBUTORS_START -->
 ## Contributors
 
-- **Raio-Core** (52 commits)
-- **github-actions[bot]** (16 commits)
+- **Raio-Core** (57 commits)
+- **github-actions[bot]** (17 commits)
 - **Raioix** (2 commits)
 
 <!-- CONTRIBUTORS_END -->
@@ -297,7 +298,7 @@ Source/
 
 <p align="center">
   <i>Copyright 2026 RaioCore and Raioix. All Rights Reserved.</i><br><br>
-  <i>Last updated: 2026-03-15 05:26:26 UTC</i><br>
+  <i>Last updated: 2026-03-15 06:30:45 UTC</i><br>
   <i>This README is automatically generated from project files and git history.</i><br>
   <i>Version follows semantic versioning based on conventional commits.</i>
 </p>
