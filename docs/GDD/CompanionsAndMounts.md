@@ -1,5 +1,3 @@
-e# 🤝 Companions & Mounts: Bonds Beyond the Veil
-
 > *"In a world fractured by the Veil, friendship is the one bond that transcends reality itself. A faithful companion is worth more than a legion of Hollow soldiers."*
 > — **Lyra the Bone Woman**
 
