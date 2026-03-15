@@ -39,6 +39,9 @@ public:
 	void OnStaminaChanged(float CurrentStamina, float MaxStamina);
 	
 	UFUNCTION(BlueprintImplementableEvent)
+	void OnShieldChanged(float CurrentShield, float MaxShield);
+	
+	UFUNCTION(BlueprintImplementableEvent)
 	void OnManaChanged(float CurrentMana, float MaxMana);
 	
 };

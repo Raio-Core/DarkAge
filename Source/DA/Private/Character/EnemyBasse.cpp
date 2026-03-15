@@ -71,6 +71,12 @@ void AEnemyBasse::BindCallbacksToDependencies()
 				OnHealthChanged(Data.NewValue, DAAttributes->GetMaxHealth());
 			});
 		
+		DAAbilitySystemComp->GetGameplayAttributeValueChangeDelegate(DAAttributes->GetShieldAttribute()).AddLambda(
+			[this](const FOnAttributeChangeData& Data)-> void
+			{
+				OnShieldChanged(Data.NewValue, DAAttributes->GetMaxShield());
+			});
+		
 		if (HasAuthority())
 		{
 			DAAbilitySystemComp->OnAttributesGiven.AddLambda(
@@ -107,5 +113,6 @@ void AEnemyBasse::BroadcastInitialValues()
 	if (IsValid(DAAttributes))
 	{
 		OnHealthChanged(DAAttributes->GetHealth(), DAAttributes->GetMaxHealth());
+		OnShieldChanged(DAAttributes->GetShield(), DAAttributes->GetMaxShield());
 	}
 }

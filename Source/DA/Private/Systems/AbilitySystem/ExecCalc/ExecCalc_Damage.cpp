@@ -52,7 +52,7 @@ void UExecCalc_Damage::Execute_Implementation(const FGameplayEffectCustomExecuti
 {
 	const FGameplayEffectSpec& EffectSpec = ExecutionParams.GetOwningSpec();
 	
-	const FGameplayTagContainer* TargetTag = EffectSpec.CapturedSourceTags.GetAggregatedTags();
+	const FGameplayTagContainer* TargetTag = EffectSpec.CapturedTargetTags.GetAggregatedTags();
 	const FGameplayTagContainer* SourceTags = EffectSpec.CapturedSourceTags.GetAggregatedTags();
 	
 	FAggregatorEvaluateParameters EvalParams;
@@ -65,22 +65,21 @@ void UExecCalc_Damage::Execute_Implementation(const FGameplayEffectCustomExecuti
 	
 	// Target Captures
 	float  Shield = 0.f;
-	ExecutionParams.AttemptCalculateCapturedAttributeBonusMagnitude(DamageStatics().ShieldDef, EvalParams, Shield);
+	ExecutionParams.AttemptCalculateCapturedAttributeMagnitude(DamageStatics().ShieldDef, EvalParams, Shield);
 	Shield = FMath::Max<float>(Shield, 0.0f);
 	
 	float DamageReduction = 0.f;
-	ExecutionParams.AttemptCalculateCapturedAttributeBonusMagnitude(DamageStatics().DamageReductionDef, EvalParams, DamageReduction);
+	ExecutionParams.AttemptCalculateCapturedAttributeMagnitude(DamageStatics().DamageReductionDef, EvalParams, DamageReduction);
 	DamageReduction = FMath::Max<float>(DamageReduction, 0.0f);
 	
 	float OutShield = 0.f;
 	
-	if (Damage > 0.f && DamageReduction > 0.f)
+	if (Damage > 0.f && Shield > 0.f)
 	{
-		Damage += (100 - DamageReduction) / 100 ;
+		Damage *= (100 - DamageReduction) / 100.0f;
 		OutShield = Shield - Damage;
 		
-		OutExecutionOutput.AddOutputModifier(FGameplayModifierEvaluatedData(DamageStatics().IncomingHealthDamageProperty, EGameplayModOp::Additive, Damage));
-		
+		OutExecutionOutput.AddOutputModifier(FGameplayModifierEvaluatedData(DamageStatics().IncomingShieldDamageProperty, EGameplayModOp::Additive, Damage));
 	}
 	
 	if (OutShield <= 0.f)
