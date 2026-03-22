@@ -50,13 +50,17 @@ Thumbs.db
 # Content cooking
 Content/Cooked/
 
+# UE5 Generated/Compiled Content (MUST BE IGNORED - huge auto-generated files)
+*_BuiltData.uasset
+__ExternalActors__/
+__ExternalObjects__/
+
 # Pak files
 *.pak
 *.upk
 
 # Crash report files
 *.mdmp
-*.txt
 
 # Autosave files
 *.autosave

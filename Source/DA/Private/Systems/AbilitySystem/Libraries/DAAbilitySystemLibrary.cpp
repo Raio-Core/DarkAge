@@ -6,7 +6,7 @@
 #include "AbilitySystemBlueprintLibrary.h"
 #include "GameplayEffect.h"
 #include "AbilitySystemComponent.h"
-#include "Systems/DAAbilityTypes.h"
+#include "Systems/AbilitySystem/DAAbilityTypes.h"
 #include "Game/GameMode/DA_GameMode.h"
 #include "Kismet/GameplayStatics.h"
 #include "Systems/AbilitySystem/DAGameplayTags.h"

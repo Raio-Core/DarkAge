@@ -4,7 +4,7 @@
 #include "Systems/AbilitySystem/Abilities/DADamageAbility.h"
 
 #include  "AbilitySystemGlobals.h"
-#include "Systems/DAAbilityTypes.h"
+#include "Systems/AbilitySystem/DAAbilityTypes.h"
 
 void UDADamageAbility::CaptureDagaeEffectInfo(AActor* TargetActor, FDamageEffectInfo& OutInfo)
 {

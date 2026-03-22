@@ -3,11 +3,63 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GameplayEffectTypes.h"
 #include "DAAbilityTypes.generated.h"
 
 class AProjectileBase;
 class UGameplayEffect;
 class UAbilitySystemComponent;
+
+USTRUCT()
+struct FDAGameplayEffectContext : public FGameplayEffectContext
+{
+	GENERATED_BODY()
+	
+public:
+	
+	bool IsCriticalHit() const {return bCriticalHit;}
+	
+	void SetIsCriticalHit(const bool InCriticalHit) {bCriticalHit = InCriticalHit;}
+	
+	static DA_API
+	FDAGameplayEffectContext* GetEffetContext(FGameplayEffectContextHandle Handle);
+	
+	virtual UScriptStruct* GetScriptStruct() const override
+	{
+		return  StaticStruct();
+	}
+	
+	virtual FDAGameplayEffectContext* Duplicate() const override
+	{
+		FDAGameplayEffectContext* NewContext = new FDAGameplayEffectContext();
+		*NewContext = *this;
+		
+		if (GetHitResult())
+		{
+			NewContext->AddHitResult(*GetHitResult(), true);
+		}
+		
+		return NewContext;
+	}
+	
+	virtual bool NetSerialize(FArchive& Ar, class UPackageMap* Map, bool& bOutSuccess) override;
+	
+private:
+	
+	UPROPERTY()
+	bool bCriticalHit = false;
+	
+};
+
+template<>
+struct TStructOpsTypeTraits<FDAGameplayEffectContext> : TStructOpsTypeTraitsBase2<FDAGameplayEffectContext>
+{
+	enum
+	{
+		WithNetSerializer = true,
+		WithCopy = true
+	};
+};
 
 USTRUCT()
 struct FProjectileParams

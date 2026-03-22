@@ -4,25 +4,31 @@
 #include "Systems/AbilitySystem/Attributes/DAAttributeSet.h"
 #include "Net/UnrealNetwork.h"
 #include "GameplayEffectExtension.h"
+#include "Systems/AbilitySystem/DAAbilityTypes.h"
 
 
 void UDAAttributeSet::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	
 	// Health
-	DOREPLIFETIME_CONDITION_NOTIFY(UDAAttributeSet, Health, COND_None, REPNOTIFY_Always)
-	DOREPLIFETIME_CONDITION_NOTIFY(UDAAttributeSet, MaxHealth, COND_None, REPNOTIFY_Always)
+	DOREPLIFETIME_CONDITION_NOTIFY(UDAAttributeSet, Health, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UDAAttributeSet, MaxHealth, COND_None, REPNOTIFY_Always);
 	// Shield
-	DOREPLIFETIME_CONDITION_NOTIFY(UDAAttributeSet, Shield, COND_None, REPNOTIFY_Always)
-	DOREPLIFETIME_CONDITION_NOTIFY(UDAAttributeSet, MaxShield, COND_None, REPNOTIFY_Always)
+	DOREPLIFETIME_CONDITION_NOTIFY(UDAAttributeSet, Shield, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UDAAttributeSet, MaxShield, COND_None, REPNOTIFY_Always);
 	// Damage Reduction
-	DOREPLIFETIME_CONDITION_NOTIFY(UDAAttributeSet, DamageReduction, COND_None, REPNOTIFY_Always)
+	DOREPLIFETIME_CONDITION_NOTIFY(UDAAttributeSet, DamageReduction, COND_None, REPNOTIFY_Always);
+	// Crit Damage
+	DOREPLIFETIME_CONDITION_NOTIFY(UDAAttributeSet, CritDamage, COND_None, REPNOTIFY_Always);
+	// Crit Chance
+	DOREPLIFETIME_CONDITION_NOTIFY(UDAAttributeSet, CritChance, COND_None, REPNOTIFY_Always);
 	// Stamina
-	DOREPLIFETIME_CONDITION_NOTIFY(UDAAttributeSet, Stamina, COND_None, REPNOTIFY_Always)
-	DOREPLIFETIME_CONDITION_NOTIFY(UDAAttributeSet, MaxStamina, COND_None, REPNOTIFY_Always)
+	DOREPLIFETIME_CONDITION_NOTIFY(UDAAttributeSet, Stamina, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UDAAttributeSet, MaxStamina, COND_None, REPNOTIFY_Always);
 	// Mana
-	DOREPLIFETIME_CONDITION_NOTIFY(UDAAttributeSet, Mana, COND_None, REPNOTIFY_Always)
-	DOREPLIFETIME_CONDITION_NOTIFY(UDAAttributeSet, MaxMana, COND_None, REPNOTIFY_Always)
+	DOREPLIFETIME_CONDITION_NOTIFY(UDAAttributeSet, Mana, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UDAAttributeSet, MaxMana, COND_None, REPNOTIFY_Always);
 	
 }
 
@@ -62,6 +68,13 @@ void UDAAttributeSet::HandleIncomingHealthDamage(const FGameplayEffectModCallbac
 	const float LocalDamage = GetIncomingHealthDamage();
 	SetIncomingHealthDamage(0.f);
 	
+	FGameplayEffectContextHandle ContextHandle = Data.EffectSpec.GetContext();
+	FDAGameplayEffectContext* DAContext = FDAGameplayEffectContext::GetEffetContext(ContextHandle);
+	FColor DebugColor = DAContext->IsCriticalHit() ? FColor::Red : FColor::Green;
+	
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, DebugColor,
+		FString::Printf(TEXT("Damage Dealt: %d"), FMath::TruncToInt(LocalDamage)));
+	
 	SetHealth(FMath::Clamp(GetHealth() - LocalDamage, 0.f, GetMaxHealth()));
 }
 
@@ -69,6 +82,13 @@ void UDAAttributeSet::HandleIncomingShieldDamage(const FGameplayEffectModCallbac
 {
 	const float LocalDamage = GetIncomingShieldDamage();
 	SetIncomingShieldDamage(0.f);
+	
+	FGameplayEffectContextHandle ContextHandle = Data.EffectSpec.GetContext();
+	FDAGameplayEffectContext* DAContext = FDAGameplayEffectContext::GetEffetContext(ContextHandle);
+	FColor DebugColor = DAContext->IsCriticalHit() ? FColor::Red : FColor::Green;
+	
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, DebugColor,
+		FString::Printf(TEXT("Damage Dealt: %d"), FMath::TruncToInt(LocalDamage)));
 	
 	SetShield(FMath::Clamp(GetShield() - LocalDamage, 0.f, GetMaxShield()));
 }
@@ -96,6 +116,17 @@ void UDAAttributeSet::OnRep_DamageReduction(const FGameplayAttributeData& OldDam
 {
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UDAAttributeSet, DamageReduction, OldDamageReduction);
 }
+
+void UDAAttributeSet::OnRep_CritChance(const FGameplayAttributeData& OldCritChance)
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UDAAttributeSet, CritChance, OldCritChance);
+}
+
+void UDAAttributeSet::OnRep_CritDamage(const FGameplayAttributeData& OldCritDamage)
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UDAAttributeSet, CritChance, OldCritDamage);
+}
+
 // Stamina
 void UDAAttributeSet::OnRep_Stamina(const FGameplayAttributeData& OldStamina) const
 {

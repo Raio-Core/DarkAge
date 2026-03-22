@@ -39,6 +39,12 @@ private:
 	// Damage Reduction
 	UFUNCTION()
 	void OnRep_DamageReduction(const FGameplayAttributeData& OldDamageReduction) const;
+	// Crit Chance
+	UFUNCTION()
+	void OnRep_CritChance(const FGameplayAttributeData& OldCritChance);
+	// Crit Damage
+	UFUNCTION()
+	void OnRep_CritDamage(const FGameplayAttributeData& OldCritDamage);
 	// Stamina
 	UFUNCTION()
 	void OnRep_Stamina(const FGameplayAttributeData& OldStamina) const;
@@ -72,6 +78,14 @@ public:
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing=OnRep_DamageReduction)
 	FGameplayAttributeData DamageReduction;
 	ATTRIBUTE_ACCESSORS(UDAAttributeSet, DamageReduction)
+	// Crit Chance
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing=OnRep_CritChance)
+	FGameplayAttributeData CritChance;
+	ATTRIBUTE_ACCESSORS(UDAAttributeSet, CritChance);
+	//Crit Damage
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing=OnRep_CritDamage)
+	FGameplayAttributeData CritDamage;
+	ATTRIBUTE_ACCESSORS(UDAAttributeSet, CritDamage);
 	// Stamina
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing=OnRep_Stamina)
 	FGameplayAttributeData Stamina;

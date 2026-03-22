@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameplayTagContainer.h"
 #include "GameFramework/Actor.h"
-#include "Systems/DAAbilityTypes.h"
+#include "Systems/AbilitySystem/DAAbilityTypes.h"
 #include "ProjectileBase.generated.h"
 
 class USphereComponent;

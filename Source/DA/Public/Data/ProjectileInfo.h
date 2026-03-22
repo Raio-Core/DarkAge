@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameplayTagContainer.h"
 #include "Engine/DataAsset.h"
-#include "Systems/DAAbilityTypes.h"
+#include "Systems/AbilitySystem/DAAbilityTypes.h"
 #include "ProjectileInfo.generated.h"
 
 /**
