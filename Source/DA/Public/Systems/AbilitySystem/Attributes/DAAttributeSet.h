@@ -24,8 +24,8 @@ class DA_API UDAAttributeSet : public UAttributeSet
 	
 private:
 	// Handles
-	void HandleIncomingHealthDamage(const FGameplayEffectModCallbackData& Data);
-	void HandleIncomingShieldDamage(const FGameplayEffectModCallbackData& Data);
+	void HandleIncomingDamage(const FGameplayEffectModCallbackData& Data);
+
 	// Health
 	UFUNCTION()
 	void OnRep_Health(const FGameplayAttributeData& OldHealth) const;
@@ -100,14 +100,11 @@ public:
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing=OnRep_MaxMana)
 	FGameplayAttributeData MaxMana;
 	ATTRIBUTE_ACCESSORS(UDAAttributeSet, MaxMana)
-	// Incoming Health Damage
+	// Incoming Damage
 	UPROPERTY()
-	FGameplayAttributeData IncomingHealthDamage;
-	ATTRIBUTE_ACCESSORS(UDAAttributeSet, IncomingHealthDamage)
-	// Incoming Shield Damage
-	UPROPERTY()
-	FGameplayAttributeData IncomingShieldDamage;
-	ATTRIBUTE_ACCESSORS(UDAAttributeSet, IncomingShieldDamage)
+	FGameplayAttributeData IncomingDamage;
+	ATTRIBUTE_ACCESSORS(UDAAttributeSet, IncomingDamage)
+
 
 	
 };

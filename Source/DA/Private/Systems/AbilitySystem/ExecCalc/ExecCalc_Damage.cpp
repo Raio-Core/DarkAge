@@ -13,8 +13,7 @@ struct DADamageStatics
 	DECLARE_ATTRIBUTE_CAPTUREDEF(CritDamage);
 	
 	// Target Capture
-	DECLARE_ATTRIBUTE_CAPTUREDEF(IncomingHealthDamage);
-	DECLARE_ATTRIBUTE_CAPTUREDEF(IncomingShieldDamage);
+	DECLARE_ATTRIBUTE_CAPTUREDEF(IncomingDamage);
 	DECLARE_ATTRIBUTE_CAPTUREDEF(DamageReduction);
 	DECLARE_ATTRIBUTE_CAPTUREDEF(Shield);
 
@@ -26,8 +25,7 @@ struct DADamageStatics
 		DEFINE_ATTRIBUTE_CAPTUREDEF(UDAAttributeSet, CritDamage, Source, false);
 		
 		// Target Defines
-		DEFINE_ATTRIBUTE_CAPTUREDEF(UDAAttributeSet, IncomingHealthDamage, Target, false);
-		DEFINE_ATTRIBUTE_CAPTUREDEF(UDAAttributeSet, IncomingShieldDamage, Target, false);
+		DEFINE_ATTRIBUTE_CAPTUREDEF(UDAAttributeSet, IncomingDamage, Target, false);
 		DEFINE_ATTRIBUTE_CAPTUREDEF(UDAAttributeSet, DamageReduction, Target, false);
 		DEFINE_ATTRIBUTE_CAPTUREDEF(UDAAttributeSet, Shield, Target, false);
 		
@@ -47,8 +45,7 @@ UExecCalc_Damage::UExecCalc_Damage()
 	RelevantAttributesToCapture.Add(DamageStatics().CritDamageDef);
 	
 	//Target Captures
-	RelevantAttributesToCapture.Add(DamageStatics().IncomingHealthDamageDef);
-	RelevantAttributesToCapture.Add(DamageStatics().IncomingShieldDamageDef);
+	RelevantAttributesToCapture.Add(DamageStatics().IncomingDamageDef);
 	RelevantAttributesToCapture.Add(DamageStatics().DamageReductionDef);
 	RelevantAttributesToCapture.Add(DamageStatics().ShieldDef);
 	
@@ -94,19 +91,11 @@ void UExecCalc_Damage::Execute_Implementation(const FGameplayEffectCustomExecuti
 	Damage = bCriticalHit ? Damage + (CritDamage * 0.5) : Damage;
 	DAContext->SetIsCriticalHit(bCriticalHit);
 	
-	float OutShield = 0.f;
 	
 	if (Damage > 0.f && Shield > 0.f)
 	{
 		Damage *= (100 - DamageReduction) / 100.0f;
-		OutShield = Shield - Damage;
-		
-		OutExecutionOutput.AddOutputModifier(FGameplayModifierEvaluatedData(DamageStatics().IncomingShieldDamageProperty, EGameplayModOp::Additive, Damage));
 	}
 	
-	if (OutShield <= 0.f)
-	{
-		const float RemainderDamage = fabs(Shield - Damage);
-		OutExecutionOutput.AddOutputModifier(FGameplayModifierEvaluatedData(DamageStatics().IncomingHealthDamageProperty, EGameplayModOp::Additive, RemainderDamage));
-	}
+	OutExecutionOutput.AddOutputModifier(FGameplayModifierEvaluatedData(DamageStatics().IncomingDamageProperty, EGameplayModOp::Additive, Damage));
 }

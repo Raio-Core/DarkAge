@@ -51,48 +51,33 @@ void UDAAttributeSet::PostGameplayEffectExecute(const struct FGameplayEffectModC
 		SetMana(FMath::Clamp(GetMana(), 0.f, GetMaxMana()));
 	}
 	
-	if (Data.EvaluatedData.Attribute == GetIncomingHealthDamageAttribute())
+	if (Data.EvaluatedData.Attribute == GetIncomingDamageAttribute())
 	{
-		HandleIncomingHealthDamage(Data);
-	}
-	
-	if (Data.EvaluatedData.Attribute == GetIncomingShieldDamageAttribute())
-	{
-		HandleIncomingShieldDamage(Data);
+		HandleIncomingDamage(Data);
 	}
 	
 }
 
-void UDAAttributeSet::HandleIncomingHealthDamage(const FGameplayEffectModCallbackData& Data)
+void UDAAttributeSet::HandleIncomingDamage(const FGameplayEffectModCallbackData& Data)
 {
-	const float LocalDamage = GetIncomingHealthDamage();
-	SetIncomingHealthDamage(0.f);
+	const float LocalDamage = GetIncomingDamage();
+	SetIncomingDamage(0.f);
 	
-	FGameplayEffectContextHandle ContextHandle = Data.EffectSpec.GetContext();
-	FDAGameplayEffectContext* DAContext = FDAGameplayEffectContext::GetEffetContext(ContextHandle);
-	FColor DebugColor = DAContext->IsCriticalHit() ? FColor::Red : FColor::Green;
+	float LocalShield = GetShield();
+	float OutShield = 0.f;
 	
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, DebugColor,
-		FString::Printf(TEXT("Damage Dealt: %d"), FMath::TruncToInt(LocalDamage)));
+	if (LocalDamage > 0.f && LocalShield > 0.f)
+	{
+		OutShield = LocalShield - LocalDamage;
+		SetShield(FMath::Clamp(OutShield, 0.f, GetMaxShield()));
+	}
 	
-	SetHealth(FMath::Clamp(GetHealth() - LocalDamage, 0.f, GetMaxHealth()));
+	if (LocalDamage > 0.f && OutShield <= 0.f)
+	{
+		const float RemainderDamage = fabs(LocalShield - LocalDamage); 
+		SetHealth(FMath::Clamp(GetHealth() - RemainderDamage, 0.f, GetMaxHealth()));
+	}
 }
-
-void UDAAttributeSet::HandleIncomingShieldDamage(const FGameplayEffectModCallbackData& Data)
-{
-	const float LocalDamage = GetIncomingShieldDamage();
-	SetIncomingShieldDamage(0.f);
-	
-	FGameplayEffectContextHandle ContextHandle = Data.EffectSpec.GetContext();
-	FDAGameplayEffectContext* DAContext = FDAGameplayEffectContext::GetEffetContext(ContextHandle);
-	FColor DebugColor = DAContext->IsCriticalHit() ? FColor::Red : FColor::Green;
-	
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, DebugColor,
-		FString::Printf(TEXT("Damage Dealt: %d"), FMath::TruncToInt(LocalDamage)));
-	
-	SetShield(FMath::Clamp(GetShield() - LocalDamage, 0.f, GetMaxShield()));
-}
-
 // Health
 void UDAAttributeSet::OnRep_Health(const FGameplayAttributeData& OldHealth) const
 {
