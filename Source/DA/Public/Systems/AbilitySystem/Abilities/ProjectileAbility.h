@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "DADamageAbility.h"
-#include "Systems/DAAbilityTypes.h"
+#include "Systems/AbilitySystem/DAAbilityTypes.h"
 #include "Systems/AbilitySystem/Abilities/DAGameplayAbility.h"
 #include "ProjectileAbility.generated.h"
 
