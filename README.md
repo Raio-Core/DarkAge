@@ -6,7 +6,7 @@
 [![Unreal Engine](https://img.shields.io/badge/Unreal%20Engine-5.7-0EBEED?logo=unrealengine&logoColor=white)](https://www.unrealengine.com/)
 [![Version](https://img.shields.io/badge/Version-0.4.0-orange)]()
 [![Stage](https://img.shields.io/badge/Stage-alpha-orange)]()
-[![Build](https://img.shields.io/badge/Build-90-blue)]()
+[![Build](https://img.shields.io/badge/Build-95-blue)]()
 [![C++](https://img.shields.io/badge/C++-17-00599C?logo=c%2B%2B&logoColor=white)](https://isocpp.org/)
 <!-- BADGES_END -->
 
@@ -17,8 +17,8 @@
 |----------|-------|
 | **Version** | `0.4.0` |
 | **Stage** | `alpha` |
-| **Build** | `90` |
-| **Full Version** | `v0.4.0-alpha+build.90` |
+| **Build** | `95` |
+| **Full Version** | `v0.4.0-alpha+build.95` |
 
 ### Development Progress
 
@@ -27,9 +27,9 @@ Core features complete, testing in progress
 | Metric | Count |
 |--------|-------|
 | Breaking Changes | 0 |
-| New Features | 16 |
+| New Features | 17 |
 | Bug Fixes | 4 |
-| Other Changes | 57 |
+| Other Changes | 61 |
 
 <!-- VERSION_END -->
 
@@ -53,13 +53,13 @@ custom attributes (Health, Stamina, Mana), character mechanics, and modular arch
 
 | Metric | Count |
 |--------|-------|
-| Header Files | 32 |
-| Source Files | 32 |
-| Total C++ Files | 64 |
-| Total Lines | 3,181 |
-| Code Lines | 2,957 |
-| Comment Lines | 224 |
-| Total Commits | 77 |
+| Header Files | 33 |
+| Source Files | 33 |
+| Total C++ Files | 66 |
+| Total Lines | 3,435 |
+| Code Lines | 3,197 |
+| Comment Lines | 238 |
+| Total Commits | 82 |
 | Contributors | 3 |
 
 <!-- STATS_END -->
@@ -80,7 +80,7 @@ Copyright 2026 RaioCore and Raioix. All Rights Reserved.
 
 | Status | Count |
 |--------|-------|
-| Correct Copyright | 64 |
+| Correct Copyright | 66 |
 | Epic Games (Template) | 0 |
 | Placeholder | 0 |
 | Missing | 0 |
@@ -134,12 +134,13 @@ Source/
                     Libraries/
                         DAAbilitySystemLibrary.cpp
                     DAAbilitySystemComponent.cpp
+                    DAAbilitySystemGlobals.cpp
+                    DAAbilityTypes.cpp
                     DAGameplayTags.cpp
                 Inventory/
                     InventoryComponent.cpp
                     ItemTypes.cpp
                     ItemTypesToTables.cpp
-                DAAbilityTypes.cpp
             UI/
                 WidgetControllers/
                     InventoryWidgetController.cpp
@@ -185,12 +186,13 @@ Source/
                     Libraries/
                         DAAbilitySystemLibrary.h
                     DAAbilitySystemComponent.h
+                    DAAbilitySystemGlobals.h
+                    DAAbilityTypes.h
                     DAGameplayTags.h
                 Inventory/
                     InventoryComponent.h
                     ItemTypes.h
                     ItemTypesToTables.h
-                DAAbilityTypes.h
             UI/
                 WidgetControllers/
                     InventoryWidgetController.h
@@ -224,6 +226,7 @@ Source/
 | `AProjectileBase` | Class | `AActor` |  |
 | `FCharacterClassDefaultInfo` | Struct | `-` |  |
 | `FConsumableProps` | Struct | `-` |  |
+| `FDAGameplayEffectContext` | Struct | `-` |  |
 | `FDAInputAction` | Struct | `-` |  |
 | `FDamageEffectInfo` | Struct | `-` |  |
 | `FMasterItemDefinition` | Struct | `-` |  |
@@ -231,6 +234,7 @@ Source/
 | `FProjectileParams` | Struct | `-` |  |
 | `UCharacterClassInfo` | Class | `UDataAsset` |  |
 | `UDAAbilitySystemComponent` | Class | `UAbilitySystemComponent` |  |
+| `UDAAbilitySystemGlobals` | Class | `UAbilitySystemGlobals` |  |
 | `UDAAbilitySystemLibrary` | Class | `UBlueprintFunctionLibrary` |  |
 | `UDAAttributeSet` | Class | `UAttributeSet` |  |
 | `UDADamageAbility` | Class | `UDAGameplayAbility` |  |
@@ -272,24 +276,24 @@ Source/
 <!-- COMMITS_START -->
 ## Recent Changes
 
+- [`52c160b`](https://github.com/Raio-Core/DarkAge/commit/52c160b948fbf7985db8b2520f9404a91cfd1210) Merge remote-tracking branch 'origin/main' (2026-03-22)
+- [`789ea2e`](https://github.com/Raio-Core/DarkAge/commit/789ea2e07c52a4f9a949289ddb093d04f64feb1e) Merge branch 'refs/heads/Feature/ProjectileDamage/CritDamage... (2026-03-22)
+- [`9ae3d4f`](https://github.com/Raio-Core/DarkAge/commit/9ae3d4f297759092910cc3031afb72ea627e2ff9) feat(combat): add critical hit system with CritChance and Cr... (2026-03-22)
+- [`63a73b4`](https://github.com/Raio-Core/DarkAge/commit/63a73b499e0cd32ce5201c6d211e33c9ff040f6a) docs: auto-update README [skip ci] (2026-03-22)
+- [`dd01afd`](https://github.com/Raio-Core/DarkAge/commit/dd01afdfa56fffed55799960a812f89a55e2881a) chore(config): add UE5 generated content to gitignore (2026-03-18)
 - [`d19f067`](https://github.com/Raio-Core/DarkAge/commit/d19f067a6e22abef01978dc5dbb32914220cbbea) docs: auto-update README [skip ci] (2026-03-15)
 - [`d64ced8`](https://github.com/Raio-Core/DarkAge/commit/d64ced8679ca37e0fec6cf08c7bb1604e0e3233d) Merge remote-tracking branch 'origin/main' (2026-03-15)
 - [`4f66efd`](https://github.com/Raio-Core/DarkAge/commit/4f66efdedd8c241cb1b8f7d4b182eb9f42c0bd89) Merge branch 'Feature/ProjectileDamage/3' (2026-03-15)
 - [`6167e80`](https://github.com/Raio-Core/DarkAge/commit/6167e801dafaca4bede7e3fabe08069935fdbc39) fix(abilitysystem): fix damage calculation and stamina attri... (2026-03-15)
 - [`20facc1`](https://github.com/Raio-Core/DarkAge/commit/20facc1478ace788f0cc211678ca246b46d6b3f2) docs: auto-update README [skip ci] (2026-03-15)
-- [`fcfe3a6`](https://github.com/Raio-Core/DarkAge/commit/fcfe3a6fd46854a0d6f5b6b84bdedfa4b566ffb3) feat(abilitysystem): add shield and damage reduction attribu... (2026-03-14)
-- [`7186040`](https://github.com/Raio-Core/DarkAge/commit/718604072ada9b33c4fcc5c72cc595477079afd1) docs: add comprehensive documentation for 8 revolutionary ga... (2026-03-13)
-- [`7dc437c`](https://github.com/Raio-Core/DarkAge/commit/7dc437cdd3eecb749364bdb7852f7000b0e45d7f) Merge remote-tracking branch 'origin/main' (2026-03-12)
-- [`5576864`](https://github.com/Raio-Core/DarkAge/commit/557686471ae0471af544e0256254566755b47de8) docs: expand game documentation with new GDD and systems doc... (2026-03-12)
-- [`54abcf4`](https://github.com/Raio-Core/DarkAge/commit/54abcf417d93d0a809b49e9f4aa794fdba383f2c) docs: auto-update README [skip ci] (2026-03-13)
 
 <!-- COMMITS_END -->
 
 <!-- CONTRIBUTORS_START -->
 ## Contributors
 
-- **Raio-Core** (58 commits)
-- **github-actions[bot]** (18 commits)
+- **Raio-Core** (61 commits)
+- **github-actions[bot]** (19 commits)
 - **Raioix** (2 commits)
 
 <!-- CONTRIBUTORS_END -->
@@ -298,7 +302,7 @@ Source/
 
 <p align="center">
   <i>Copyright 2026 RaioCore and Raioix. All Rights Reserved.</i><br><br>
-  <i>Last updated: 2026-03-22 01:03:11 UTC</i><br>
+  <i>Last updated: 2026-03-22 06:31:16 UTC</i><br>
   <i>This README is automatically generated from project files and git history.</i><br>
   <i>Version follows semantic versioning based on conventional commits.</i>
 </p>
