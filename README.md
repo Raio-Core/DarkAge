@@ -6,7 +6,7 @@
 [![Unreal Engine](https://img.shields.io/badge/Unreal%20Engine-5.7-0EBEED?logo=unrealengine&logoColor=white)](https://www.unrealengine.com/)
 [![Version](https://img.shields.io/badge/Version-0.4.0-orange)]()
 [![Stage](https://img.shields.io/badge/Stage-alpha-orange)]()
-[![Build](https://img.shields.io/badge/Build-105-blue)]()
+[![Build](https://img.shields.io/badge/Build-106-blue)]()
 [![C++](https://img.shields.io/badge/C++-17-00599C?logo=c%2B%2B&logoColor=white)](https://isocpp.org/)
 <!-- BADGES_END -->
 
@@ -17,8 +17,8 @@
 |----------|-------|
 | **Version** | `0.4.0` |
 | **Stage** | `alpha` |
-| **Build** | `105` |
-| **Full Version** | `v0.4.0-alpha+build.105` |
+| **Build** | `106` |
+| **Full Version** | `v0.4.0-alpha+build.106` |
 
 ### Development Progress
 
@@ -29,7 +29,7 @@ Core features complete, testing in progress
 | Breaking Changes | 0 |
 | New Features | 17 |
 | Bug Fixes | 4 |
-| Other Changes | 71 |
+| Other Changes | 72 |
 
 <!-- VERSION_END -->
 
@@ -59,7 +59,7 @@ custom attributes (Health, Stamina, Mana), character mechanics, and modular arch
 | Total Lines | 3,406 |
 | Code Lines | 3,169 |
 | Comment Lines | 237 |
-| Total Commits | 92 |
+| Total Commits | 93 |
 | Contributors | 3 |
 
 <!-- STATS_END -->
@@ -276,6 +276,7 @@ Source/
 <!-- COMMITS_START -->
 ## Recent Changes
 
+- [`eb6432a`](https://github.com/Raio-Core/DarkAge/commit/eb6432a0ad9cbe629a17b61c5c63d5c50699a4e9) docs: auto-update README [skip ci] (2026-05-10)
 - [`d80d7eb`](https://github.com/Raio-Core/DarkAge/commit/d80d7eb75ed0a442fe080274bed28587cfcb56e8) docs: auto-update README [skip ci] (2026-05-03)
 - [`2a00731`](https://github.com/Raio-Core/DarkAge/commit/2a0073158d6cfa624adaaa7bd9838e7f24e246d4) docs: auto-update README [skip ci] (2026-04-26)
 - [`dd721c8`](https://github.com/Raio-Core/DarkAge/commit/dd721c860b47dc4122508c2b174f4176f27c017c) docs: auto-update README [skip ci] (2026-04-19)
@@ -285,7 +286,6 @@ Source/
 - [`2cc405b`](https://github.com/Raio-Core/DarkAge/commit/2cc405bc220a44e601ff47c3ce113d0d67834562) docs: auto-update README [skip ci] (2026-03-22)
 - [`357f036`](https://github.com/Raio-Core/DarkAge/commit/357f036ccbac1caae84e595612d8907c1b816814) Merge remote-tracking branch 'origin/main' (2026-03-22)
 - [`9b8bbe1`](https://github.com/Raio-Core/DarkAge/commit/9b8bbe1c66def822cb38a5ccb10bdb98a0abce91) refactor(combat): consolidate incoming damage handling into ... (2026-03-22)
-- [`2d2f5e4`](https://github.com/Raio-Core/DarkAge/commit/2d2f5e42c7949a7c8074688ea11e583a0c79c0c3) docs: auto-update README [skip ci] (2026-03-22)
 
 <!-- COMMITS_END -->
 
@@ -293,7 +293,7 @@ Source/
 ## Contributors
 
 - **Raio-Core** (63 commits)
-- **github-actions[bot]** (27 commits)
+- **github-actions[bot]** (28 commits)
 - **Raioix** (2 commits)
 
 <!-- CONTRIBUTORS_END -->
@@ -302,7 +302,7 @@ Source/
 
 <p align="center">
   <i>Copyright 2026 RaioCore and Raioix. All Rights Reserved.</i><br><br>
-  <i>Last updated: 2026-05-10 01:30:29 UTC</i><br>
+  <i>Last updated: 2026-05-17 01:47:27 UTC</i><br>
   <i>This README is automatically generated from project files and git history.</i><br>
   <i>Version follows semantic versioning based on conventional commits.</i>
 </p>
